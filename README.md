@@ -40,11 +40,11 @@ pip install requests pytest python-dotenv allure-pytest
 
 1. Создайте файл `.env` в корне проекта:
 ```ini
-API_URL=https://dev1api.cloudpanel.ru
+API_URL=your_url
 API_LOGIN=your_login
 API_PASSWORD=your_password
 TOKEN_TIMEOUT=600
-API_DOMAIN=cloudpanel.ru
+API_DOMAIN=domen
 TOKEN_ID=
 ```
 
