@@ -1,0 +1,7 @@
+pytest tests/token/test_auth.py -v
+pytest tests/user/test_user_create.py -v
+pytest tests/user/test_user_read.py -v
+pytest tests/user/test_user_update.py -v
+pytest tests/user/test_user_delete.py -v
+pytest tests/user/test_user_crud.py -v
+pytest --html=report.html

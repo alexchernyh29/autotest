@@ -11,6 +11,9 @@ assets/allure-reports/
 .env
 *.env.local
 .env*.local
+# В корне .gitignore
+**/.env
+!.env.example
 
 # Кэш Python
 __pycache__/
