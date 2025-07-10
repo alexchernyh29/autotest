@@ -1,17 +1,33 @@
-# Файлы окружения
+# Allure и отчёты тестов
+allure-results/  # сырые данные отчётов
+allure-report/   # сгенерированные HTML-отчёты
+report.html      # альтернативный HTML-отчёт
+test-results/    # дополнительные результаты тестов
+
+# Папка assets (если нужно исключить)
+assets/allure-reports/
+
+# Файлы окружения и секреты
 .env
 *.env.local
+.env*.local
 
 # Кэш Python
 __pycache__/
 *.py[cod]
+*.so
+.Python
 
 # Кэш pytest
 .pytest_cache/
+.mypy_cache/
 
-# IDE
+# Настройки IDE
 .idea/
 .vscode/
+*.swp
+*.swo
 
 # Системные файлы
-.DS_Store  # (macOS)
+.DS_Store
+Thumbs.db
