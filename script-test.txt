@@ -4,4 +4,9 @@ pytest tests/user/test_user_read.py -v
 pytest tests/user/test_user_update.py -v
 pytest tests/user/test_user_delete.py -v
 pytest tests/user/test_user_crud.py -v
+pytest tests/organizations/test_organization_read.py -v
 pytest --html=report.html
+allure serve ./allure-results
+pytest --alluredir=./allure-results - Запуск всех тестов для отчёта
+allure generate ./allure-results -o ./allure-report --clean - Почистить результаты прошлого отчёта и создать новый
+allure serve ./allure-results

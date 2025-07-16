@@ -1,0 +1,19 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"PUT Обновление данных пользователя /api/v1/user/(id)","764","test_update_user","tests.user","Wed Jul 16 17:48:02 MSK 2025","passed","Wed Jul 16 17:48:03 MSK 2025","","test_user_crud","",""
+"Обновление данных пользователя с обязательными полями","1049","test_update_user","tests.user","Wed Jul 16 17:47:58 MSK 2025","passed","Wed Jul 16 17:47:59 MSK 2025","","test_user_update","",""
+"DELETE Удаление пользователя /api/v1/user/(id)","641","test_delete_user","tests.user","Wed Jul 16 17:48:03 MSK 2025","passed","Wed Jul 16 17:48:04 MSK 2025","","test_user_crud","",""
+"Получение данных пользователя по ID","583","test_get_user","tests.user","Wed Jul 16 17:47:58 MSK 2025","passed","Wed Jul 16 17:47:58 MSK 2025","","test_user_read","",""
+"
+Тест получения списка организаций по tenant_id
+Проверяет:
+1. Успешный статус-код (200)
+2. Наличие обязательных полей в ответе
+3. Соответствие запрошенного tenant_id
+","907","test_get_organizations_by_tenant_id","tests.organizations","Wed Jul 16 17:48:00 MSK 2025","passed","Wed Jul 16 17:48:01 MSK 2025","","test_organization_read","",""
+"Пример использования сохранённого токена","0","test_use_saved_token","tests","Thu Jul 10 14:23:59 MSK 2025","passed","Thu Jul 10 14:23:59 MSK 2025","","test_auth","",""
+"Пример использования сохранённого токена","3","test_use_saved_token","tests.token","Wed Jul 16 17:48:01 MSK 2025","passed","Wed Jul 16 17:48:01 MSK 2025","","test_auth","",""
+"GET Получение данных пользователя /api/v1/user/(id)","481","test_get_user","tests.user","Wed Jul 16 17:47:56 MSK 2025","passed","Wed Jul 16 17:47:57 MSK 2025","","test_user_crud","",""
+"Тест создания пользователя с сохранением ID","479","test_create_user_and_save_id","tests.user","Wed Jul 16 17:48:01 MSK 2025","passed","Wed Jul 16 17:48:01 MSK 2025","","test_user_create","",""
+"Тест: получение токена и сохранение в .env","733","test_get_and_save_token","tests.token","Wed Jul 16 17:47:55 MSK 2025","passed","Wed Jul 16 17:47:55 MSK 2025","","test_auth","",""
+"Удаление пользователя","599","test_delete_user","tests.user","Wed Jul 16 17:47:59 MSK 2025","passed","Wed Jul 16 17:48:00 MSK 2025","","test_user_delete","",""
+"Тест: получение токена и сохранение в .env","406","test_get_and_save_token","tests","Thu Jul 10 14:23:58 MSK 2025","passed","Thu Jul 10 14:23:59 MSK 2025","","test_auth","",""

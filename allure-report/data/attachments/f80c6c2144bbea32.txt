@@ -1,0 +1,5 @@
+
+Создан пользователь:
+ID: 600
+Login: autotest_0716122134
+mail: autotest+0716122134@example.com
