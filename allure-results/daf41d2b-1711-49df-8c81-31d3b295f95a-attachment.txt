@@ -1,0 +1,54 @@
+
+Ожидаемые данные (отправленные при создании):
+name: George Inc
+number_contract: 5749801684
+cid: 4237
+contract_begin_time: 2025-07-16
+address: 3476 Jamie Knolls Suite 683
+East Paul, MA 39045
+fact_address: 4894 Valerie Locks
+Lake Derrick, AK 88960
+contact_name: Debbie Gray
+contact_data: Buyer, retail
+contact_phone: (637)946-8022
+contact_mail: tlee@example.com
+description: Writer operation then assume others some leg. Certainly card hour. Receive poor authority.
+Power investment power throughout medical. Man energy sport knowledge role. Writer phone fly teach.
+inn: 1109990291
+kpp: 77367
+bik: 715773635
+pay_account: 812871948877
+kor_account: 8422036447
+bank_name: Mitchell Inc
+sub_right_ref_id: 2
+manager_id: 604
+tenant_id: 123
+type_right_ref_id: 9
+
+Фактические данные (полученные из API):
+number_contract: 5749801684
+sub_right_ref_id: 2
+type_right_ref_id: 9
+address: 3476 Jamie Knolls Suite 683
+East Paul, MA 39045
+name: George Inc
+contact_name: Debbie Gray
+contact_data: Buyer, retail
+tenant_id: 123
+fact_address: 4894 Valerie Locks
+Lake Derrick, AK 88960
+contact_phone: (637)946-8022
+contact_mail: tlee@example.com
+description: Writer operation then assume others some leg. Certainly card hour. Receive poor authority.
+Power investment power throughout medical. Man energy sport knowledge role. Writer phone fly teach.
+contract_begin_time: {'date': '2025-07-16 19:55:43.000000', 'timezone_type': 3, 'timezone': 'Europe/Moscow'}
+inn: 1109990291
+kpp: 77367
+pay_account: 812871948877
+kor_account: 8422036447
+bank_name: Mitchell Inc
+bik: 715773635
+cid: 4237
+manager_id: 604
+
+Проверка организации успешно завершена

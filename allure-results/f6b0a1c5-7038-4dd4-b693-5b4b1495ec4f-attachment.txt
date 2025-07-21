@@ -1,0 +1,4 @@
+Status Code: 404
+Response: {
+  "error": "user not found"
+}

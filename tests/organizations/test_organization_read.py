@@ -1,7 +1,10 @@
 import os
+import pytest
 import requests
+import allure
 from dotenv import load_dotenv
 from pathlib import Path
+from allure_commons.types import AttachmentType
 
 # Путь к .env файлу
 ENV_FILE = Path(__file__).parent.parent.parent / ".env"
@@ -11,10 +14,6 @@ def get_auth_token(login, password, timeoutlive, domain):
     Получение токена аутентификации
     """
     base_url = os.getenv("API_URL")
-    login = os.getenv("API_LOGIN")
-    password = os.getenv("API_PASSWORD")
-    domain = os.getenv("API_DOMAIN")
-
     url = f"{base_url}/api/v1/tocken"
     params = {
         "login": login,
@@ -25,73 +24,94 @@ def get_auth_token(login, password, timeoutlive, domain):
     headers = {
         "accept": "application/json"
     }
-
-    response = requests.post(url, headers=headers, params=params)
+    
+    with allure.step("Отправка запроса для получения токена"):
+        allure.attach(f"URL: {url}", name="Request URL", attachment_type=AttachmentType.TEXT)
+        allure.attach(str(headers), name="Request Headers", attachment_type=AttachmentType.TEXT)
+        allure.attach(str(params), name="Request Params", attachment_type=AttachmentType.TEXT)
+        
+        response = requests.post(url, headers=headers, params=params)
+        
+        allure.attach(str(response.status_code), name="Response Status Code", attachment_type=AttachmentType.TEXT)
+        allure.attach(str(response.headers), name="Response Headers", attachment_type=AttachmentType.TEXT)
+        allure.attach(str(response.text), name="Response Body", attachment_type=AttachmentType.TEXT)
+        
     response.raise_for_status()  # Проверка на ошибки HTTP
 
     token_data = response.json()
-    return token_data.get("tockenID")  # Предполагается, что ответ содержит поле "token"
+    return token_data.get("tockenID")  # Предполагается, что ответ содержит поле "tockenID"
 
-def test_get_organizations_by_tenant_id():
+@allure.story("Получение информации об организации")
+def test_get_organization_by_id():
     """
-    Тест получения списка организаций по tenant_id
+    Тест получения информации об организации по её ID
     Проверяет:
     1. Успешный статус-код (200)
     2. Наличие обязательных полей в ответе
-    3. Соответствие запрошенного tenant_id
     """
-    # Загрузка переменных окружения
-    load_dotenv(ENV_FILE)
+    with allure.step("Загрузка переменных окружения"):
+        load_dotenv(ENV_FILE)
 
-    # Получение параметров из .env
-    base_url = os.getenv("API_URL")
-    login = os.getenv("API_LOGIN")
-    password = os.getenv("API_PASSWORD")
-    domain = os.getenv("API_DOMAIN")
-    test_tenant_id = os.getenv("TEST_TENANT_ID", "123")  # Можно переопределить в .env
+    with allure.step("Получение параметров из .env"):
+        base_url = os.getenv("API_URL")
+        login = os.getenv("API_LOGIN")
+        password = os.getenv("API_PASSWORD")
+        domain = os.getenv("API_DOMAIN")
+        organization_id = os.getenv("ORGANIZATION_ID")
 
-    # Проверка обязательных переменных
-    assert base_url, "API_URL не задан в .env"
-    assert login, "API_LOGIN не задан в .env"
-    assert password, "API_PASSWORD не задан в .env"
-    assert domain, "API_DOMAIN не задан в .env"
+    with allure.step("Проверка обязательных переменных окружения"):
+        assert base_url, "API_URL не задан в .env"
+        assert login, "API_LOGIN не задан в .env"
+        assert password, "API_PASSWORD не задан в .env"
+        assert domain, "API_DOMAIN не задан в .env"
+        assert organization_id, "ORGANIZATION_ID не задан в .env"
 
-    # Получение токена
-    token = get_auth_token(login, password, 600, domain)
-    assert token, "Не удалось получить токен"
+    with allure.step("Получение токена аутентификации"):
+        token = get_auth_token(login, password, 600, domain)
+        assert token, "Не удалось получить токен"
 
-    # Формирование запроса
-    url = f"{base_url}/api/v1/organizations"
-    params = {"by_tenant_id": test_tenant_id}
-    headers = {
-        "accept": "*/*",
-        "tockenid": token  # Обратите внимание на опечатку в API (tockenid вместо tokenid)
-    }
+    with allure.step("Формирование запроса для получения информации об организации"):
+        url = f"{base_url}/api/v1/organization/{organization_id}"
+        headers = {
+            "accept": "application/json",
+            "tockenid": token
+        }
+        allure.attach(f"URL: {url}", name="Organization Request URL", attachment_type=AttachmentType.TEXT)
+        allure.attach(str(headers), name="Organization Request Headers", attachment_type=AttachmentType.TEXT)
 
-    # Отправка запроса
-    response = requests.get(url, headers=headers, params=params)
+    with allure.step("Отправка запроса информации об организации"):
+        response = requests.get(url, headers=headers)
+        allure.attach(str(response.status_code), name="Organization Response Status Code", attachment_type=AttachmentType.TEXT)
+        allure.attach(str(response.headers), name="Organization Response Headers", attachment_type=AttachmentType.TEXT)
+        allure.attach(str(response.text), name="Organization Response Body", attachment_type=AttachmentType.TEXT)
 
-    # Проверка статус-кода
-    assert response.status_code == 200, (
-        f"Ошибка при получении организаций. "
-        f"Status: {response.status_code}, Response: {response.text}"
-    )
-
-    # Парсинг ответа
-    data = response.json()
-
-    # Проверка структуры ответа
-    assert isinstance(data, list), "Ответ должен быть списком организаций"
-
-    if data:  # Если организации найдены
-        org = data[0]
-        assert "id" in org, "Отсутствует поле id в ответе"
-        assert "name" in org, "Отсутствует поле name в ответе"
-        assert "tenant_id" in org, "Отсутствует поле tenant_id в ответе"
-        assert str(org["tenant_id"]) == str(test_tenant_id), (
-            f"tenant_id организации ({org['tenant_id']}) "
-            f"не соответствует запрошенному ({test_tenant_id})"
+    with allure.step("Проверка статус-кода ответа"):
+        assert response.status_code == 200, (
+            f"Ошибка при получении информации об организации. "
+            f"Status: {response.status_code}, Response: {response.text}"
         )
 
-    print(f"\nНайдено организаций: {len(data)}")
-    print(f"Пример организации: {data[0] if data else 'Нет данных'}")
+    with allure.step("Парсинг и проверка ответа"):
+        data = response.json()
+        allure.attach(str(data), name="Parsed Response Data", attachment_type=AttachmentType.JSON)
+
+        assert isinstance(data, dict), "Ответ должен быть объектом организации"
+
+    with allure.step("Проверка соответствия ID организации"):
+        assert data["id"] == int(organization_id), (
+            f"ID организации ({data['id']}) "
+            f"не соответствует запрошенному ({organization_id})"
+        )
+
+    with allure.step("Проверка наличия обязательных полей в ответе"):
+        required_fields = [
+            "name", "tenant_id", "number_contract", "address",
+            "contact_name", "contact_phone", "contact_mail",
+            "contract_begin_time", "sub_right_ref", "type_right_ref"
+        ]
+        
+        missing_fields = [field for field in required_fields if field not in data]
+        assert not missing_fields, f"Отсутствуют обязательные поля: {', '.join(missing_fields)}"
+
+    with allure.step("Вывод информации об организации"):
+        allure.attach(str(data), name="Organization Details", attachment_type=AttachmentType.JSON)

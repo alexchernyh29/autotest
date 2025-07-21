@@ -1,0 +1,18 @@
+curl -X POST 'https://dev1api.cloudpanel.ru/api/v1/user' \
+  -H 'User-Agent: python-requests/2.32.4' \
+  -H 'Accept-Encoding: gzip, deflate' \
+  -H 'accept: application/json' \
+  -H 'Connection: keep-alive' \
+  -H 'content-type: application/json' \
+  -H 'tockenid: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NTI2ODY3NTksImV4cCI6MTc1MjY5MDM1OSwidXNlcm5hbWUiOjUwOX0.rtNKmBqWSxmVg_3wp1DpIjjt0wm3-pAm9DM7EDZd7t5kq0GzPG0HMFPGriwiMdUqVLFGk54hVV2oNpBVaAXHYDRp9lDX7eINscrBd2Jey5nAGXCdtcy_7-MRdzBjT9mtUSQFzWNmMeIc5LBxKBo1dHa_Js0W5XnjvWK47NOtRKDeVMOEBpZoDE7aS6N88CndjOABeXDQxaOOHrhJw7kR93HrvhvLl-55yXIxnA1SUdqiO1FOh1OyNHIAi9mpjOSHmaEwJf0NRtSsETJkyHBaZ5MU-vME6AjE7Ry2R_UkdlVvitBjK0lr1jMIPWneyTUvnT9SWoMihI2bL-mxZNOxUA' \
+  -H 'Content-Length: 181' \
+  -d '{
+  "fio": "Test User ymdzo",
+  "login": "test_ymdzo",
+  "password": "TestPass123",
+  "mail": "test.ymdzo@example.com",
+  "phone": "793224225",
+  "role_id": 1,
+  "tenant_id": 123,
+  "is_manager": 1
+}'

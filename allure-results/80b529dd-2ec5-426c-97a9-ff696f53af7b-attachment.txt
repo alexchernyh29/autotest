@@ -1,0 +1,12 @@
+Request Method: POST
+Request URL: https://dev1api.cloudpanel.ru/api/v1/user
+Request Headers: {
+  "User-Agent": "python-requests/2.32.4",
+  "Accept-Encoding": "gzip, deflate",
+  "accept": "application/json",
+  "Connection": "keep-alive",
+  "content-type": "application/json",
+  "tockenid": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NTI2ODkyOTEsImV4cCI6MTc1MjY5Mjg5MSwidXNlcm5hbWUiOjUwOX0.lx1PfDKzNOlGvmlAvzL5jz5I9MFnU2fIMHKadteMAKN-dVp_9kw9LDZA9VnMb7zDBXyWyttOTZSLbgJDmzNfg5anEyPjdrHoIieNjb1NnBA8JrC1RVk0k_4dxQaqDts_sRJMBNoC8gjuyoBDAT7EHwPh2WTt42rsUP9RWZf5Adpl_g8mLbFH4MCQ8PnjZRnHu0TFThTRlqzomKVnPWa6FkXEi9Ooz0a44m2voogrOiyK8CqziPkYXrqA-d85Um5o0MsUb_tlGr9jI_dCxie3oPYhucwNs2SfRhbqMFqLGNEKoVq6jm6_Zf6V_WjBTMO4sADETpQPY0SCbe3N-ipw_w",
+  "Content-Length": "181"
+}
+Request Body: b'{"fio": "Test User ltomc", "login": "test_ltomc", "password": "TestPass123", "mail": "test.ltomc@example.com", "phone": "797031585", "role_id": 1, "tenant_id": 123, "is_manager": 1}'

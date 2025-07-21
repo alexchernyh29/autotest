@@ -1,0 +1,7 @@
+
+Успешно создан пользователь:
+ID: 627
+Login: autotest_0716203153
+Email: autotest+0716203153@example.com
+Phone: 795200826
+FIO: Autotest User jeobxs
