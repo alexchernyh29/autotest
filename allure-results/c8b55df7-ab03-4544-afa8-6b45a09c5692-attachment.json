@@ -1,0 +1,10 @@
+{
+  "fio": "Test User bedzd",
+  "login": "test_bedzd",
+  "password": "TestPass123",
+  "mail": "test.bedzd@example.com",
+  "phone": "796838079",
+  "role_id": 1,
+  "tenant_id": 123,
+  "is_manager": 1
+}

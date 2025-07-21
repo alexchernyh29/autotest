@@ -1,0 +1,18 @@
+curl -X POST 'https://dev1api.cloudpanel.ru/api/v1/user' \
+  -H 'User-Agent: python-requests/2.32.4' \
+  -H 'Accept-Encoding: gzip, deflate' \
+  -H 'accept: application/json' \
+  -H 'Connection: keep-alive' \
+  -H 'content-type: application/json' \
+  -H 'tockenid: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NTI2ODYzNDQsImV4cCI6MTc1MjY4OTk0NCwidXNlcm5hbWUiOjUwOX0.QTKUUIIzRmUxj4SDeLfh7G7fserF5t2t7AlSoKL3Q9zkXsWbW5p474mb_v_vXAC8q9i5hdW1WQ7bKbH_2hTD1qzEyBklP9hjg0eviWpmFK5kaL5tObhb4EEO-gCYsLuCKqE_Vr1XZNZPnL4_MHRvaHrp66EbnmQ-A2omfVpS8nglNHc8uqI14Cu6sP4_Zz4KwJCOm5rSZjAl7Ztm6N8A5oIRJtCHWCncGM-8ehBHeHm30fGdYfdC6ZLbNSjhXpUqlujr_IB7F837DdlwmLI-EGmCgDTS-TZtJzsuZUsFiHEKfCkBeMeCD4viTZR0surDnEzVoD7NcI9BVjFPr1MzEQ' \
+  -H 'Content-Length: 181' \
+  -d '{
+  "fio": "Test User gcefs",
+  "login": "test_gcefs",
+  "password": "TestPass123",
+  "mail": "test.gcefs@example.com",
+  "phone": "795989109",
+  "role_id": 1,
+  "tenant_id": 123,
+  "is_manager": 1
+}'

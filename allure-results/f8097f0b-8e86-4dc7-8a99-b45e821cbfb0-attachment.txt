@@ -1,0 +1,6 @@
+Успешно создан пользователь:
+ID: 619
+Login: autotest_0716201906
+Email: autotest+0716201906@example.com
+Phone: 799711651
+FIO: Autotest User 5ig1hj

@@ -1,0 +1,6 @@
+Успешно создан пользователь:
+ID: 615
+Login: autotest_0716195536
+Email: autotest+0716195536@example.com
+Phone: 799760431
+FIO: Autotest User qbg4sf

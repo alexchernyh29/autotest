@@ -1,0 +1,12 @@
+Request Method: PUT
+Request URL: https://dev1api.cloudpanel.ru/api/v1/user/632
+Request Headers: {
+  "User-Agent": "python-requests/2.32.4",
+  "Accept-Encoding": "gzip, deflate",
+  "accept": "application/json, text/plain, */*",
+  "Connection": "keep-alive",
+  "content-type": "application/json",
+  "tockenid": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NTI2ODczMDEsImV4cCI6MTc1MjY5MDkwMSwidXNlcm5hbWUiOjUwOX0.PFFaQphkyfSWWzAjham9xmBj_ISeK_M5_71g-xKDq0Lnv7aabmtDk4J1bhQDsGWohk9s7IEuEVdGJGawOtuoI2k8QAxp_uiK26Ww9Lk5qVXAscxUPqCZW_udaTDyoyOvz3DFEupwnNf0-G395U0hZ9-RAC2wQB02OUJGQsuHhXXI_-fF9R37ZhkTGVCGWPWdsoPwXgpXAg_l0GVwLcG3nB4nt0JyYFm0_zTQuYdp-44G6CrMoHBlERWMjotnhrbsRB07qBfqV-P5h3RJk8YRNY1b1xzdjjQONQkzoxGj1auqyTZZpfDnAW-h65JybiTTgzRA_i_fdTPCO89_-3Fsvg",
+  "Content-Length": "153"
+}
+Request Body: b'{"fio": "Updated Name", "login": "updated_login", "mail": "updated@example.com", "phone": "79123456789", "role_id": 1, "tenant_id": 123, "is_manager": 1}'

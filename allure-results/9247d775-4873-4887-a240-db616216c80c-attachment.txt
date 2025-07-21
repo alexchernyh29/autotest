@@ -1,0 +1,7 @@
+curl -X DELETE 'https://dev1api.cloudpanel.ru/api/v1/user/615' \
+  -H 'User-Agent: python-requests/2.32.4' \
+  -H 'Accept-Encoding: gzip, deflate' \
+  -H 'accept: */*' \
+  -H 'Connection: keep-alive' \
+  -H 'tockenid: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NTI2ODQ5MzUsImV4cCI6MTc1MjY4ODUzNSwidXNlcm5hbWUiOjUwOX0.BlVNgxvqfB_al6h_G84-r0EmkcnLnFGxVB-9Jtcd7fGgSS0-MsSQmsix2k09DSzhf7PvJkwCCVSect9vki5zFV7g9pGC_XTwnN6bIksZTi-cLDEbyOXWJy4PWU1HBPynCoENAdbx4IxFY-vv4YQMp8gFxUvlksol5w5bTVpLFK_f0wraFSkHJ1YwqlbdGfpH0sRm18OkBv0qgDyIPe-lRs7zsay4rcdWXhJlkV2D2VyHxDAf_VAZvk9o4FA8Tpa9bqD-2V1ZwbhzGo7nVLxSTmZZ-4Pi7gb64uDKvj7PX4_Lh7_7UJMvc5xS2HALHzlqXjXb8PHgK8YO1oDu-fuIVQ' \
+  -H 'Content-Length: 0'

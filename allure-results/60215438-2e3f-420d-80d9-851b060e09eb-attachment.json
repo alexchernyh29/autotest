@@ -1,0 +1,10 @@
+{
+  "fio": "Test User gcqps",
+  "login": "test_gcqps",
+  "password": "TestPass123",
+  "mail": "test.gcqps@example.com",
+  "phone": "796728198",
+  "role_id": 1,
+  "tenant_id": 123,
+  "is_manager": 1
+}

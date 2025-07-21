@@ -1,0 +1,11 @@
+Ожидаемые данные (из переменных):
+name: Carter, Becker and Todd
+number_contract: 1640505724
+address: 97647 Williams Roads Apt. 275
+Johnsonmouth, SC 99736
+Фактические данные (из API):
+name: Carter, Becker and Todd
+number_contract: 1640505724
+address: 97647 Williams Roads Apt. 275
+Johnsonmouth, SC 99736
+Информация об организации успешно проверена.

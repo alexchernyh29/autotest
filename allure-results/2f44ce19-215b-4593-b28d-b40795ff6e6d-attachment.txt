@@ -1,0 +1,4 @@
+
+Отправка запроса на: https://dev1api.cloudpanel.ru/api/v1/tocken
+
+Токен получен: eyJ0eXAiOi...

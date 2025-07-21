@@ -1,0 +1,18 @@
+curl -X POST 'https://dev1api.cloudpanel.ru/api/v1/user' \
+  -H 'User-Agent: python-requests/2.32.4' \
+  -H 'Accept-Encoding: gzip, deflate' \
+  -H 'accept: application/json' \
+  -H 'Connection: keep-alive' \
+  -H 'content-type: application/json' \
+  -H 'tockenid: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NTI2ODg4MTMsImV4cCI6MTc1MjY5MjQxMywidXNlcm5hbWUiOjUwOX0.gAMyh4J9qPjEfPiWSKQ7FqkE_pIdhRfJMnwB4Dl4mL-LvK_LzfTqWAJ2LAPOv50vLzs5eVSP6bxGjEjblzi51fGyjdAvwMsdZ78tNAYGVhXb-ZuPoZD9sSD62ypbHgiejZ3aZzQM0fq4mQrZWBUcT2jMB44qZicX0CrFXZ5z7yyTibIQbYlB35KCKs1sN3Yhc2oaZZ18VCNA_Gd8cQsPXkypYafY7zpEUv64SX5ZXPtOpTXViKCMOP9LdTQp-q7lvIE10EuuvlPftX3XJH1vdp2tnB9WLrBZLYbIygCTdQJsjAJvOh50aRwBickJ_VxyxemuXoKgb5V3oe6lwk_kUw' \
+  -H 'Content-Length: 181' \
+  -d '{
+  "fio": "Test User udati",
+  "login": "test_udati",
+  "password": "TestPass123",
+  "mail": "test.udati@example.com",
+  "phone": "791220269",
+  "role_id": 1,
+  "tenant_id": 123,
+  "is_manager": 1
+}'

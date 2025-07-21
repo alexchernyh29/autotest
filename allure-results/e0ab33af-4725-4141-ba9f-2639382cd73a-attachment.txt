@@ -1,0 +1,2 @@
+Status Code: 404
+Response: {"error":"organization not found"}

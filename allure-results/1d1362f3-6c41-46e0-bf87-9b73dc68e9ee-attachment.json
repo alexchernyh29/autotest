@@ -1,0 +1,10 @@
+{
+  "fio": "Test User gcefs",
+  "login": "test_gcefs",
+  "password": "TestPass123",
+  "mail": "test.gcefs@example.com",
+  "phone": "795989109",
+  "role_id": 1,
+  "tenant_id": 123,
+  "is_manager": 1
+}

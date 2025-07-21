@@ -4,7 +4,13 @@ pytest tests/user/test_user_read.py -v
 pytest tests/user/test_user_update.py -v
 pytest tests/user/test_user_delete.py -v
 pytest tests/user/test_user_crud.py -v
+
+pytest tests/organizations/test_organizations_read.py -v
+pytest tests/organizations/test_organization_create.py -v
 pytest tests/organizations/test_organization_read.py -v
+pytest tests/organizations/test_organization_update.py -v
+pytest tests/organizations/test_organization_delete.py -v
+
 pytest --html=report.html
 allure serve ./allure-results
 pytest --alluredir=./allure-results - Запуск всех тестов для отчёта

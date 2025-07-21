@@ -1,0 +1,11 @@
+Ожидаемые данные (из переменных):
+name: Smith LLC
+number_contract: 1474153309
+address: 117 Sarah Lane
+Robertsstad, RI 64325
+Фактические данные (из API):
+name: Smith LLC
+number_contract: 1474153309
+address: 117 Sarah Lane
+Robertsstad, RI 64325
+Информация об организации успешно проверена.
