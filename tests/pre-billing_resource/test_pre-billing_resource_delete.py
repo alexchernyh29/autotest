@@ -1,0 +1,1 @@
+# Удаление записи /api/v1/pre_billing/resource/item/{id}

@@ -1,0 +1,1 @@
+# Получить список всех типов категорий /api/v1/resource/category_types

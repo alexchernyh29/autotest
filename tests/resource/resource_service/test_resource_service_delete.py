@@ -1,0 +1,1 @@
+# Удаляет сервис ресурсов /api/v1/resource_service/{id}

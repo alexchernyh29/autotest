@@ -1,0 +1,1 @@
+# Возвращает список настроек тарифов для арендаторов с фильтрацией /api/v1/tariff_tenants_settings?by_tariff_link_organization_id=231312

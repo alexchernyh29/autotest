@@ -1,0 +1,1 @@
+# Получить список всех типов сервисов /api/v1/resource/type_services

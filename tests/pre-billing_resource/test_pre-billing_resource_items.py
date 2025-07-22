@@ -1,0 +1,1 @@
+# Список услуг с ручным вводом /api/v1/pre_billing/resource/items

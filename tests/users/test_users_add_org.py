@@ -1,0 +1,1 @@
+# Добавление пользователя в организацию /api/v1/user_organization_link?user_id={id}&organization_id={id}

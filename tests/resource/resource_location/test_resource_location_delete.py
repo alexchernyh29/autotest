@@ -1,0 +1,1 @@
+# Удаляет местоположение ресурса /api/v1/resource_location/{id}

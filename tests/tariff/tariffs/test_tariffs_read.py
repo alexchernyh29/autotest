@@ -1,0 +1,1 @@
+# Возвращает список тарифов /api/v1/tariffs?by_service_id=2121&by_name=wedw

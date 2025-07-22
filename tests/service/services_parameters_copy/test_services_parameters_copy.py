@@ -1,0 +1,1 @@
+# Копирует параметры из одного сервиса в другой. /api/v1/billing/services_parameters_copy/{id}

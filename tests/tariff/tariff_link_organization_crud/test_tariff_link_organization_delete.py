@@ -1,0 +1,1 @@
+# Позволяет удалить связь тарифа с организацией /api/v1/tariff_link_organization/{id}

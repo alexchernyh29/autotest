@@ -1,0 +1,1 @@
+# Удаляет категорию ресурса /api/v1/resource_category_ref/{id}

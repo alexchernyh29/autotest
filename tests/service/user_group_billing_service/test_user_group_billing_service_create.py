@@ -1,0 +1,1 @@
+# Создает новую связь группы пользователей и биллингового сервиса /api/v1/billing/user_group_billing_service

@@ -1,0 +1,1 @@
+# get organization report/api/v1/report_organization/320?report_type=Services&begin_date=01.01.2024&end_date=30.01.2024

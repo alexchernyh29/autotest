@@ -1,0 +1,1 @@
+# Удаляет пул ресурсов /api/v1/resource_pool/{id}

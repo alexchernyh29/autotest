@@ -1,0 +1,1 @@
+# Общий отчет по клиенту /api/v1/pre_billing/reports/total?organization_id=1221321&start_date=2023-01-25&end_date=2023-01-26

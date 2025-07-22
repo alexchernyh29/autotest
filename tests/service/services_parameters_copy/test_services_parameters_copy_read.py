@@ -1,0 +1,1 @@
+# Возвращает список параметров сервиса для указанного service_id /api/v1/billing/services_parametrs?by_service_id={id}

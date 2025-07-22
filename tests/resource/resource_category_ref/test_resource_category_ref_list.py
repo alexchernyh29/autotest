@@ -1,0 +1,1 @@
+# Возвращает список всех категорий ресурсов /api/v1/resource_categoryes_ref

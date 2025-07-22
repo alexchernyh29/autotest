@@ -1,0 +1,1 @@
+# Возвращает список пулов ресурсов /api/v1/resource_pools?by_service_id={id}&by_location_id={id}

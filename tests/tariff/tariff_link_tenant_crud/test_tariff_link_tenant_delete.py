@@ -1,0 +1,1 @@
+# Удаляет указанную связь между тарифом и арендатором /api/v1/tariff_link_tenant/{tariff_link_tenant_id}

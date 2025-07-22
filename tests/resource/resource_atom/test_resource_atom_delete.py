@@ -1,0 +1,1 @@
+# Удаляет атом ресурса /api/v1/resource_atom/{id}

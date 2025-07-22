@@ -1,0 +1,1 @@
+# Удаляет единицу измерения ресурсов /api/v1/resource_unit_measure/{id}
