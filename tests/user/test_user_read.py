@@ -26,7 +26,7 @@ def test_get_user():
     with allure.step("Формирование заголовков запроса"):
         headers = {
             "accept": "*/*",
-            "tockenid": token  # Обратите внимание на опечатку в API (tockenid вместо tokenid)
+            "tockenid": token
         }
         allure.attach(str(headers), name="Request Headers", attachment_type=allure.attachment_type.TEXT)
 
