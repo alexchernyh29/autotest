@@ -6,6 +6,9 @@ import allure
 from dotenv import load_dotenv
 from pathlib import Path
 
+# Инициализация Faker
+fake = Faker()
+
 # Путь к .env файлу
 ENV_FILE = Path(__file__).parent.parent.parent / ".env"
 
@@ -44,11 +47,11 @@ def test_update_user(faker):
         clean_phone = clean_phone[:11] if len(clean_phone) >= 11 else clean_phone.ljust(11, '0')
 
     with allure.step("1. Получение текущих данных пользователя"):
-        get_headers = {"tockenid": token, "accept": "*/*"}
+        get_headers = {"tockenId": token, "accept": "*/*"}
         get_url = f"{base_url}/api/v1/user/{test_user_id}"
 
         allure.attach(
-            f"curl -X GET '{get_url}' -H 'accept: */*' -H 'tockenid: {token}'",
+            f"curl -X GET '{get_url}' -H 'accept: */*' -H 'tockenId: {token}'",
             name="CURL команда для получения данных",
             attachment_type=allure.attachment_type.TEXT
         )
@@ -73,7 +76,7 @@ def test_update_user(faker):
             "fio": "Новое ФИО",
             "login": current_data["login"],
             "mail": "updated.email@example.com",
-            "phone": clean_phone,
+            "phone": f"79{str(fake.random_number(digits=9))}",
             "role_id": current_data["role_id"],
             "tenant_id": current_data["tenant_id"],
             "is_manager": 1
@@ -88,13 +91,13 @@ def test_update_user(faker):
         headers = {
             "accept": "application/json, text/plain, */*",
             "content-type": "application/json",
-            "tockenid": token
+            "tockenId": token
         }
         update_url = f"{base_url}/api/v1/user/{test_user_id}"
 
         allure.attach(
             f"curl -X PUT '{update_url}' -H 'accept: application/json' "
-            f"-H 'content-type: application/json' -H 'tockenid: {token}' "
+            f"-H 'content-type: application/json' -H 'tockenId: {token}' "
             f"-d '{str(update_data).replace("'", '"')}'",
             name="CURL команда для обновления",
             attachment_type=allure.attachment_type.TEXT
@@ -112,7 +115,7 @@ def test_update_user(faker):
     with allure.step("4. Проверка обновленных данных"):
         updated_response = requests.get(
             f"{base_url}/api/v1/user/{test_user_id}",
-            headers={"tockenid": token}
+            headers={"tockenId": token}
         )
         updated_data = updated_response.json()
         allure.attach(

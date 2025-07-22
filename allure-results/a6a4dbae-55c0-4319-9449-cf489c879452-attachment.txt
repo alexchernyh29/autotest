@@ -1,1 +1,0 @@
-{'Alt-Svc': 'h3=":443"; ma=2592000', 'Cache-Control': 'no-cache, private', 'Content-Length': '462', 'Content-Type': 'application/json', 'Date': 'Wed, 16 Jul 2025 18:05:27 GMT', 'Server': 'Caddy, nginx/1.26.3', 'X-Debug-Token': '42eb6c', 'X-Debug-Token-Link': 'http://dev1api.cloudpanel.ru/_profiler/42eb6c', 'X-Powered-By': 'PHP/8.0.30', 'X-Robots-Tag': 'noindex'}

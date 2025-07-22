@@ -1,4 +1,0 @@
-Status Code: 400
-Response Body: {
-  "error": "this login already exists"
-}

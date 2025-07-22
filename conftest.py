@@ -24,7 +24,7 @@ def pytest_collection_modifyitems(items):
     # ... остальные тесты организаций
 
     # 3. Тесты пользователей организаций
-    ordered_items.extend([i for i in items if "users/test_users_organiztion" in i.nodeid])
+    ordered_items.extend([i for i in items if "users/test_users_org" in i.nodeid])
     ordered_items.extend([i for i in items if "users/test_users_read" in i.nodeid])
     
     items[:] = ordered_items

@@ -1,15 +1,16 @@
 import os
 import pytest
 import requests
-from dotenv import load_dotenv, set_key
-import random
-import string
-from pathlib import Path
-from config import ENV_FILE
 import allure
 import json
+from dotenv import load_dotenv
+from pathlib import Path
+from faker import Faker
 
-# Определяем путь к .env файлу
+# Инициализация Faker
+fake = Faker()
+
+# Путь к .env файлу
 ENV_FILE = Path(__file__).parent.parent.parent / ".env"
 
 def log_curl(request, response):
@@ -55,7 +56,6 @@ def log_curl(request, response):
             attachment_type=allure.attachment_type.TEXT
         )
 
-# Фикстура для создания тестового пользователя
 @pytest.fixture
 def test_user():
     """Фикстура для создания тестового пользователя"""
@@ -67,16 +67,15 @@ def test_user():
         assert base_url is not None, "API_URL не найден в .env файле"
         assert token is not None, "TOKEN_ID не найден в .env файле"
         
-        rand_str = ''.join(random.choices(string.ascii_lowercase, k=5))
         user_data = {
-            "fio": f"Test User {rand_str}",
-            "login": f"test_{rand_str}",
-            "password": "TestPass123",
-            "mail": f"test.{rand_str}@example.com",
-            "phone": f"79{random.randint(1000000, 9999999)}",
+            "fio": fake.name(),
+            "login": fake.user_name(),
+            "password": fake.password(length=12, special_chars=True),
+            "mail": fake.email(),
+            "phone": f"79{str(fake.random_number(digits=9))}",
             "role_id": 1,
             "tenant_id": 123,
-            "is_manager": 1
+            "is_manager": fake.random_element(elements=(0, 1))
         }
         
         allure.attach(
@@ -91,7 +90,7 @@ def test_user():
             headers={
                 "accept": "application/json",
                 "content-type": "application/json",
-                "tockenid": token
+                "tockenId": token
             },
             json=user_data
         )
@@ -108,88 +107,112 @@ def test_user():
         
         yield user_id
 
-def test_get_user(test_user):
-    """GET Получение данных пользователя /api/v1/user/(id)"""
+def test_update_user_with_faker(test_user):
+    """PUT Обновление данных пользователя с использованием Faker"""
     with allure.step("Подготовка данных"):
         load_dotenv(ENV_FILE)
         base_url = os.getenv("API_URL")
         token = os.getenv("TOKEN_ID")
         user_id = test_user
 
-    with allure.step("Отправка GET запроса"):
-        response = requests.get(
+        # Сначала проверяем, что пользователь существует
+        check_response = requests.get(
             f"{base_url}/api/v1/user/{user_id}",
-            headers={
-                "accept": "*/*",
-                "tockenid": token
-            }
+            headers={"tockenId": token}
         )
-        log_curl(response.request, response)
-
-    with allure.step("Проверка ответа"):
-        assert response.status_code == 200, f"Ожидался код 200, получен {response.status_code}"
-        response_data = response.json()
-        
-        allure.attach(
-            f"Ожидаемый ID: {user_id}\nПолученный ID: {response_data.get('id')}",
-            name="ID Verification",
-            attachment_type=allure.attachment_type.TEXT
+        log_curl(check_response.request, check_response)
+        assert check_response.status_code == 200, (
+            f"Пользователь не найден перед обновлением. Status: {check_response.status_code}"
         )
-        assert response_data["id"] == user_id, "ID пользователя не совпадает"
 
-def test_update_user(test_user):
-    """PUT Обновление данных пользователя /api/v1/user/(id)"""
-    with allure.step("Подготовка данных"):
-        load_dotenv(ENV_FILE)
-        base_url = os.getenv("API_URL")
-        token = os.getenv("TOKEN_ID")
-        user_id = test_user
-        
+        # Генерация случайных данных для обновления
         update_data = {
-            "fio": "Updated Name",
-            "login": "updated_login",
-            "mail": "updated@example.com",
-            "phone": "79123456789",
-            "role_id": 1,
+            "fio": fake.name(),
+            "login": fake.user_name()[:20],  # Ограничение длины, если есть
+            "mail": fake.email(),
+            "phone": f"79{str(fake.random_number(digits=9))}",
+            "role_id": fake.random_int(min=1, max=5),
             "tenant_id": 123,
-            "is_manager": 1
+            "is_manager": fake.random_element(elements=(0, 1))
         }
-        
+
         allure.attach(
             json.dumps(update_data, indent=2),
-            name="Update Data",
+            name="Update Data (Faker)",
             attachment_type=allure.attachment_type.JSON
         )
 
     with allure.step("Отправка PUT запроса"):
+        # Логируем полный URL для отладки
+        full_url = f"{base_url}/api/v1/user/{user_id}"
+        allure.attach(
+            f"Full URL: {full_url}",
+            name="Request URL",
+            attachment_type=allure.attachment_type.TEXT
+        )
+        
         response = requests.put(
-            f"{base_url}/api/v1/user/{user_id}",
+            full_url,
             headers={
                 "accept": "application/json, text/plain, */*",
                 "content-type": "application/json",
-                "tockenid": token
+                "tockenId": token  # Обратите внимание на регистр (tockenId vs tockenid)
             },
             json=update_data
         )
         log_curl(response.request, response)
-        assert response.status_code == 200, f"Ожидался код 200, получен {response.status_code}"
+        
+        # Детальный анализ ошибки
+        if response.status_code != 200:
+            error_details = {
+                "status_code": response.status_code,
+                "response_text": response.text,
+                "request_url": full_url,
+                "user_id": user_id,
+                "headers": dict(response.request.headers)
+            }
+            allure.attach(
+                json.dumps(error_details, indent=2),
+                name="Error Details",
+                attachment_type=allure.attachment_type.JSON
+            )
+        
+        assert response.status_code == 200, (
+            f"Ожидался код 200, получен {response.status_code}. "
+            f"Response: {response.text}"
+        )
 
     with allure.step("Проверка обновленных данных"):
         get_response = requests.get(
             f"{base_url}/api/v1/user/{user_id}",
-            headers={"tockenid": token}
+            headers={"tockenId": token}
         )
         log_curl(get_response.request, get_response)
+        assert get_response.status_code == 200, "Не удалось получить данные пользователя после обновления"
         
         updated_user = get_response.json()
         
+        verification_results = []
+        for field, expected_value in update_data.items():
+            actual_value = updated_user.get(field)
+            match = str(expected_value) == str(actual_value)
+            verification_results.append({
+                "field": field,
+                "expected": expected_value,
+                "actual": actual_value,
+                "match": match
+            })
+            
+            assert match, (
+                f"Поле {field} не соответствует ожидаемому значению. "
+                f"Ожидалось: {expected_value}, Получено: {actual_value}"
+            )
+        
         allure.attach(
-            f"Ожидаемое имя: Updated Name\nПолученное имя: {updated_user.get('fio')}",
-            name="Name Verification",
-            attachment_type=allure.attachment_type.TEXT
+            json.dumps(verification_results, indent=2),
+            name="Verification Results",
+            attachment_type=allure.attachment_type.JSON
         )
-        assert updated_user["fio"] == "Updated Name", "Имя пользователя не обновилось"
-
 
 def test_delete_user(test_user):
     """DELETE Удаление пользователя /api/v1/user/(id)"""
@@ -204,7 +227,7 @@ def test_delete_user(test_user):
             f"{base_url}/api/v1/user/{user_id}",
             headers={
                 "accept": "*/*",
-                "tockenid": token
+                "tockenId": token
             }
         )
         log_curl(response.request, response)
@@ -213,13 +236,7 @@ def test_delete_user(test_user):
     with allure.step("Проверка удаления пользователя"):
         get_response = requests.get(
             f"{base_url}/api/v1/user/{user_id}",
-            headers={"tockenid": token}
+            headers={"tockenId": token}
         )
         log_curl(get_response.request, get_response)
-        
-        allure.attach(
-            f"Ожидаемый статус: 404\nПолученный статус: {get_response.status_code}",
-            name="Deletion Verification",
-            attachment_type=allure.attachment_type.TEXT
-        )
         assert get_response.status_code == 404, "Пользователь не был удален"

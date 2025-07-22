@@ -1,5 +1,0 @@
-curl -X POST 'https://dev1api.cloudpanel.ru/api/v1/user' \
-  -H 'accept: application/json' \
-  -H 'content-type: application/json' \
-  -H 'tockenid: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NTI2ODkyOTEsImV4cCI6MTc1MjY5Mjg5MSwidXNlcm5hbWUiOjUwOX0.lx1PfDKzNOlGvmlAvzL5jz5I9MFnU2fIMHKadteMAKN-dVp_9kw9LDZA9VnMb7zDBXyWyttOTZSLbgJDmzNfg5anEyPjdrHoIieNjb1NnBA8JrC1RVk0k_4dxQaqDts_sRJMBNoC8gjuyoBDAT7EHwPh2WTt42rsUP9RWZf5Adpl_g8mLbFH4MCQ8PnjZRnHu0TFThTRlqzomKVnPWa6FkXEi9Ooz0a44m2voogrOiyK8CqziPkYXrqA-d85Um5o0MsUb_tlGr9jI_dCxie3oPYhucwNs2SfRhbqMFqLGNEKoVq6jm6_Zf6V_WjBTMO4sADETpQPY0SCbe3N-ipw_w' \
-  -d '{"fio": "Autotest User n3y9jt", "login": "autotest_0716210810", "password": "P@ss_n3y9jt", "mail": "autotest+0716210810@example.com", "phone": "794929891", "role_id": 1, "tenant_id": 123, "is_manager": 1}'

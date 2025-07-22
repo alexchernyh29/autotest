@@ -11,8 +11,25 @@ pytest tests/organizations/test_organization_read.py -v
 pytest tests/organizations/test_organization_update.py -v
 pytest tests/organizations/test_organization_delete.py -v
 
+pytest tests/users/test_users_read.py -v
+pytest tests/users/test_users_organization -v
+
 pytest --html=report.html
+
+# Очистка старых результатов
+Remove-Item -Path "allure-results/*", "allure-report/*" -Recurse -Force -ErrorAction SilentlyContinue
+
+# Запуск тестов с записью результатов (если нужно)
+pytest tests/ --alluredir=./allure-results -v
+
+# Генерация отчета
+allure generate ./allure-results -o ./allure-report --clean
+
+# Запуск сервера с отчетом
 allure serve ./allure-results
-pytest --alluredir=./allure-results - Запуск всех тестов для отчёта
-allure generate ./allure-results -o ./allure-report --clean - Почистить результаты прошлого отчёта и создать новый
+
+Скрипт
+Remove-Item -Path "allure-results/*", "allure-report/*" -Recurse -Force -ErrorAction SilentlyContinue
+pytest tests/ --alluredir=./allure-results -v
+allure generate ./allure-results -o ./allure-report --clean
 allure serve ./allure-results

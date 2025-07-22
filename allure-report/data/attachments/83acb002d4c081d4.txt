@@ -1,5 +1,0 @@
-
-Создан пользователь:
-ID: 604
-Login: autotest_0716174801
-mail: autotest+0716174801@example.com

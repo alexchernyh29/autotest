@@ -1,1 +1,0 @@
-curl -X POST 'https://dev1api.cloudpanel.ru/api/v1/tocken?login=vitovtovdsa&password=*****&timeoutlive=600&domain=cloudpanel.ru' -H 'accept: application/json'

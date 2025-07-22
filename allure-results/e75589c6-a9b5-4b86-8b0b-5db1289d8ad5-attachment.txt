@@ -1,6 +1,0 @@
-Успешно создан пользователь:
-ID: 635
-Login: autotest_0716203823
-Email: autotest+0716203823@example.com
-Phone: 797122267
-FIO: Autotest User o06tbo

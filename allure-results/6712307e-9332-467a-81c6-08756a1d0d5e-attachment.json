@@ -1,9 +1,0 @@
-{
-  "fio": "Updated Name",
-  "login": "updated_login",
-  "mail": "updated@example.com",
-  "phone": "79123456789",
-  "role_id": 1,
-  "tenant_id": 123,
-  "is_manager": 1
-}
