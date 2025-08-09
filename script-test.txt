@@ -1,18 +1,67 @@
 pytest tests/token/test_auth.py -v
+
+Пользователи
 pytest tests/user/test_user_create.py -v
 pytest tests/user/test_user_read.py -v
 pytest tests/user/test_user_update.py -v
 pytest tests/user/test_user_delete.py -v
 pytest tests/user/test_user_crud.py -v
 
+Организации
 pytest tests/organizations/test_organizations_read.py -v
 pytest tests/organizations/test_organization_create.py -v
 pytest tests/organizations/test_organization_read.py -v
 pytest tests/organizations/test_organization_update.py -v
 pytest tests/organizations/test_organization_delete.py -v
 
+Добавление пользователя в организацию
+pytest tests/users/test_users_add_org.py -v
 pytest tests/users/test_users_read.py -v
 pytest tests/users/test_users_organization -v
+
+Справочники (типы, интервалы)
+pytest tests/tariff/tariff_setting_types/test_tariff_setting_types_read.py -v 
+pytest tests/tariff/tariff_time_intervals/test_tariff_time_intervals_read.py -v 
+pytest tests/tariff/tariff_service_types/test_tariff_service_types_read.py -v 
+pytest tests/tariff/tariff_location_types/test_tariff_location_types_read.py -v 
+
+Основной тариф
+pytest tests/tariff/tariff_crud/test_tariff_create.py -v 
+pytest tests/tariff/tariff_crud/test_tariff_read.py -v 
+pytest tests/tariff/tariff_crud/test_tariff_update.py -v 
+pytest tests/tariff/tariff_crud/test_tariff_delete.py -v 
+
+Связи с организацией
+pytest tests/tariff/tariff_link_organization/test_tariff_link_organization_create.py -v 
+pytest tests/tariff/tariff_link_organization/test_tariff_link_organization_read.py -v 
+pytest tests/tariff/tariff_link_organization/test_tariff_link_organization_update.py -v 
+pytest tests/tariff/tariff_link_organization/test_tariff_link_organization_delete.py -v 
+
+Связи с tenant
+pytest tests/tariff/tariff_link_tenant/test_tariff_link_tenant_create.py -v 
+pytest tests/tariff/tariff_link_tenant/test_tariff_link_tenant_read.py -v 
+pytest tests/tariff/tariff_link_tenant/test_tariff_link_tenant_delete.py -v 
+pytest tests/tariff/tariff_links_tenant/test_tariff_links_tenant_read.py -v 
+
+Настройки тарифов
+pytest tests/tariff/tariff_settings/test_tariff_settings_read.py -v 
+
+Настройки арендаторов
+pytest tests/tariff/tariff_tenant_settings/test_tariff_tenant_settings_create.py -v 
+pytest tests/tariff/tariff_tenant_settings/test_tariff_tenant_settings_read_by_id.py -v 
+pytest tests/tariff/tariff_tenant_settings/test_tariff_tenant_settings_read_filtered.py -v 
+pytest tests/tariff/tariff_tenant_settings/test_tariff_tenant_settings_update.py -v 
+pytest tests/tariff/tariff_tenant_settings/test_tariff_tenant_settings_delete.py -v 
+
+tariffs_settings
+pytest tests/tariff/tariffs/test_tariffs_read.py -v 
+
+Роли
+pytest tests/role/test_role_read_id.py -v
+pytest tests/role/test_role_read_list.py -v
+
+Просмотр репортов
+pytest tests/report/test_report_read.py -v
 
 pytest --html=report.html
 
