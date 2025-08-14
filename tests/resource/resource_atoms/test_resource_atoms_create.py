@@ -1,1 +1,0 @@
-# Создает новую категорию ресурса /api/v1/resource_category_ref

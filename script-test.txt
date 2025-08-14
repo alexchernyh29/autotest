@@ -53,7 +53,7 @@ pytest tests/tariff/tariff_tenant_settings/test_tariff_tenant_settings_read_filt
 pytest tests/tariff/tariff_tenant_settings/test_tariff_tenant_settings_update.py -v 
 pytest tests/tariff/tariff_tenant_settings/test_tariff_tenant_settings_delete.py -v 
 
-tariffs_settings
+Настройки тарифов (tariffs_settings)
 pytest tests/tariff/tariffs/test_tariffs_read.py -v 
 
 Роли
@@ -62,6 +62,71 @@ pytest tests/role/test_role_read_list.py -v
 
 Просмотр репортов
 pytest tests/report/test_report_read.py -v
+
+Ресурсы
+pytest tests/resource/resource_atom/test_resource_atom_create.py -v
+pytest tests/resource/resource_atom/test_category_types_read.py -v
+pytest tests/resource/resource_atom/test_resource_atom_update.py -v
+pytest tests/resource/resource_atom/test_resource_atom_delete.py -v
+
+Типы ресурсов
+pytest tests/resource/category_types/test_category_types_read.py -v
+pytest tests/resource/type_services/test_type_services_read.py -v
+
+Единицы измерения ресурса
+pytest tests/resource/resource_units_measure/test_resource_units_measure_create.py -v
+pytest tests/resource/resource_units_measure/test_resource_units_measure_read.py -v
+pytest tests/resource/resource_units_measure/test_resource_units_measure_delete.py -v
+pytest tests/resource/resource_units_measure/test_resource_units_measure_update.py -v
+pytest tests/resource/resource_units_measure/test_resource_units_measure_list.py -v
+
+Все типы ресурсов
+pytest tests/resource/resource_types_ref/test_resource_types_ref_read.py -v
+
+Справочник всех сервисов ресурсов
+pytest tests/resource/resource_services/test_resource_services_read.py -v
+
+Сервис ресурсов
+pytest tests/resource/resource_service/test_resource_service_create.py -v
+pytest tests/resource/resource_service/test_resource_service_read.py -v
+pytest tests/resource/resource_service/test_resource_service_update.py -v
+pytest tests/resource/resource_service/test_resource_service_delete.py -v
+
+Пулы ресурсов
+pytest tests/resource/resource_pool/test_resource_pool_create.py -v
+pytest tests/resource/resource_pool/test_resource_pool_read.py -v
+pytest tests/resource/resource_pool/test_resource_pool_update.py -v
+pytest tests/resource/resource_pool/test_resource_pool_delete.py -v
+
+Список пулов ресурсов
+pytest tests/resource/resource_pools/test_resource_pools_read.py -v
+
+Типы местоположений
+pytest tests/resource/location_types/test_location_types_read.py -v
+
+Местоположения resource_location
+pytest tests/resource/resource_location/test_location_create.py -v
+pytest tests/resource/resource_location/test_location_read.py -v
+pytest tests/resource/resource_location/test_location_update.py -v
+pytest tests/resource/resource_location/test_location_delete.py -v
+
+Получить список атомов ресурсов
+pytest tests/resource/resource_atoms/test_resource_atoms_read.py -v
+
+Список местоположений resource_locations
+pytest tests/resource/resource_locations/test_resource_locations_list.py -v
+
+Создание новой связи между пулом ресурсов и атомом
+pytest tests/resource/resource_pool_link_atom/test_resource_pool_link_atom_create.py -v
+
+Получение всех связей между пулом ресурсов и атомами
+pytest tests/resource/resource_pool_link_atom/test_resource_pool_link_atom_read.py -v
+
+Обновление существующей связи между пулом ресурсов и атомом
+pytest tests/resource/resource_pool_link_atom/test_resource_pool_link_atom_update.py -v
+
+Удаление существующей связи между пулом ресурсов и атомом
+pytest tests/resource/resource_pool_link_atom/test_resource_pool_link_atom_delete.py -v
 
 pytest --html=report.html
 
