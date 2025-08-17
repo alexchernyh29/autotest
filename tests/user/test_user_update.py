@@ -3,14 +3,15 @@ import requests
 import pytest
 from faker import Faker
 import allure
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 from pathlib import Path
 
 # Инициализация Faker
 fake = Faker()
 
 # Путь к .env файлу
-ENV_FILE = Path(__file__).parent.parent.parent / ".env"
+ENV_FILE = find_dotenv()
+assert ENV_FILE, "Файл .env не найден в корне проекта"
 
 @pytest.fixture(scope="module")
 def faker():

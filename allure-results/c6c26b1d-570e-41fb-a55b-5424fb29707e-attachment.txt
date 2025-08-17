@@ -1,0 +1,3 @@
+ID: 1
+Name (RU): Пользователь Организации
+System Name (EN): ROLE_ORGANIZATION_USER

@@ -1,0 +1,6 @@
+Успешно создан пользователь:
+ID: 859
+Login: autotest_0817171849
+Email: autotest+0817171849@example.com
+Phone: 793582560
+FIO: Autotest User nt8aws

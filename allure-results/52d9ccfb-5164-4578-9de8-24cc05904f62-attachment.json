@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "секунда",
+    "sysname": "second"
+  },
+  {
+    "id": 2,
+    "name": "минута",
+    "sysname": "minute"
+  },
+  {
+    "id": 3,
+    "name": "час",
+    "sysname": "hour"
+  },
+  {
+    "id": 4,
+    "name": "сутки",
+    "sysname": "day"
+  },
+  {
+    "id": 5,
+    "name": "месяц",
+    "sysname": "month"
+  },
+  {
+    "id": 6,
+    "name": "год",
+    "sysname": "year"
+  }
+]

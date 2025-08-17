@@ -3,16 +3,16 @@ import requests
 import pytest
 import allure
 import json
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 from pathlib import Path
 
 # Путь к .env файлу
-ENV_FILE = Path(__file__).parent.parent.parent / ".env"
+ENV_FILE = find_dotenv()
+assert ENV_FILE, "Файл .env не найден в корне проекта"
 
 @allure.feature("Управление связями пользователь-организация")
 class TestUserOrganizationLinks:
     """Тесты для работы со связями пользователей и организаций"""
-    
     @allure.story("Получение связей пользователь-организация")
     @allure.title("Поиск связи пользователя с организацией")
     def test_get_users_by_organization(self):

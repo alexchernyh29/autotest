@@ -1,19 +1,20 @@
-# Возвращает список всех местоположений ресурсов /api/v1/resource_locations
 import os
-import pytest
+import json
 import requests
+import pytest
 import allure
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv, find_dotenv
 from pathlib import Path
 from allure_commons.types import AttachmentType
 
-# Путь к .env файлу
-ENV_FILE = Path(__file__).parent.parent.parent / ".env"
+
+ENV_FILE = find_dotenv()
+assert ENV_FILE, "Файл .env не найден в корне проекта"
 
 
 def get_auth_token(login, password, timeoutlive, domain):
     """
-    Получение токена аутентификации (как в предыдущих тестах)
+    Получение токена аутентификации
     """
     base_url = os.getenv("API_URL")
     url = f"{base_url}/api/v1/tocken"
@@ -23,24 +24,31 @@ def get_auth_token(login, password, timeoutlive, domain):
         "timeoutlive": timeoutlive,
         "domain": domain
     }
-    headers = {
-        "accept": "application/json"
-    }
+    headers = {"accept": "application/json"}
 
-    with allure.step("Отправка запроса для получения токена"):
-        allure.attach(f"URL: {url}", name="Request URL", attachment_type=AttachmentType.TEXT)
-        allure.attach(str(headers), name="Request Headers", attachment_type=AttachmentType.TEXT)
-        allure.attach(str(params), name="Request Params", attachment_type=AttachmentType.TEXT)
+    with allure.step("🔐 Получение токена аутентификации"):
+        allure.attach(f"URL: {url}", "Request URL", AttachmentType.TEXT)
+        allure.attach(json.dumps(headers, indent=2), "Request Headers", AttachmentType.JSON)
+        allure.attach(json.dumps(params, indent=2), "Request Params", AttachmentType.JSON)
 
         response = requests.post(url, headers=headers, params=params)
 
-        allure.attach(str(response.status_code), name="Response Status Code", attachment_type=AttachmentType.TEXT)
-        allure.attach(str(response.headers), name="Response Headers", attachment_type=AttachmentType.TEXT)
-        allure.attach(str(response.text), name="Response Body", attachment_type=AttachmentType.TEXT)
+        allure.attach(str(response.status_code), "Status Code", AttachmentType.TEXT)
+        allure.attach(str(response.headers), "Response Headers", AttachmentType.TEXT)
+        allure.attach(response.text, "Response Body", AttachmentType.TEXT)
 
-    response.raise_for_status()
-    token_data = response.json()
-    return token_data.get("tockenID")  
+        response.raise_for_status()
+
+        try:
+            token_data = response.json()
+        except ValueError:
+            pytest.fail("Ответ на запрос токена не является валидным JSON")
+
+        tocken_id = token_data.get("tockenID")
+        assert tocken_id, "Поле 'tockenID' отсутствует в ответе при получении токена"
+
+        allure.attach(tocken_id, "✅ Получен tockenID", AttachmentType.TEXT)
+        return tocken_id
 
 
 @allure.story("Получение списка всех местоположений ресурсов")
@@ -53,88 +61,119 @@ def test_get_resource_locations():
       - ответ в формате JSON
       - наличие массива данных
       - структуру каждого элемента
-      - обязательные поля
+      - обязательные поля и типы
     """
-    with allure.step("Загрузка переменных окружения"):
+    with allure.step("📁 Загрузка переменных окружения"):
         load_dotenv(ENV_FILE)
 
-    with allure.step("Чтение параметров из .env"):
-        base_url = os.getenv("API_URL")
-        login = os.getenv("API_LOGIN")
-        password = os.getenv("API_PASSWORD")
-        domain = os.getenv("API_DOMAIN")
+        # Отладка: какие переменные загружены
+        api_vars = {
+            "API_URL": os.getenv("API_URL"),
+            "API_LOGIN": os.getenv("API_LOGIN"),
+            "API_DOMAIN": os.getenv("API_DOMAIN")
+        }
+        allure.attach(
+            json.dumps(api_vars, indent=2, ensure_ascii=False),
+            "Загруженные переменные окружения",
+            AttachmentType.JSON
+        )
 
-    with allure.step("Проверка обязательных переменных окружения"):
+    base_url = os.getenv("API_URL")
+    login = os.getenv("API_LOGIN")
+    password = os.getenv("API_PASSWORD")
+    domain = os.getenv("API_DOMAIN")
+
+    with allure.step("✅ Проверка обязательных переменных окружения"):
         assert base_url, "API_URL не задан в .env"
         assert login, "API_LOGIN не задан в .env"
         assert password, "API_PASSWORD не задан в .env"
         assert domain, "API_DOMAIN не задан в .env"
 
-    with allure.step("Получение токена аутентификации"):
+    with allure.step("🔑 Получение токена аутентификации"):
         token = get_auth_token(login, password, 600, domain)
-        assert token, "Не удалось получить токен аутентификации"
+        assert token, "Не удалось получить токен"
 
-    with allure.step("Формирование URL и заголовков"):
+    with allure.step("📡 Формирование запроса"):
         url = f"{base_url}/api/v1/resource_locations"
         headers = {
             "accept": "application/json",
             "tockenid": token
         }
-        allure.attach(url, name="Request URL", attachment_type=AttachmentType.TEXT)
-        allure.attach(str(headers), name="Request Headers", attachment_type=AttachmentType.JSON)
 
-    with allure.step("Отправка GET-запроса для получения списка местоположений"):
+        allure.attach(url, "Request URL", AttachmentType.TEXT)
+        allure.attach(json.dumps(headers, indent=2), "Request Headers", AttachmentType.JSON)
+
+    with allure.step("📤 Отправка GET-запроса"):
         response = requests.get(url, headers=headers)
 
-        allure.attach(str(response.status_code), name="Response Status Code", attachment_type=AttachmentType.TEXT)
-        allure.attach(str(response.text), name="Response Body", attachment_type=AttachmentType.TEXT)
-        allure.attach(str(response.headers), name="Response Headers", attachment_type=AttachmentType.JSON)
+        allure.attach(str(response.status_code), "Status Code", AttachmentType.TEXT)
+        allure.attach(response.text, "Response Body", AttachmentType.TEXT)
+        allure.attach(str(dict(response.headers)), "Response Headers", AttachmentType.JSON)
 
-    with allure.step("Проверка статуса ответа"):
+    with allure.step("✅ Проверка статуса ответа"):
         assert response.status_code == 200, (
-            f"Ошибка при получении списка местоположений. "
-            f"Статус: {response.status_code}, Ответ: {response.text}"
+            f"Ожидался статус 200, получен {response.status_code}. Ответ: {response.text}"
         )
 
-    with allure.step("Парсинг JSON-ответа"):
+    with allure.step("📄 Парсинг JSON-ответа"):
         try:
             data = response.json()
         except ValueError:
             pytest.fail("Ответ не является валидным JSON")
 
-        allure.attach(str(data), name="Parsed Response Data", attachment_type=AttachmentType.JSON)
+        allure.attach(
+            json.dumps(data, ensure_ascii=False, indent=2),
+            "Parsed Response Data",
+            AttachmentType.JSON
+        )
 
         assert isinstance(data, list), "Ожидался массив местоположений"
 
     if len(data) == 0:
-        with allure.step("Внимание: список местоположений пуст"):
+        with allure.step("⚠️ Список местоположений пуст"):
             allure.attach(
                 "API вернул пустой список. Проверьте, есть ли активные местоположения в системе.",
-                name="Предупреждение",
-                attachment_type=AttachmentType.TEXT
+                "Предупреждение",
+                AttachmentType.TEXT
             )
     else:
-        with allure.step(f"Проверка структуры {len(data)} элементов"):
-            # Пример обязательных полей (можно уточнить по реальному API)
-            required_fields = ["id", "name", "code", "status_id", "created_at"]
+        with allure.step(f"🔍 Проверка структуры {len(data)} элементов"):
+            required_fields = ["id", "name", "address", "create_time", "update_time", "create_user_id", "update_user_id"]
 
             for idx, location in enumerate(data):
-                assert isinstance(location, dict), f"Элемент [{idx}] не является объектом"
+                with allure.step(f"📍 Местоположение #{idx + 1} (ID={location.get('id')})"):
+                    assert isinstance(location, dict), "Каждое местоположение должно быть объектом"
 
-                missing = [field for field in required_fields if field not in location]
-                assert not missing, f"В элементе [{idx}] отсутствуют поля: {', '.join(missing)}"
+                    missing = [field for field in required_fields if field not in location]
+                    assert not missing, f"Отсутствуют обязательные поля: {', '.join(missing)}"
 
-                # Проверка типов
-                assert isinstance(location["id"], int) and location["id"] > 0, f"ID элемента [{idx}] должно быть положительным числом"
-                assert isinstance(location["name"], str) and len(location["name"]) > 0, f"name элемента [{idx}] должно быть непустой строкой"
-                assert isinstance(location["code"], str), f"code элемента [{idx}] должно быть строкой"
-                assert isinstance(location["status_id"], int), f"status_id элемента [{idx}] должно быть числом"
-                assert isinstance(location["created_at"], str), f"created_at элемента [{idx}] должно быть строкой"
-                assert "T" in location["created_at"] and "Z" in location["created_at"], f"created_at элемента [{idx}] должно быть в формате ISO8601"
+                    # Проверка типов
+                    assert isinstance(location["id"], int) and location["id"] > 0, "id должно быть положительным целым числом"
+                    assert isinstance(location["name"], str) and location["name"].strip(), "name должно быть непустой строкой"
+                    assert isinstance(location["address"], str) and location["address"].strip(), "address должно быть непустой строкой"
+                    assert isinstance(location["create_user_id"], int), "create_user_id должно быть числом"
+                    assert isinstance(location["update_user_id"], int), "update_user_id должно быть числом"
 
-    with allure.step("Тест завершён успешно"):
-        allure.attach(
-            f"Получено {len(data)} местоположений ресурсов.",
-            name="Результат",
-            attachment_type=AttachmentType.TEXT
-        )
+                    # Проверка create_time и update_time
+                    for time_field in ["create_time", "update_time"]:
+                        time_obj = location[time_field]
+                        assert isinstance(time_obj, dict), f"{time_field} должно быть объектом"
+                        assert "date" in time_obj, f"{time_field}.date отсутствует"
+                        assert "timezone" in time_obj, f"{time_field}.timezone отсутствует"
+                        assert "timezone_type" in time_obj, f"{time_field}.timezone_type отсутствует"
+
+                        assert isinstance(time_obj["date"], str) and len(time_obj["date"]) >= 19, f"{time_field}.date должно быть строкой формата 'YYYY-MM-DD HH:MM:SS'"
+                        assert isinstance(time_obj["timezone"], str) and "/" in time_obj["timezone"], f"{time_field}.timezone должно быть строкой вида 'Region/City'"
+                        assert isinstance(time_obj["timezone_type"], int), f"{time_field}.timezone_type должно быть целым числом"
+
+                    # Опционально: проверка, что update_time >= create_time
+                    create_date = location["create_time"]["date"]
+                    update_date = location["update_time"]["date"]
+                    assert update_date >= create_date, f"update_time ({update_date}) < create_time ({create_date})"
+
+        with allure.step("✅ Все проверки пройдены"):
+            allure.attach(
+                f"Успешно получено и проверено {len(data)} местоположений ресурсов.",
+                "Результат",
+                AttachmentType.TEXT
+            )

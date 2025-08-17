@@ -1,0 +1,4 @@
+🔢 Status Code: 200
+
+📄 Response Body:
+{"header":{"report_type":"Services","format":"json","begin_date":"18.02.2025","end_date":"17.08.2025","$organization":{"id":461,"name":"Ramsey, Brown and Vargas","number_contract":"3603041414"}},"items":[],"comment":"prebilling data"}

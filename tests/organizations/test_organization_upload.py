@@ -2,7 +2,7 @@ import os
 import pytest
 import requests
 import allure
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 from pathlib import Path
 from faker import Faker
 
@@ -10,7 +10,8 @@ from faker import Faker
 fake = Faker()
 
 # Путь к .env файлу
-ENV_FILE = Path(__file__).parent.parent.parent / ".env"
+ENV_FILE = find_dotenv()
+assert ENV_FILE, "Файл .env не найден в корне проекта"
 
 @allure.feature("Организации")
 def test_update_organization():

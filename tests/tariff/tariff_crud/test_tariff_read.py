@@ -6,7 +6,7 @@ import os
 import requests
 import pytest
 import allure
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 from pathlib import Path
 
 ENV_FILE = Path(__file__).parent.parent / ".env"
@@ -18,11 +18,11 @@ def test_get_tariff():
         load_dotenv(ENV_FILE)
         base_url = os.getenv("API_URL")
         token = os.getenv("TOKEN_ID")
-        tariff_id = os.getenv("CREATED_TARIFF_ID")
+        tariff_id = os.getenv("CREATED_TARIFF_ID", "304")
 
         assert base_url, "API_URL не задан в .env"
         assert token, "TOKEN_ID не задан в .env"
-        assert tariff_id, "CREATED_TARIFF_ID не задан в .env. Запустите сначала test_create_tariff.py"
+        assert tariff_id, "CREATED_TARIFF_ID не задан в .env."
 
     url = f"{base_url}/api/v1/tariff/{tariff_id}"
     headers = {

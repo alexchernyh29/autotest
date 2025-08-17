@@ -5,7 +5,7 @@ import os
 import requests
 import pytest
 import allure
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 from pathlib import Path
 
 # Путь к .env файлу
@@ -13,7 +13,7 @@ ENV_FILE = Path(__file__).parent.parent / ".env"
 
 @allure.feature("Получение типов настроек тарифов")
 def test_get_tariff_setting_types():
-    """Получение списка типов настроек (например: string, boolean, integer, select и т.д.)"""
+    """Получение списка типов настроек"""
     with allure.step("Подготовка тестовых данных"):
         load_dotenv(ENV_FILE)
         base_url = os.getenv("API_URL")
@@ -73,9 +73,6 @@ def test_get_tariff_setting_types():
             with allure.step("Проверка структуры ответа"):
                 assert isinstance(types_list, list), "Ожидался массив типов настроек"
                 assert len(types_list) > 0, "Список типов настроек пуст. Проверьте данные в API."
-
-                # Ожидаемые типы (пример — раскомментируй, если нужно строгое соответствие)
-                # expected_codes = {"string", "boolean", "integer", "float", "select", "json"}
 
                 found_codes = []
 

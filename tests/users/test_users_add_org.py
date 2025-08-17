@@ -5,11 +5,12 @@ import os
 import requests
 import pytest
 import allure
-from dotenv import load_dotenv, set_key
+from dotenv import load_dotenv, find_dotenv, set_key
 from pathlib import Path
 
 # Путь к .env файлу
-ENV_FILE = Path(__file__).parent.parent.parent / ".env"
+ENV_FILE = find_dotenv()
+assert ENV_FILE, "Файл .env не найден в корне проекта"
 
 @allure.feature("Создание связи пользователя с организацией")
 def test_create_user_organization_link():
@@ -19,19 +20,19 @@ def test_create_user_organization_link():
         base_url = os.getenv("API_URL")
         token = os.getenv("TOKEN_ID")
         user_id = os.getenv("TEST_USER_ID")
-        org_id = os.getenv("TEST_ORGANIZATION_ID")
+        org_id = os.getenv("ORGANIZATION_ID")
 
         # Проверка обязательных переменных
         assert base_url, "API_URL не задан в .env"
         assert token, "TOKEN_ID не задан в .env"
         assert user_id, "TEST_USER_ID не задан в .env"
-        assert org_id, "TEST_ORGANIZATION_ID не задан в .env"
+        assert org_id, "ORGANIZATION_ID не задан в .env"
 
         try:
             user_id = int(user_id)
             org_id = int(org_id)
         except ValueError:
-            pytest.fail("TEST_USER_ID и TEST_ORGANIZATION_ID должны быть числами")
+            pytest.fail("TEST_USER_ID и ORGANIZATION_ID должны быть числами")
 
     url = f"{base_url}/api/v1/user_organization_link"
     headers = {
@@ -97,10 +98,6 @@ def test_create_user_organization_link():
                 assert "id" in response_json, "В ответе отсутствует поле 'id'"
                 assert response_json["user_id"] == user_id, "user_id не совпадает"
                 assert response_json["organization_id"] == org_id, "organization_id не совпадает"
-
-                # Дополнительные поля (если есть)
-                # assert "role_id" in response_json
-                # assert "status" in response_json
 
             created_link_id = response_json["id"]
             with allure.step(f"Сохранение CREATED_USER_ORG_LINK_ID={created_link_id} в .env"):

@@ -2,7 +2,7 @@ import os
 import requests
 import allure
 import pytest
-from dotenv import load_dotenv, set_key
+from dotenv import load_dotenv, find_dotenv, set_key
 from config import ENV_FILE
 
 def test_get_and_save_token():

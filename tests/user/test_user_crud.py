@@ -3,7 +3,7 @@ import pytest
 import requests
 import allure
 import json
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 from pathlib import Path
 from faker import Faker
 
@@ -11,7 +11,8 @@ from faker import Faker
 fake = Faker()
 
 # Путь к .env файлу
-ENV_FILE = Path(__file__).parent.parent.parent / ".env"
+ENV_FILE = find_dotenv()
+assert ENV_FILE, "Файл .env не найден в корне проекта"
 
 def log_curl(request, response):
     """Генерация cURL команды и логирование запроса/ответа"""

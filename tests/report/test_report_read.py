@@ -1,50 +1,119 @@
-# get organization report/api/v1/report_organization/320?report_type=Services&begin_date=01.01.2024&end_date=30.01.2024
-# tests/report/test_report_organization_services.py
+# tests/report/test_report_read.py
 
 import os
+import json
 import requests
 import pytest
 import allure
-from dotenv import load_dotenv
+from datetime import datetime, timedelta
+from dotenv import load_dotenv, find_dotenv
 from pathlib import Path
 
 # Путь к .env файлу
-ENV_FILE = Path(__file__).parent.parent.parent / ".env"
+ENV_FILE = find_dotenv()
+assert ENV_FILE, "Файл .env не найден в корне проекта"
+
+
+def get_auth_token(login: str, password: str, timeoutlive: int, domain: str) -> str:
+    """Получение токена аутентификации через API"""
+    base_url = os.getenv("API_URL")
+    url = f"{base_url}/api/v1/tocken"
+    params = {
+        "login": login,
+        "password": password,
+        "timeoutlive": timeoutlive,
+        "domain": domain
+    }
+    headers = {"accept": "application/json"}
+
+    with allure.step("🔐 Получение токена аутентификации"):
+        allure.attach(f"URL: {url}", "Request URL", allure.attachment_type.TEXT)
+        allure.attach(json.dumps(params, indent=2, ensure_ascii=False), "Request Params", allure.attachment_type.JSON)
+        allure.attach(json.dumps(headers, indent=2, ensure_ascii=False), "Request Headers", allure.attachment_type.JSON)
+
+        try:
+            response = requests.post(url, headers=headers, params=params, timeout=10)
+            allure.attach(str(response.status_code), "Status Code", allure.attachment_type.TEXT)
+            allure.attach(response.text, "Response Body", allure.attachment_type.TEXT)
+            response.raise_for_status()
+
+            token_data = response.json()
+            tocken_id = token_data.get("tockenID")
+            if not tocken_id:
+                raise KeyError("Поле 'tockenID' отсутствует в ответе API")
+
+            allure.attach(tocken_id, "✅ Успешно получен tockenID", allure.attachment_type.TEXT)
+            return tocken_id
+
+        except Exception as e:
+            allure.attach(str(e), "❌ Ошибка запроса", allure.attachment_type.TEXT)
+            pytest.fail(f"❌ Не удалось получить токен: {e}")
+
 
 @allure.feature("Отчёты по организациям")
 def test_get_services_report_for_organization():
-    """Получение отчёта по услугам для организации за период"""
-    with allure.step("Подготовка тестовых данных"):
+    """Получение отчёта по услугам для организации (ORGANIZATION_ID из .env) за последние 6 месяцев"""
+    with allure.step("🔧 Подготовка тестовых данных из .env"):
         load_dotenv(ENV_FILE)
-        base_url = os.getenv("API_URL")
-        token = os.getenv("TOKEN_ID")
-        org_id = os.getenv("TEST_ORGANIZATION_ID", "320")  # Можно задать в .env
 
-        # Проверка обязательных переменных
-        assert base_url, "API_URL не задан в .env"
-        assert token, "TOKEN_ID не задан в .env"
-        assert org_id, "TEST_ORGANIZATION_ID не задан в .env и не передан"
+        base_url = os.getenv("API_URL")
+        org_id_str = os.getenv("ORGANIZATION_ID")
+
+        login = os.getenv("API_LOGIN")        
+        password = os.getenv("API_PASSWORD")
+        domain = os.getenv("API_DOMAIN")
+        timeoutlive = int(os.getenv("TOKEN_TIMEOUT", 3600))
+
+        assert base_url, "❌ API_URL не задан в .env"
+        assert org_id_str, "❌ ORGANIZATION_ID не задан в .env"
+        assert login, "❌ API_LOGIN не задан в .env"
+        assert password, "❌ API_PASSWORD не задан в .env"
+        assert domain, "❌ API_DOMAIN не задан в .env"
 
         try:
-            org_id = int(org_id)
+            org_id = int(org_id_str)
         except ValueError:
-            pytest.fail("TEST_ORGANIZATION_ID должен быть числом")
+            pytest.fail(f"❌ ORGANIZATION_ID должен быть числом, получено: {org_id_str}")
 
+        allure.attach(
+            f"API_URL: {base_url}\n"
+            f"ORGANIZATION_ID: {org_id}\n"
+            f"API_LOGIN: {login}\n"
+            f"DOMAIN: {domain}",
+            "📋 Загруженные данные",
+            allure.attachment_type.TEXT
+        )
+
+    end_date = datetime.now()
+    begin_date = end_date - timedelta(days=6 * 30)
+
+    formatted_begin = begin_date.strftime("%d.%m.%Y")
+    formatted_end = end_date.strftime("%d.%m.%Y")
+
+    with allure.step("📅 Расчёт периода отчёта"):
+        date_info = f"""
+        Начало: {formatted_begin}
+        Конец: {formatted_end}
+        """
+        allure.attach(date_info, "🗓 Рассчитанные даты", allure.attachment_type.TEXT)
+
+    with allure.step("🔑 Получение токена через API"):
+        token = get_auth_token(login, password, timeoutlive, domain)
+        assert token, "❌ Токен не был получен"
+
+    # 📥 Формируем запрос
     url = f"{base_url}/api/v1/report_organization/{org_id}"
     headers = {
         "accept": "*/*",
         "tockenid": token
     }
-
-    # Параметры запроса
     params = {
         "report_type": "Services",
-        "begin_date": "01.01.2024",
-        "end_date": "30.01.2024"
+        "begin_date": formatted_begin,
+        "end_date": formatted_end
     }
 
-    with allure.step(f"Отправка GET-запроса на {url} с параметрами"):
-        # Генерация cURL
+    with allure.step(f"📤 Отправка GET-запроса к {url}"):
         curl_command = (
             f"curl -X GET '{url}"
             f"?report_type={params['report_type']}"
@@ -53,87 +122,87 @@ def test_get_services_report_for_organization():
             f"-H 'accept: */*' "
             f"-H 'tockenid: {token}'"
         )
-        allure.attach(
-            curl_command,
-            name="CURL команда",
-            attachment_type=allure.attachment_type.TEXT
-        )
-
-        allure.attach(
-            str(params),
-            name="Query Parameters",
-            attachment_type=allure.attachment_type.JSON
-        )
-
-        allure.attach(
-            str(headers),
-            name="Request Headers",
-            attachment_type=allure.attachment_type.TEXT
-        )
+        allure.attach(curl_command, "📎 CURL команда", allure.attachment_type.TEXT)
+        allure.attach(json.dumps(params, indent=2, ensure_ascii=False), "🔍 Query Parameters", allure.attachment_type.JSON)
+        allure.attach(json.dumps(headers, indent=2, ensure_ascii=False), "📡 Request Headers", allure.attachment_type.JSON)
 
         response = requests.get(url, params=params, headers=headers)
 
-        with allure.step("Проверка ответа"):
+    with allure.step("📥 Получен ответ от сервера"):
+        allure.attach(f"🔗 Финальный URL: {response.url}", "🌐 Использованный URL", allure.attachment_type.TEXT)
+        allure.attach(
+            f"🔢 Status Code: {response.status_code}\n\n📄 Response Body:\n{response.text}",
+            "📦 Raw Response",
+            allure.attachment_type.TEXT
+        )
+
+        assert response.status_code == 200, f"❌ Ожидался 200, получен {response.status_code}"
+
+        try:
+            report_data = response.json()
+        except ValueError:
+            pytest.fail("❌ Ответ не является валидным JSON")
+
+        allure.attach(
+            json.dumps(report_data, ensure_ascii=False, indent=2),
+            "📊 Полный ответ API",
+            allure.attachment_type.JSON
+        )
+
+    with allure.step("✅ Валидация структуры отчёта"):
+        assert isinstance(report_data, dict), "Ответ должен быть объектом"
+        assert "header" in report_data, "❌ Отсутствует 'header' в ответе"
+        assert "items" in report_data, "❌ Отсутствует 'items' в ответе"
+
+        header = report_data["header"]
+        assert isinstance(header, dict), "header должен быть объектом"
+        assert "$organization" in header, "❌ Отсутствует $organization в header"
+
+        org_info = header["$organization"]
+        assert "id" in org_info, "❌ Отсутствует id в $organization"
+        response_org_id = org_info["id"]
+
+        with allure.step(f"🆔 Проверка ID организации: ожидаем {org_id}, получено {response_org_id}"):
+            assert response_org_id == org_id, \
+                f"❌ ID организации не совпадает: ожидаем {org_id}, получено {response_org_id}"
+
             allure.attach(
-                f"Финальный URL: {response.url}",
-                name="Использованный URL",
-                attachment_type=allure.attachment_type.TEXT
-            )
-            allure.attach(
-                f"Status Code: {response.status_code}\nResponse: {response.text}",
-                name="Response Details",
-                attachment_type=allure.attachment_type.TEXT
+                json.dumps(org_info, ensure_ascii=False, indent=2),
+                "🏢 Данные организации",
+                allure.attachment_type.JSON
             )
 
-            assert response.status_code == 200, \
-                f"Ожидался статус 200, но получен {response.status_code}"
+        assert "begin_date" in header, "❌ Отсутствует begin_date в header"
+        assert "end_date" in header, "❌ Отсутствует end_date в header"
 
-            try:
-                report_data = response.json()
-            except ValueError:
-                pytest.fail("Ответ не является валидным JSON")
+        assert header["begin_date"] == formatted_begin, \
+            f"❌ begin_date не совпадает: ожидаем {formatted_begin}, получено {header['begin_date']}"
 
-            allure.attach(
-                report_data,
-                name="Report Data",
-                attachment_type=allure.attachment_type.JSON
-            )
+        assert header["end_date"] == formatted_end, \
+            f"❌ end_date не совпадает: ожидаем {formatted_end}, получено {header['end_date']}"
 
-            with allure.step("Проверка структуры отчёта"):
-                assert isinstance(report_data, dict), "Ожидался объект с данными отчёта"
+        items = report_data["items"]
+        assert isinstance(items, list), "items должен быть списком"
 
-                # Проверка обязательных полей
-                assert "organization_id" in report_data, "В ответе отсутствует organization_id"
-                assert "report_type" in report_data, "В ответе отсутствует report_type"
-                assert "begin_date" in report_data, "В ответе отсутствует begin_date"
-                assert "end_date" in report_data, "В ответе отсутствует end_date"
-                assert "services" in report_data, "В ответе отсутствует список услуг"
-
-                # Проверка значений
-                assert report_data["organization_id"] == org_id, \
-                    f"Ожидалась организация ID={org_id}, но получен {report_data['organization_id']}"
-
-                assert report_data["report_type"] == params["report_type"], \
-                    f"Тип отчёта не совпадает: ожидаем {params['report_type']}, получено {report_data['report_type']}"
-
-                assert report_data["begin_date"] == params["begin_date"], "begin_date не совпадает"
-                assert report_data["end_date"] == params["end_date"], "end_date не совпадает"
-
-                services = report_data["services"]
-                assert isinstance(services, list), "Поле 'services' должно быть массивом"
-
-                if len(services) > 0:
-                    with allure.step(f"Найдено {len(services)} услуг в отчёте"):
-                        for service in services:
-                            assert "service_id" in service, "Услуга должна содержать service_id"
-                            assert "name" in service, "Услуга должна содержать name"
-                            assert "quantity" in service, "Услуга должна содержать quantity"
-                            assert "unit" in service, "Услуга должна содержать unit"
-                            assert "cost" in service, "Услуга должна содержать cost"
-                else:
-                    with allure.step("Список услуг пуст"):
+        if items:
+            with allure.step(f"✅ Найдено {len(items)} услуг(и)"):
+                for i, item in enumerate(items):
+                    with allure.step(f"Услуга #{i + 1}"):
+                        assert "service_id" in item
+                        assert "name" in item
+                        assert "quantity" in item
+                        assert "unit" in item
+                        assert "cost" in item
+                    if i == 0:
                         allure.attach(
-                            "В отчёте нет данных об услугах за указанный период.",
-                            name="Результат",
-                            attachment_type=allure.attachment_type.TEXT
+                            json.dumps(item, ensure_ascii=False, indent=2),
+                            "📄 Пример услуги (первый элемент)",
+                            allure.attachment_type.JSON
                         )
+        else:
+            with allure.step("🟡 Список услуг пуст"):
+                allure.attach(
+                    "За указанный период услуги не найдены.",
+                    "Результат",
+                    allure.attachment_type.TEXT
+                )

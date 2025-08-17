@@ -1,0 +1,44 @@
+[
+  {
+    "field": "fio",
+    "expected": "Olivia Aguilar",
+    "actual": "Olivia Aguilar",
+    "match": true
+  },
+  {
+    "field": "login",
+    "expected": "travis85",
+    "actual": "travis85",
+    "match": true
+  },
+  {
+    "field": "mail",
+    "expected": "laurariddle@example.com",
+    "actual": "laurariddle@example.com",
+    "match": true
+  },
+  {
+    "field": "phone",
+    "expected": "79785220493",
+    "actual": "79785220493",
+    "match": true
+  },
+  {
+    "field": "role_id",
+    "expected": 2,
+    "actual": 2,
+    "match": true
+  },
+  {
+    "field": "tenant_id",
+    "expected": 123,
+    "actual": 123,
+    "match": true
+  },
+  {
+    "field": "is_manager",
+    "expected": 1,
+    "actual": 1,
+    "match": true
+  }
+]

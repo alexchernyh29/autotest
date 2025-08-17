@@ -6,7 +6,7 @@ import os
 import requests
 import pytest
 import allure
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 from pathlib import Path
 
 # Путь к .env файлу

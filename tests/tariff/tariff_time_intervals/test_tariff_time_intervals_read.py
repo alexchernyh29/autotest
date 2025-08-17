@@ -1,27 +1,21 @@
-# Возвращает список всех доступных временных интервалов тарифов /api/v1/tariff_time_intervals
-# tests/test_get_tariff_time_intervals.py
-
 import os
+import json
 import requests
 import pytest
 import allure
-from dotenv import load_dotenv
+from dotenv import load_dotenv, find_dotenv
 from pathlib import Path
 
-# Путь к .env файлу
 ENV_FILE = Path(__file__).parent.parent / ".env"
 
 @allure.feature("Получение временных интервалов тарифов")
 def test_get_tariff_time_intervals():
-    """Получение списка временных интервалов (например: 'ежемесячно', 'ежегодно')"""
-    with allure.step("Подготовка тестовых данных"):
-        load_dotenv(ENV_FILE)
-        base_url = os.getenv("API_URL")
-        token = os.getenv("TOKEN_ID")
+    load_dotenv(ENV_FILE)
+    base_url = os.getenv("API_URL")
+    token = os.getenv("TOKEN_ID")
 
-        # Проверка обязательных переменных
-        assert base_url, "API_URL не задан в .env"
-        assert token, "TOKEN_ID не задан в .env"
+    assert base_url, "API_URL не задан в .env"
+    assert token, "TOKEN_ID не задан в .env"
 
     url = f"{base_url}/api/v1/tariff_time_intervals"
     headers = {
@@ -35,58 +29,49 @@ def test_get_tariff_time_intervals():
             f"-H 'accept: application/json' "
             f"-H 'tockenid: {token}'"
         )
-        allure.attach(
-            curl_command,
-            name="CURL команда",
-            attachment_type=allure.attachment_type.TEXT
-        )
-
-        allure.attach(
-            str(headers),
-            name="Request Headers",
-            attachment_type=allure.attachment_type.TEXT
-        )
+        allure.attach(curl_command, "CURL команда", allure.attachment_type.TEXT)
+        allure.attach(json.dumps(headers, ensure_ascii=False, indent=2), "Request Headers", allure.attachment_type.JSON)
 
         response = requests.get(url, headers=headers)
 
-        with allure.step("Проверка ответа"):
-            allure.attach(
-                f"Status Code: {response.status_code}\nResponse: {response.text}",
-                name="Response Details",
-                attachment_type=allure.attachment_type.TEXT
-            )
+    with allure.step("Проверка ответа"):
+        allure.attach(f"Status Code: {response.status_code}\nResponse: {response.text}", "Response Details", allure.attachment_type.TEXT)
 
-            assert response.status_code == 200, \
-                f"Ожидался статус 200, но получен {response.status_code}"
+        assert response.status_code == 200
 
-            try:
-                intervals = response.json()
-            except ValueError:
-                pytest.fail("Ответ не является валидным JSON")
+        try:
+            intervals = response.json()
+        except ValueError:
+            pytest.fail("Ответ не является валидным JSON")
 
-            allure.attach(
-                intervals,
-                name="Tariff Time Intervals List",
-                attachment_type=allure.attachment_type.JSON
-            )
+        allure.attach(
+            json.dumps(intervals, ensure_ascii=False, indent=2),
+            "Tariff Time Intervals List",
+            allure.attachment_type.JSON
+        )
 
-            with allure.step("Проверка структуры ответа"):
-                assert isinstance(intervals, list), "Ожидался массив временных интервалов"
-                assert len(intervals) > 0, "Список временных интервалов пуст. Проверьте данные в API."
+        assert isinstance(intervals, list)
+        assert len(intervals) > 0, "Список временных интервалов пуст"
 
-                for interval in intervals:
-                    assert isinstance(interval, dict), "Каждый интервал должен быть объектом"
-                    assert "id" in interval, "Интервал должен содержать поле 'id'"
-                    assert "name" in interval, "Интервал должен содержать поле 'name'"
-                    assert "value" in interval, "Интервал должен содержать поле 'value'"
-                    # Дополнительные поля (если есть в API)
-                    # assert "description" in interval
-                    # assert "months_count" in interval
+        expected_sysnames = {"second", "minute", "hour", "day", "month", "year"}
+        found_sysnames = set()
 
-                    # Пример: value — положительное число
-                    assert isinstance(interval["value"], (int, float)) and interval["value"] > 0, \
-                        "Поле 'value' должно быть положительным числом"
+        for interval in intervals:
+            assert isinstance(interval, dict)
+            assert "id" in interval
+            assert "name" in interval
+            assert "sysname" in interval
 
-                    # Пример: name — непустая строка
-                    assert isinstance(interval["name"], str) and len(interval["name"].strip()) > 0, \
-                        "Поле 'name' должно быть непустой строкой"
+            interval_id = interval["id"]
+            interval_name = interval["name"]
+            interval_sysname = interval["sysname"]
+
+            assert isinstance(interval_id, int) and interval_id > 0
+            assert isinstance(interval_name, str) and len(interval_name.strip()) > 0
+            assert isinstance(interval_sysname, str) and len(interval_sysname.strip()) > 0
+
+            found_sysnames.add(interval_sysname)
+
+        # Проверяем, что все ожидаемые интервалы присутствуют
+        assert expected_sysnames.issubset(found_sysnames), \
+            f"Ожидались интервалы: {expected_sysnames}, найдены: {found_sysnames}"

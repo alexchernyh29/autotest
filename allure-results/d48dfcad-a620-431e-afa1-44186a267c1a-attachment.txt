@@ -1,0 +1,3 @@
+ID: 3
+Name (RU): Менеджер Тенанта
+System Name (EN): ROLE_TENANT_MANAGER

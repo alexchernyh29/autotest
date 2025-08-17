@@ -2,7 +2,7 @@ import os
 import pytest
 import requests
 import allure
-from dotenv import load_dotenv, set_key
+from dotenv import load_dotenv, find_dotenv, set_key
 from pathlib import Path
 from faker import Faker
 
@@ -10,7 +10,8 @@ from faker import Faker
 fake = Faker()
 
 # Путь к .env файлу
-ENV_FILE = Path(__file__).parent.parent.parent / ".env"
+ENV_FILE = find_dotenv()
+assert ENV_FILE, "Файл .env не найден в корне проекта"
 
 # Глобальные переменные для хранения данных
 CREATED_ORGANIZATION_DATA = {}
@@ -99,7 +100,7 @@ def test_create_organization():
             "kor_account": str(fake.random_number(digits=10)),
             "bank_name": fake.company(),
             "sub_right_ref_id": 2,
-            "manager_id": 604,
+            "manager_id": 434,
             "tenant_id": 123,
             "type_right_ref_id": 9
         }
