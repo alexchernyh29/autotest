@@ -12,9 +12,11 @@ def pytest_collection_modifyitems(items):
     4. Связи пользователей и организаций
     5. Роли
     6. Отчёты
-    7. Ресурсы (resource_service в порядке CRUD)
-    8. Тарифы
-    9. Остальные тесты
+    7. Ресурсы: resource_service (CRUD)
+    8. Ресурсы: resource_atom (CRUD)
+    9. Остальные ресурсы
+    10. Тарифы
+    11. Остальные тесты
     """
     ordered_items = []
 
@@ -41,35 +43,78 @@ def pytest_collection_modifyitems(items):
     ordered_items.extend([i for i in items if "users/test_users_read" in i.nodeid])
 
     # 5. Тесты ролей
-    ordered_items.extend([i for i in items if "role/" in i.nodeid and i not in ordered_items])
+    role_tests = [i for i in items if "role/" in i.nodeid and i not in ordered_items]
+    ordered_items.extend(role_tests)
 
     # 6. Тесты отчётов
-    ordered_items.extend([i for i in items if "report/" in i.nodeid and i not in ordered_items])
+    report_tests = [i for i in items if "report/" in i.nodeid and i not in ordered_items]
+    ordered_items.extend(report_tests)
 
-    # 7. Тесты resource_service — строгий порядок CRUD
+    # 7. Тесты resource_service — CRUD порядок
     resource_service_path = "resource_service/"
-    
-    create_tests = [i for i in items if resource_service_path in i.nodeid and "test_resource_service_create" in i.nodeid]
-    read_tests = [i for i in items if resource_service_path in i.nodeid and "test_resource_service_read" in i.nodeid]
-    update_tests = [i for i in items if resource_service_path in i.nodeid and "test_resource_service_update" in i.nodeid]
-    delete_tests = [i for i in items if resource_service_path in i.nodeid and "test_resource_service_delete" in i.nodeid]
+    create_rs = [i for i in items if resource_service_path in i.nodeid and "test_resource_service_create" in i.nodeid]
+    read_rs = [i for i in items if resource_service_path in i.nodeid and "test_resource_service_read" in i.nodeid]
+    update_rs = [i for i in items if resource_service_path in i.nodeid and "test_resource_service_update" in i.nodeid]
+    delete_rs = [i for i in items if resource_service_path in i.nodeid and "test_resource_service_delete" in i.nodeid]
 
-    ordered_items.extend(create_tests)
-    ordered_items.extend(read_tests)
-    ordered_items.extend(update_tests)
-    ordered_items.extend(delete_tests)
+    ordered_items.extend(create_rs)
+    ordered_items.extend(read_rs)
+    ordered_items.extend(update_rs)
+    ordered_items.extend(delete_rs)
 
-    # 8. Остальные тесты ресурсов (если есть, например, /resource/ без _service)
-    other_resource_tests = [i for i in items if "resource/" in i.nodeid and i not in ordered_items]
+    # 8. Тесты resource_atom — CRUD порядок
+    resource_atom_path = "resource_atom/"
+    create_ra = [i for i in items if resource_atom_path in i.nodeid and "test_create_resource_atom" in i.nodeid]
+    read_ra = [i for i in items if resource_atom_path in i.nodeid and "test_get_resource_atom_by_id" in i.nodeid]
+    update_ra = [i for i in items if resource_atom_path in i.nodeid and "test_update_resource_atom" in i.nodeid]
+    delete_ra = [i for i in items if resource_atom_path in i.nodeid and "test_delete_resource_atom_by_id" in i.nodeid]
+
+    ordered_items.extend(create_ra)
+    ordered_items.extend(read_ra)
+    ordered_items.extend(update_ra)
+    ordered_items.extend(delete_ra)
+
+    # 9. Тесты resource_atom — CRUD порядок
+    resource_location_path = "resource_location/"
+    create_rl = [i for i in items if resource_location_path in i.nodeid and "test_resource_location_create" in i.nodeid]
+    read_rl = [i for i in items if resource_location_path in i.nodeid and "test_resource_location_read" in i.nodeid]
+    update_rl = [i for i in items if resource_location_path in i.nodeid and "test_resource_location_update" in i.nodeid]
+    delete_rl = [i for i in items if resource_location_path in i.nodeid and "test_resource_location_delete" in i.nodeid]
+
+    ordered_items.extend(create_rl)
+    ordered_items.extend(read_rl)
+    ordered_items.extend(update_rl)
+    ordered_items.extend(delete_rl)
+
+    # 10. Тесты resource_atom — CRUD порядок
+    resource_category_path = "resource_category_ref/"
+    create_rc = [i for i in items if resource_category_path in i.nodeid and "test_resource_category_ref_create" in i.nodeid]
+    read_rc = [i for i in items if resource_category_path in i.nodeid and "test_resource_category_ref_read" in i.nodeid]
+    update_rc = [i for i in items if resource_category_path in i.nodeid and "test_resource_category_ref_update" in i.nodeid]
+    delete_rc = [i for i in items if resource_category_path in i.nodeid and "test_resource_category_ref_delete" in i.nodeid]
+    list_rc = [i for i in items if resource_category_path in i.nodeid and "test_resource_category_ref_list" in i.nodeid]
+
+    ordered_items.extend(create_rc)
+    ordered_items.extend(read_rc)
+    ordered_items.extend(update_rc)
+    ordered_items.extend(delete_rc)
+    ordered_items.extend(list_rc)
+
+    # 11. Остальные тесты ресурсов (например, /resource/, /resource_pools/ и т.д.)
+    other_resource_tests = [
+        i for i in items 
+        if ("resource/" in i.nodeid or "resource_pools" in i.nodeid) 
+        and i not in ordered_items
+    ]
     ordered_items.extend(other_resource_tests)
 
-    # 9. Тесты тарифов
+    # 13. Тесты тарифов
     tariff_tests = [i for i in items if "tariff/" in i.nodeid and i not in ordered_items]
     ordered_items.extend(tariff_tests)
 
-    # 10. Все остальные тесты
+    # 14. Все остальные тесты
     remaining = [i for i in items if i not in ordered_items]
     ordered_items.extend(remaining)
 
-    # Обновляем порядок
+    # Применяем порядок
     items[:] = ordered_items

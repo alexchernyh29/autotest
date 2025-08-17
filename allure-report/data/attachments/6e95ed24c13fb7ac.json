@@ -1,0 +1,514 @@
+[
+  {
+    "id": 251,
+    "name": "Процессорное время",
+    "unitMeasure": {
+      "id": 61,
+      "name": "Шт"
+    },
+    "typeRef": {
+      "id": 1,
+      "name": "IaaS"
+    },
+    "category_type": {
+      "id": 2,
+      "name": "CPU"
+    }
+  },
+  {
+    "id": 252,
+    "name": "Оперативная память",
+    "unitMeasure": {
+      "id": 4,
+      "name": "Гбайт"
+    },
+    "typeRef": {
+      "id": 1,
+      "name": "IaaS"
+    },
+    "category_type": {
+      "id": 3,
+      "name": "RAM"
+    }
+  },
+  {
+    "id": 256,
+    "name": "Программное обеспечение 1C-Битрикс",
+    "unitMeasure": {
+      "id": 61,
+      "name": "Шт"
+    },
+    "typeRef": {
+      "id": 1,
+      "name": "IaaS"
+    },
+    "category_type": {
+      "id": 1,
+      "name": "Иное"
+    }
+  },
+  {
+    "id": 257,
+    "name": "Программное обеспечение 1С",
+    "unitMeasure": {
+      "id": 61,
+      "name": "Шт"
+    },
+    "typeRef": {
+      "id": 1,
+      "name": "IaaS"
+    },
+    "category_type": {
+      "id": 1,
+      "name": "Иное"
+    }
+  },
+  {
+    "id": 258,
+    "name": "Программное обеспечение Microsoft",
+    "unitMeasure": {
+      "id": 61,
+      "name": "Шт"
+    },
+    "typeRef": {
+      "id": 1,
+      "name": "IaaS"
+    },
+    "category_type": {
+      "id": 1,
+      "name": "Иное"
+    }
+  },
+  {
+    "id": 259,
+    "name": "Резервное копирование (диск)",
+    "unitMeasure": {
+      "id": 4,
+      "name": "Гбайт"
+    },
+    "typeRef": {
+      "id": 1,
+      "name": "IaaS"
+    },
+    "category_type": {
+      "id": 1,
+      "name": "Иное"
+    }
+  },
+  {
+    "id": 260,
+    "name": "Резервное копирование (лицензия)",
+    "unitMeasure": {
+      "id": 61,
+      "name": "Шт"
+    },
+    "typeRef": {
+      "id": 1,
+      "name": "IaaS"
+    },
+    "category_type": {
+      "id": 1,
+      "name": "Иное"
+    }
+  },
+  {
+    "id": 262,
+    "name": "Аренда выделенного сервера",
+    "unitMeasure": {
+      "id": 61,
+      "name": "Шт"
+    },
+    "typeRef": {
+      "id": 1,
+      "name": "IaaS"
+    },
+    "category_type": {
+      "id": 1,
+      "name": "Иное"
+    }
+  },
+  {
+    "id": 264,
+    "name": "Сеть и передача данных",
+    "unitMeasure": {
+      "id": 61,
+      "name": "Шт"
+    },
+    "typeRef": {
+      "id": 1,
+      "name": "IaaS"
+    },
+    "category_type": {
+      "id": 1,
+      "name": "Иное"
+    }
+  },
+  {
+    "id": 266,
+    "name": "SSL-сертификат",
+    "unitMeasure": {
+      "id": 61,
+      "name": "Шт"
+    },
+    "typeRef": {
+      "id": 1,
+      "name": "IaaS"
+    },
+    "category_type": {
+      "id": 1,
+      "name": "Иное"
+    }
+  },
+  {
+    "id": 267,
+    "name": "Виртуальная частная сеть",
+    "unitMeasure": {
+      "id": 61,
+      "name": "Шт"
+    },
+    "typeRef": {
+      "id": 1,
+      "name": "IaaS"
+    },
+    "category_type": {
+      "id": 1,
+      "name": "Иное"
+    }
+  },
+  {
+    "id": 269,
+    "name": "Межсетевой экран",
+    "unitMeasure": {
+      "id": 61,
+      "name": "Шт"
+    },
+    "typeRef": {
+      "id": 1,
+      "name": "IaaS"
+    },
+    "category_type": {
+      "id": 1,
+      "name": "Иное"
+    }
+  },
+  {
+    "id": 270,
+    "name": "СЗИ от НСД",
+    "unitMeasure": {
+      "id": 61,
+      "name": "Шт"
+    },
+    "typeRef": {
+      "id": 1,
+      "name": "IaaS"
+    },
+    "category_type": {
+      "id": 1,
+      "name": "Иное"
+    }
+  },
+  {
+    "id": 271,
+    "name": "Антивирусная защита",
+    "unitMeasure": {
+      "id": 61,
+      "name": "Шт"
+    },
+    "typeRef": {
+      "id": 1,
+      "name": "IaaS"
+    },
+    "category_type": {
+      "id": 1,
+      "name": "Иное"
+    }
+  },
+  {
+    "id": 272,
+    "name": "Разработка документации",
+    "unitMeasure": {
+      "id": 61,
+      "name": "Шт"
+    },
+    "typeRef": {
+      "id": 1,
+      "name": "IaaS"
+    },
+    "category_type": {
+      "id": 1,
+      "name": "Иное"
+    }
+  },
+  {
+    "id": 273,
+    "name": "DNS-хостинг",
+    "unitMeasure": {
+      "id": 61,
+      "name": "Шт"
+    },
+    "typeRef": {
+      "id": 1,
+      "name": "IaaS"
+    },
+    "category_type": {
+      "id": 1,
+      "name": "Иное"
+    }
+  },
+  {
+    "id": 278,
+    "name": "Проброс USB",
+    "unitMeasure": {
+      "id": 61,
+      "name": "Шт"
+    },
+    "typeRef": {
+      "id": 1,
+      "name": "IaaS"
+    },
+    "category_type": {
+      "id": 1,
+      "name": "Иное"
+    }
+  },
+  {
+    "id": 263,
+    "name": "Размещение в шкафу 19\"",
+    "unitMeasure": {
+      "id": 61,
+      "name": "Шт"
+    },
+    "typeRef": {
+      "id": 1,
+      "name": "IaaS"
+    },
+    "category_type": {
+      "id": 1,
+      "name": "Иное"
+    }
+  },
+  {
+    "id": 265,
+    "name": "Сканер уязвимостей",
+    "unitMeasure": {
+      "id": 61,
+      "name": "Шт"
+    },
+    "typeRef": {
+      "id": 1,
+      "name": "IaaS"
+    },
+    "category_type": {
+      "id": 1,
+      "name": "Иное"
+    }
+  },
+  {
+    "id": 280,
+    "name": "Дисковое пространство LOW",
+    "unitMeasure": {
+      "id": 4,
+      "name": "Гбайт"
+    },
+    "typeRef": {
+      "id": 1,
+      "name": "IaaS"
+    },
+    "category_type": {
+      "id": 8,
+      "name": "HDD_LOW"
+    }
+  },
+  {
+    "id": 281,
+    "name": "Дисковое пространство MEDIUM",
+    "unitMeasure": {
+      "id": 4,
+      "name": "Гбайт"
+    },
+    "typeRef": {
+      "id": 1,
+      "name": "IaaS"
+    },
+    "category_type": {
+      "id": 9,
+      "name": "HDD_MEDIUM"
+    }
+  },
+  {
+    "id": 282,
+    "name": "Дисковое пространство HIGH",
+    "unitMeasure": {
+      "id": 4,
+      "name": "Гбайт"
+    },
+    "typeRef": {
+      "id": 1,
+      "name": "IaaS"
+    },
+    "category_type": {
+      "id": 10,
+      "name": "HDD_HIGH"
+    }
+  },
+  {
+    "id": 253,
+    "name": "Дисковое пространство SSD",
+    "unitMeasure": {
+      "id": 4,
+      "name": "Гбайт"
+    },
+    "typeRef": {
+      "id": 1,
+      "name": "IaaS"
+    },
+    "category_type": {
+      "id": 7,
+      "name": "HDD_SSD"
+    }
+  },
+  {
+    "id": 254,
+    "name": "IP-адрес",
+    "unitMeasure": {
+      "id": 61,
+      "name": "Шт"
+    },
+    "typeRef": {
+      "id": 1,
+      "name": "IaaS"
+    },
+    "category_type": {
+      "id": 6,
+      "name": "public ip"
+    }
+  },
+  {
+    "id": 275,
+    "name": "Техническая поддержка. Подписка.",
+    "unitMeasure": {
+      "id": 61,
+      "name": "Шт"
+    },
+    "typeRef": {
+      "id": 1,
+      "name": "IaaS"
+    },
+    "category_type": {
+      "id": 1,
+      "name": "Иное"
+    }
+  },
+  {
+    "id": 276,
+    "name": "Техническая поддержка. Час работы.",
+    "unitMeasure": {
+      "id": 67,
+      "name": "Час"
+    },
+    "typeRef": {
+      "id": 1,
+      "name": "IaaS"
+    },
+    "category_type": {
+      "id": 1,
+      "name": "Иное"
+    }
+  },
+  {
+    "id": 289,
+    "name": "Доступ в Интернет.",
+    "unitMeasure": {
+      "id": 71,
+      "name": "Мбит/с"
+    },
+    "typeRef": {
+      "id": 1,
+      "name": "IaaS"
+    },
+    "category_type": {
+      "id": 1,
+      "name": "Иное"
+    }
+  },
+  {
+    "id": 290,
+    "name": "Дисковое пространство",
+    "unitMeasure": {
+      "id": 4,
+      "name": "Гбайт"
+    },
+    "typeRef": {
+      "id": 1,
+      "name": "IaaS"
+    },
+    "category_type": {
+      "id": 1,
+      "name": "Иное"
+    }
+  },
+  {
+    "id": 268,
+    "name": "Защита от DDoS-атак",
+    "unitMeasure": {
+      "id": 71,
+      "name": "Мбит/с"
+    },
+    "typeRef": {
+      "id": 1,
+      "name": "IaaS"
+    },
+    "category_type": {
+      "id": 1,
+      "name": "Иное"
+    }
+  },
+  {
+    "id": 261,
+    "name": "Корпоративная почта Exchange SaaS",
+    "unitMeasure": {
+      "id": 61,
+      "name": "Шт"
+    },
+    "typeRef": {
+      "id": 3,
+      "name": "SaaS"
+    },
+    "category_type": {
+      "id": 11,
+      "name": "MAIL"
+    }
+  },
+  {
+    "id": 292,
+    "name": "Категория автотест 1_61_6",
+    "unitMeasure": {
+      "id": 61,
+      "name": "Шт"
+    },
+    "typeRef": {
+      "id": 1,
+      "name": "IaaS"
+    },
+    "category_type": {
+      "id": 6,
+      "name": "public ip"
+    }
+  },
+  {
+    "id": 293,
+    "name": "Категория автотест 3_4_6",
+    "unitMeasure": {
+      "id": 4,
+      "name": "Гбайт"
+    },
+    "typeRef": {
+      "id": 3,
+      "name": "SaaS"
+    },
+    "category_type": {
+      "id": 6,
+      "name": "public ip"
+    }
+  }
+]

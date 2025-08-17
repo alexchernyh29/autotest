@@ -1,0 +1,18 @@
+curl -X POST 'https://dev1api.cloudpanel.ru/api/v1/user' \
+  -H 'User-Agent: python-requests/2.32.4' \
+  -H 'Accept-Encoding: gzip, deflate' \
+  -H 'accept: application/json' \
+  -H 'Connection: keep-alive' \
+  -H 'content-type: application/json' \
+  -H 'tockenId: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NTU0NjY1NDMsImV4cCI6MTc1NTQ3MDE0MywidXNlcm5hbWUiOjUwOX0.Yhb39XdQ1kYzcTso2p_maTHDw9ugFcBSg9JqWegAPO9cMt9DscPSuSTu2OjauKlhryTnCsnCOwU-EczsEXSdDjqeMYlmcIy22N66kh_yNWtcSKPBzSY2V0jYx7103wlH-Aij9aqr--WBmzKEAlu5e7kDRdlqBz5GLxUIgosP5NW7p3SApkTSM8qkCamB05y9AphybW3q096F2gIuhBAyLEJUjn9zimAFlGvwPnXpxChVbdrkeeE3pkuey6KE_O6Z_K7fUKWKmtviq3P1oG_22XhpaFeYnCUtFDc2Bju8ioFz6Sv3yyqsUJ1CCaC4GcolxSKFu6VZ1YHJVOwuZc3wLQ' \
+  -H 'Content-Length: 184' \
+  -d '{
+  "fio": "Alex Holland",
+  "login": "orodriguez",
+  "password": "w8c1M5Gh!e$3",
+  "mail": "rebekahthomas@example.org",
+  "phone": "79122545008",
+  "role_id": 1,
+  "tenant_id": 123,
+  "is_manager": 0
+}'

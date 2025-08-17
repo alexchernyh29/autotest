@@ -1,0 +1,44 @@
+[
+  {
+    "field": "fio",
+    "expected": "Sabrina Rogers",
+    "actual": "Sabrina Rogers",
+    "match": true
+  },
+  {
+    "field": "login",
+    "expected": "ryanmorrison",
+    "actual": "ryanmorrison",
+    "match": true
+  },
+  {
+    "field": "mail",
+    "expected": "jessica61@example.com",
+    "actual": "jessica61@example.com",
+    "match": true
+  },
+  {
+    "field": "phone",
+    "expected": "79899931358",
+    "actual": "79899931358",
+    "match": true
+  },
+  {
+    "field": "role_id",
+    "expected": 1,
+    "actual": 1,
+    "match": true
+  },
+  {
+    "field": "tenant_id",
+    "expected": 123,
+    "actual": 123,
+    "match": true
+  },
+  {
+    "field": "is_manager",
+    "expected": 1,
+    "actual": 1,
+    "match": true
+  }
+]

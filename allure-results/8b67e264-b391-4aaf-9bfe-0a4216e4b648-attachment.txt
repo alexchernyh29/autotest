@@ -1,0 +1,6 @@
+Успешно создан пользователь:
+ID: 921
+Login: autotest_0818003543
+Email: autotest+0818003543@example.com
+Phone: 798008802
+FIO: Autotest User oqe7jo

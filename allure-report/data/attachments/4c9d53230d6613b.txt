@@ -1,0 +1,1 @@
+Сохранён ID сервиса: 456 → .env переменная CREATED_RESOURCE_SERVICE_ID

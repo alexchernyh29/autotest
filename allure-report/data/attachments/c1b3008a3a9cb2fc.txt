@@ -1,1 +1,0 @@
-URL: https://dev1api.cloudpanel.ru/api/v1/organization/477

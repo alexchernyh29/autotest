@@ -1,0 +1,1 @@
+Создан resource_atom с ID: 345

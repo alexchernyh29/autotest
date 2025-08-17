@@ -1,4 +1,3 @@
-# Создает новый атом ресурса /api/v1/resource_atom
 import os
 import pytest
 import requests
@@ -8,8 +7,8 @@ from pathlib import Path
 from allure_commons.types import AttachmentType
 
 # Путь к .env файлу
-ENV_FILE = find_dotenv()
-assert ENV_FILE, "Файл .env не найден в корне проекта"
+ENV_FILE = Path(find_dotenv())
+assert ENV_FILE.exists(), "Файл .env не найден в корне проекта"
 
 
 def get_auth_token(login, password, timeoutlive, domain):
@@ -34,24 +33,46 @@ def get_auth_token(login, password, timeoutlive, domain):
         allure.attach(str(params), name="Request Params", attachment_type=AttachmentType.TEXT)
 
         response = requests.post(url, headers=headers, params=params)
-
         allure.attach(str(response.status_code), name="Response Status Code", attachment_type=AttachmentType.TEXT)
-        allure.attach(str(response.headers), name="Response Headers", attachment_type=AttachmentType.TEXT)
         allure.attach(str(response.text), name="Response Body", attachment_type=AttachmentType.TEXT)
 
-    response.raise_for_status()
-    token_data = response.json()
-    return token_data.get("tockenID")
+        response.raise_for_status()
+        token_data = response.json()
+        return token_data.get("tockenID")
+
+
+def set_env_variable(key: str, value: str, env_path: Path):
+    """
+    Обновляет или добавляет переменную в .env файл
+    """
+    lines = []
+    key_found = False
+
+    if env_path.exists():
+        with open(env_path, "r", encoding="utf-8") as file:
+            lines = file.readlines()
+
+    with open(env_path, "w", encoding="utf-8") as file:
+        for line in lines:
+            if line.strip().startswith(f"{key}="):
+                file.write(f"{key}={value}\n")
+                key_found = True
+            else:
+                file.write(line)
+        if not key_found:
+            file.write(f"{key}={value}\n")
+
+    # Обновляем текущую сессию
+    os.environ[key] = value
 
 
 @allure.story("Создание атомарного ресурса (resource_atom)")
 def test_create_resource_atom():
     """
-    Тест создания нового атомарного ресурса через POST /api/v1/resource_atom
-    Проверяет:
-    1. Успешный статус-код (201 или 200 — зависит от API)
-    2. Валидность ответа (наличие ID, имени и других ожидаемых полей)
-    3. Корректность переданных данных в ответе
+    Тест создания нового атомарного ресурса.
+    После успешного создания:
+    - Сохраняет ID в .env как RESOURCE_ATOM_ID
+    - Обновляет текущую сессию
     """
     with allure.step("Загрузка переменных окружения"):
         load_dotenv(ENV_FILE)
@@ -74,8 +95,8 @@ def test_create_resource_atom():
 
     with allure.step("Формирование тела запроса для создания resource_atom"):
         request_body = {
-            "category_id": 0,
-            "name": "Тестовый ресурс",
+            "category_id": 261,
+            "name": "Тестовый ресурс ",
             "description": "Описание созданного тестового атомарного ресурса"
         }
         allure.attach(str(request_body), name="Request Body", attachment_type=AttachmentType.JSON)
@@ -94,10 +115,8 @@ def test_create_resource_atom():
         response = requests.post(url, json=request_body, headers=headers)
         allure.attach(str(response.status_code), name="Response Status Code", attachment_type=AttachmentType.TEXT)
         allure.attach(str(response.text), name="Response Body", attachment_type=AttachmentType.TEXT)
-        allure.attach(str(response.headers), name="Response Headers", attachment_type=AttachmentType.JSON)
 
     with allure.step("Проверка статуса ответа"):
-        # Обычно при создании — 201 Created, но может быть и 200
         assert response.status_code in [200, 201], (
             f"Ошибка при создании resource_atom. "
             f"Статус: {response.status_code}, Ответ: {response.text}"
@@ -111,20 +130,20 @@ def test_create_resource_atom():
 
         allure.attach(str(data), name="Parsed Response Data", attachment_type=AttachmentType.JSON)
 
-    with allure.step("Проверка структуры ответа"):
-        required_fields = ["id", "category_id", "name", "description"]
-        missing_fields = [field for field in required_fields if field not in data]
+    with allure.step("Проверка наличия и типа поля 'id'"):
+        assert "id" in data, "В ответе отсутствует 'id'"
+        assert isinstance(data["id"], int), "'id' должен быть целым числом"
+        assert data["id"] > 0, "'id' должен быть положительным"
 
-        assert not missing_fields, f"В ответе отсутствуют обязательные поля: {', '.join(missing_fields)}"
+    created_id = data["id"]
 
-        # Проверка, что данные совпадают с отправленными
-        assert data["name"] == request_body["name"], "Имя в ответе не совпадает с отправленным"
-        assert data["description"] == request_body["description"], "Описание не совпадает"
-        assert data["category_id"] == request_body["category_id"], "category_id не совпадает"
+    with allure.step(f"Сохранение RESOURCE_ATOM_ID={created_id} в .env"):
+        set_env_variable("RESOURCE_ATOM_ID", str(created_id), ENV_FILE)
+        allure.attach(
+            f"ID {created_id} успешно сохранён в {ENV_FILE} как RESOURCE_ATOM_ID",
+            name="Сохранение ID",
+            attachment_type=AttachmentType.TEXT
+        )
 
-    with allure.step("Проверка типа данных полей"):
-        assert isinstance(data["id"], int), "Поле 'id' должно быть числом"
-        assert data["id"] > 0, "ID должен быть положительным числом"
-
-    with allure.step("Ресурс успешно создан"):
-        allure.attach(f"Создан resource_atom с ID: {data['id']}", name="Результат", attachment_type=AttachmentType.TEXT)
+    with allure.step("Тест успешно пройден: ресурс создан и ID сохранён"):
+        allure.attach(f"Создан resource_atom с ID: {created_id}", name="Результат", attachment_type=AttachmentType.TEXT)

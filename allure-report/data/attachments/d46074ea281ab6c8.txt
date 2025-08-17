@@ -1,0 +1,1 @@
+{"id":295,"name":"\u041a\u0430\u0442\u0435\u0433\u043e\u0440\u0438\u044f \u0430\u0432\u0442\u043e\u0442\u0435\u0441\u0442 3_4_11","unitMeasure":{"id":4,"name":"\u0413\u0431\u0430\u0439\u0442"},"typeRef":{"id":3,"name":"SaaS"},"category_type":{"id":11,"name":"MAIL"}}

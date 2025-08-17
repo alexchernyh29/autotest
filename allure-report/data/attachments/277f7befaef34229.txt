@@ -1,1 +1,0 @@
-https://dev1api.cloudpanel.ru/api/v1/resource_atom/1
