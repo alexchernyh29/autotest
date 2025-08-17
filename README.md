@@ -1,10 +1,10 @@
 ```markdown
-# CorpSoft API Autotests
+# API Autotests
 ## 📋 Требования
 
 - Python 3.11+ (рекомендуется 3.11.4)
 - Git 2.40+
-- Доступ к API CorpSoft
+- Доступ к API autotest
 
 ## 🛠️ Установка
 
@@ -22,8 +22,8 @@ pip --version
 
 ### 2. Клонируйте репозиторий
 ```bash
-git clone git@github.com:alexchernyh29/corpsoft.git
-cd corpsoft
+git clone git@github.com:alexchernyh29/autotest.git
+cd autotest
 ```
 
 ### 3. Установите зависимости
@@ -79,7 +79,7 @@ pytest -v --capture=no
 
 ## 📁 Структура проекта
 ```
-corpsoft/
+autotest/
 ├── tests/               # Тесты
 │   ├── test_auth.py     # Тесты авторизации
 │   └── test_users.py    # Тесты пользователей
