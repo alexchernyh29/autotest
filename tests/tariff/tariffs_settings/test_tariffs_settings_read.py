@@ -6,7 +6,8 @@ import allure
 from dotenv import load_dotenv, find_dotenv
 from pathlib import Path
 
-ENV_FILE = Path(__file__).parent.parent / ".env"
+ENV_FILE = find_dotenv()
+assert ENV_FILE, "Файл .env не найден в корне проекта"
 
 @allure.feature("Получение настроек тарифа")
 def test_get_tariffs_settings():

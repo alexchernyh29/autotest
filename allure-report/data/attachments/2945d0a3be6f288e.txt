@@ -1,1 +1,0 @@
-{"id":5,"system_name":"ROLE_TENANT_ADMIN","name":"\u0410\u0434\u043c\u0438\u043d\u0438\u0441\u0442\u0440\u0430\u0442\u043e\u0440 \u0422\u0435\u043d\u0430\u043d\u0442\u0430","create_time":{"date":"2024-08-21 17:20:05.027565","timezone_type":3,"timezone":"Europe\/Moscow"},"update_time":{"date":"2024-08-21 17:20:05.027565","timezone_type":3,"timezone":"Europe\/Moscow"}}

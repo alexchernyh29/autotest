@@ -1,8 +1,7 @@
-# Возвращает список связей между тарифами и организациями /api/v1/tariff_links_organization
-
 # tests/test_get_tariff_links_organization_filtered.py
 
 import os
+import json
 import requests
 import pytest
 import allure
@@ -10,28 +9,53 @@ from dotenv import load_dotenv, find_dotenv
 from pathlib import Path
 
 # Путь к .env файлу
-ENV_FILE = Path(__file__).parent.parent / ".env"
+ENV_FILE = find_dotenv()
+assert ENV_FILE, "Файл .env не найден в корне проекта"
+
+
+# Фильтры для тестирования (по одному)
+FILTERS = {
+    "by_tenant_id": 123,
+    "by_tariff_id": 295,
+    "by_name": "ПРИМО РПА_custom_tariff1746023459",
+    "by_service_id": 430,
+    "by_location_id": 125
+}
+
 
 @allure.feature("Фильтрация связей тарифов с организациями")
-def test_get_tariff_links_organization_filtered():
-    """Получение списка связей тарифов с организациями по фильтрам"""
+@pytest.mark.parametrize(
+    "filter_key, filter_value",
+    [
+        ("by_tenant_id", FILTERS["by_tenant_id"]),
+        ("by_tariff_id", FILTERS["by_tariff_id"]),
+        ("by_name", FILTERS["by_name"]),
+        ("by_service_id", FILTERS["by_service_id"]),
+        ("by_location_id", FILTERS["by_location_id"])
+    ],
+    ids=[
+        "by_tenant_id",
+        "by_tariff_id",
+        "by_name",
+        "by_service_id",
+        "by_location_id"
+    ]
+)
+def test_get_tariff_links_organization_filtered(filter_key, filter_value):
+    """
+    Параметризованный тест: получение связей тарифов с организациями
+    по каждому фильтру по отдельности.
+    """
     with allure.step("Подготовка тестовых данных"):
         load_dotenv(ENV_FILE)
         base_url = os.getenv("API_URL")
         token = os.getenv("TOKEN_ID")
 
-        # Проверка обязательных переменных
         assert base_url, "API_URL не задан в .env"
         assert token, "TOKEN_ID не задан в .env"
 
-    # Фильтры из cURL
-    filters = {
-        "by_tenant_id": 21321,
-        "by_tariff_id": 321312,
-        "by_name": "3123132",
-        "by_service_id": 31232131,
-        "by_location_id": 13232131
-    }
+    # Формируем фильтр — только один параметр за раз
+    params = {filter_key: filter_value}
 
     url = f"{base_url}/api/v1/tariff_links_organization"
     headers = {
@@ -39,101 +63,87 @@ def test_get_tariff_links_organization_filtered():
         "tockenid": token
     }
 
-    with allure.step("Формирование и отправка GET-запроса с фильтрами"):
+    with allure.step(f"Отправка GET-запроса с фильтром: {filter_key}={filter_value}"):
         # Генерация cURL
         curl_command = (
-            f"curl -X GET '{url}"
-            f"?by_tenant_id={filters['by_tenant_id']}"
-            f"&by_tariff_id={filters['by_tariff_id']}"
-            f"&by_name={filters['by_name']}"
-            f"&by_service_id={filters['by_service_id']}"
-            f"&by_location_id={filters['by_location_id']}' "
+            f"curl -X GET '{url}?{filter_key}={filter_value}' "
             f"-H 'accept: application/json' "
             f"-H 'tockenid: {token}'"
         )
+        allure.attach(curl_command, "CURL команда", allure.attachment_type.TEXT)
+
         allure.attach(
-            curl_command,
-            name="CURL команда",
-            attachment_type=allure.attachment_type.TEXT
+            json.dumps(params, ensure_ascii=False, indent=2),
+            "Query Parameters",
+            allure.attachment_type.JSON
         )
 
         allure.attach(
-            str(filters),
-            name="Query Parameters",
-            attachment_type=allure.attachment_type.JSON
+            json.dumps(headers, ensure_ascii=False, indent=2),
+            "Request Headers",
+            allure.attachment_type.JSON
         )
+
+        response = requests.get(url, params=params, headers=headers)
+
+    with allure.step("Проверка ответа"):
+        allure.attach(f"Финальный URL: {response.url}", "Использованный URL", allure.attachment_type.TEXT)
+        allure.attach(
+            f"Status Code: {response.status_code}\nResponse: {response.text}",
+            "Response Details",
+            allure.attachment_type.TEXT
+        )
+
+        assert response.status_code == 200, f"Ожидался 200, получен {response.status_code}"
+
+        try:
+            links_list = response.json()
+        except ValueError:
+            pytest.fail("Ответ не является валидным JSON")
 
         allure.attach(
-            str(headers),
-            name="Request Headers",
-            attachment_type=allure.attachment_type.TEXT
+            json.dumps(links_list, ensure_ascii=False, indent=2),
+            "Response (tariff_links_organization list)",
+            allure.attachment_type.JSON
         )
 
-        # Отправка запроса
-        response = requests.get(url, params=filters, headers=headers)
+        assert isinstance(links_list, list), "Ожидался массив связей"
 
-        with allure.step("Проверка ответа"):
-            allure.attach(
-                f"Финальный URL: {response.url}",
-                name="Использованный URL",
-                attachment_type=allure.attachment_type.TEXT
-            )
-            allure.attach(
-                f"Status Code: {response.status_code}\nResponse: {response.text}",
-                name="Response Details",
-                attachment_type=allure.attachment_type.TEXT
-            )
+        # Проверяем, что хотя бы одна связь соответствует фильтру
+        with allure.step("Проверка структуры и соответствия фильтру"):
+            if len(links_list) == 0:
+                allure.attach(
+                    f"Список пуст. Фильтр: {filter_key}={filter_value}",
+                    "Внимание",
+                    allure.attachment_type.TEXT
+                )
+                pytest.fail(f"Ожидались данные по фильтру {filter_key}={filter_value}, но список пуст")
 
-            assert response.status_code == 200, \
-                f"Ожидался статус 200, но получен {response.status_code}"
+            found_match = False
+            for link in links_list:
+                assert isinstance(link, dict), "Каждая связь должна быть объектом"
+                assert "id" in link
+                assert "tariff_id" in link
+                assert "tenant_id" in link
+                assert "name" in link
 
-            try:
-                links_list = response.json()
-            except ValueError:
-                pytest.fail("Ответ не является валидным JSON")
+                # Проверяем соответствие текущему фильтру
+                if filter_key == "by_tenant_id" and link["tenant_id"] == filter_value:
+                    found_match = True
+                elif filter_key == "by_tariff_id" and link["tariff_id"] == filter_value:
+                    found_match = True
+                elif filter_key == "by_name" and filter_value in str(link["name"]):
+                    found_match = True
+                elif filter_key == "by_service_id" and "service_id" in link and link["service_id"] == filter_value:
+                    found_match = True
+                elif filter_key == "by_location_id" and "location_id" in link and link["location_id"] == filter_value:
+                    found_match = True
 
-            allure.attach(
-                links_list,
-                name="Response (tariff_links_organization list)",
-                attachment_type=allure.attachment_type.JSON
-            )
+            assert found_match, f"Ни одна из {len(links_list)} связей не соответствует фильтру: {filter_key}={filter_value}"
 
-            with allure.step("Проверка структуры ответа"):
-                assert isinstance(links_list, list), "Ожидался массив связей (list)"
-
-                if len(links_list) > 0:
-                    with allure.step(f"Найдено {len(links_list)} связей по фильтрам"):
-                        for link in links_list:
-                            assert isinstance(link, dict), "Каждая связь должна быть объектом"
-                            assert "id" in link, "Связь должна содержать поле 'id'"
-                            assert "tariff_id" in link, "Связь должна содержать поле 'tariff_id'"
-                            assert "tenant_id" in link, "Связь должна содержать поле 'tenant_id'"
-                            assert "name" in link, "Связь должна содержать поле 'name'"
-
-                            # Проверка соответствия фильтрам
-                            if filters.get("by_tenant_id"):
-                                assert link["tenant_id"] == int(filters["by_tenant_id"]), \
-                                    f"Ожидался tenant_id={filters['by_tenant_id']}, но получен {link['tenant_id']}"
-
-                            if filters.get("by_tariff_id"):
-                                assert link["tariff_id"] == int(filters["by_tariff_id"]), \
-                                    f"Ожидался tariff_id={filters['by_tariff_id']}, но получен {link['tariff_id']}"
-
-                            if filters.get("by_name"):
-                                expected_name = filters["by_name"]
-                                actual_name = str(link["name"])
-                                assert expected_name in actual_name or expected_name == actual_name, \
-                                    f"Имя '{actual_name}' не содержит ожидаемое значение '{expected_name}'"
-
-                            # Опциональные поля (если возвращаются в API)
-                            # if filters.get("by_service_id") and "service_id" in link:
-                            #     assert link["service_id"] == int(filters["by_service_id"]), "service_id не совпадает"
-                            # if filters.get("by_location_id") and "location_id" in link:
-                            #     assert link["location_id"] == int(filters["by_location_id"]), "location_id не совпадает"
-                else:
-                    with allure.step("По заданным фильтрам связи с организациями не найдены"):
-                        allure.attach(
-                            "Список пуст. Это может быть ожидаемым поведением, если нет активных связей.",
-                            name="Результат фильтрации",
-                            attachment_type=allure.attachment_type.TEXT
-                        )
+    with allure.step("✅ Тест пройден"):
+        allure.attach(
+            f"Найдено {len(links_list)} связей по фильтру {filter_key}={filter_value}",
+            "Результат",
+            allure.attachment_type.TEXT
+        )

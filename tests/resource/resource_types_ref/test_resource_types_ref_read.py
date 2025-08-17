@@ -3,7 +3,7 @@ import os
 import pytest
 import requests
 import allure
-from dotenv import load_dotenv, find_dotenv
+from dotenv import load_dotenv
 from pathlib import Path
 from allure_commons.types import AttachmentType
 

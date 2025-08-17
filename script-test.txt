@@ -44,7 +44,7 @@ pytest tests/tariff/tariff_link_tenant/test_tariff_link_tenant_delete.py -v
 pytest tests/tariff/tariff_links_tenant/test_tariff_links_tenant_read.py -v 
 
 Настройки тарифов
-pytest tests/tariff/tariff_settings/test_tariff_settings_read.py -v --------
+pytest tests/tariff/tariff_tenants_settings/test_tariff_tenants_settings_read.py -v --------
 
 Настройки арендаторов
 pytest tests/tariff/tariff_tenant_settings/test_tariff_tenant_settings_create.py -v 

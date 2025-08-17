@@ -9,7 +9,8 @@ from dotenv import load_dotenv, find_dotenv
 from pathlib import Path
 
 # Путь к .env файлу
-ENV_FILE = Path(__file__).parent.parent / ".env"
+ENV_FILE = find_dotenv()
+assert ENV_FILE, "Файл .env не найден в корне проекта"
 
 @allure.feature("Получение настроек арендатора по связи с организацией")
 def test_get_tariff_tenants_settings():
@@ -18,7 +19,7 @@ def test_get_tariff_tenants_settings():
         load_dotenv(ENV_FILE)
         base_url = os.getenv("API_URL")
         token = os.getenv("TOKEN_ID")
-        link_org_id = os.getenv("CREATED_LINK_ID")  # Используем ID связи из test_create_tariff_link_organization
+        link_org_id = os.getenv("CREATED_LINK_ID", "320")
 
         # Проверка обязательных переменных
         assert base_url, "API_URL не задан в .env"

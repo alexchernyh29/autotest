@@ -9,7 +9,8 @@ from dotenv import load_dotenv, find_dotenv
 from pathlib import Path
 
 # Путь к .env файлу
-ENV_FILE = Path(__file__).parent.parent / ".env"
+ENV_FILE = find_dotenv()
+assert ENV_FILE, "Файл .env не найден в корне проекта"
 
 @allure.feature("Получение настроек арендатора по ID")
 def test_get_tariff_tenant_settings_by_id():

@@ -1,4 +1,0 @@
-API_URL: https://dev1api.cloudpanel.ru
-ORGANIZATION_ID: 464
-API_LOGIN: vitovtovdsa
-DOMAIN: cloudpanel.ru

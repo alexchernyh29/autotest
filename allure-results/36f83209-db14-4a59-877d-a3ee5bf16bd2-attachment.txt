@@ -1,6 +1,0 @@
-curl -X GET 'https://dev1api.cloudpanel.ru/api/v1/user/865' \
-  -H 'User-Agent: python-requests/2.32.4' \
-  -H 'Accept-Encoding: gzip, deflate' \
-  -H 'accept: */*' \
-  -H 'Connection: keep-alive' \
-  -H 'tockenid: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NTU0NDI1NjksImV4cCI6MTc1NTQ0NjE2OSwidXNlcm5hbWUiOjUwOX0.HH-hHCbsv8fWOXzwgjomglH08IcdeJJkjv3McMMDdV25lxy4UMAs-zgyLpIbzQXCh64v0nZYoYWCM3AErJkKhp_lykY1P6bU-1AHcY11g95K-x9nZU1yjXZHjMMZIe2yhJOwE-o4B-j_y7THhQuFNIuoQJJdjqvqDZM2XgCcYlkHJwTiVmZ9xz4On5nwI89HnYXENXTAiS53mLE987FQB_7jDtSOom_2lvLySUj9OBguC123Uj7HQJJU7uQmpt4-_JTmCaekY_LYAzIQoQhGC-w9u7KjfYnibBNRT4VGY1eNB6igVK6kNsLfRn0wD8ea1e8qWOILrCwi0LR1iUWBNA'

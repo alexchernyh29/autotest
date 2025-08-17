@@ -10,7 +10,8 @@ from dotenv import load_dotenv, find_dotenv, unset_key
 from pathlib import Path
 
 # Путь к .env файлу
-ENV_FILE = Path(__file__).parent.parent / ".env"
+ENV_FILE = find_dotenv()
+assert ENV_FILE, "Файл .env не найден в корне проекта"
 
 @allure.feature("Удаление связи тарифа с организацией")
 def test_delete_tariff_link_organization():
