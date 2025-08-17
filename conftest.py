@@ -1,3 +1,5 @@
+# conftest.py
+
 import pytest
 
 
@@ -10,7 +12,7 @@ def pytest_collection_modifyitems(items):
     4. Связи пользователей и организаций
     5. Роли
     6. Отчёты
-    7. Ресурсы
+    7. Ресурсы (resource_service в порядке CRUD)
     8. Тарифы
     9. Остальные тесты
     """
@@ -44,13 +46,28 @@ def pytest_collection_modifyitems(items):
     # 6. Тесты отчётов
     ordered_items.extend([i for i in items if "report/" in i.nodeid and i not in ordered_items])
 
-    # 7. Тесты ресурсов
-    ordered_items.extend([i for i in items if "resource/" in i.nodeid and i not in ordered_items])
+    # 7. Тесты resource_service — строгий порядок CRUD
+    resource_service_path = "resource_service/"
+    
+    create_tests = [i for i in items if resource_service_path in i.nodeid and "test_resource_service_create" in i.nodeid]
+    read_tests = [i for i in items if resource_service_path in i.nodeid and "test_resource_service_read" in i.nodeid]
+    update_tests = [i for i in items if resource_service_path in i.nodeid and "test_resource_service_update" in i.nodeid]
+    delete_tests = [i for i in items if resource_service_path in i.nodeid and "test_resource_service_delete" in i.nodeid]
 
-    # 8. Тесты тарифов
-    ordered_items.extend([i for i in items if "tariff/" in i.nodeid and i not in ordered_items])
+    ordered_items.extend(create_tests)
+    ordered_items.extend(read_tests)
+    ordered_items.extend(update_tests)
+    ordered_items.extend(delete_tests)
 
-    # 9. Все остальные тесты (на всякий случай)
+    # 8. Остальные тесты ресурсов (если есть, например, /resource/ без _service)
+    other_resource_tests = [i for i in items if "resource/" in i.nodeid and i not in ordered_items]
+    ordered_items.extend(other_resource_tests)
+
+    # 9. Тесты тарифов
+    tariff_tests = [i for i in items if "tariff/" in i.nodeid and i not in ordered_items]
+    ordered_items.extend(tariff_tests)
+
+    # 10. Все остальные тесты
     remaining = [i for i in items if i not in ordered_items]
     ordered_items.extend(remaining)
 

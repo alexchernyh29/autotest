@@ -1,0 +1,3 @@
+ID: 5
+Name (RU): Администратор Тенанта
+System Name (EN): ROLE_TENANT_ADMIN

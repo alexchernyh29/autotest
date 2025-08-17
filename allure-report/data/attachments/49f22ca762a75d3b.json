@@ -1,0 +1,184 @@
+[
+  {
+    "id": 469,
+    "tariff_id": 304,
+    "tariff": {
+      "id": 304,
+      "service_id": 418,
+      "service": {
+        "id": 418,
+        "name": "Услуги ЦОД",
+        "create_time": {
+          "date": "2021-04-02 20:53:13.000000",
+          "timezone_type": 3,
+          "timezone": "Europe/Moscow"
+        },
+        "update_time": {
+          "date": "2021-04-02 20:53:13.000000",
+          "timezone_type": 3,
+          "timezone": "Europe/Moscow"
+        },
+        "create_user_id": 439,
+        "update_user_id": 439
+      },
+      "status": {
+        "id": 2,
+        "name": "Активно",
+        "sys_name": "activate",
+        "create_time": {
+          "date": "2018-12-27 19:51:23.000000",
+          "timezone_type": 3,
+          "timezone": "Europe/Moscow"
+        },
+        "update_time": {
+          "date": "2018-12-27 19:51:29.000000",
+          "timezone_type": 3,
+          "timezone": "Europe/Moscow"
+        },
+        "create_user_id": 4,
+        "update_user_id": 4
+      },
+      "location": {
+        "id": 125,
+        "name": "Облако 10",
+        "address": "РФ, Москва",
+        "create_time": {
+          "date": "2021-04-02 10:20:18.000000",
+          "timezone_type": 3,
+          "timezone": "Europe/Moscow"
+        },
+        "update_time": {
+          "date": "2021-04-02 10:20:18.000000",
+          "timezone_type": 3,
+          "timezone": "Europe/Moscow"
+        },
+        "create_user_id": 134,
+        "update_user_id": 134
+      },
+      "status_id": 2,
+      "name": "Дима QA",
+      "description": "паии",
+      "type_level_resource": 2,
+      "time_interval": {
+        "id": 3,
+        "name": "час",
+        "sys_name": "hour"
+      },
+      "create_time": {
+        "date": "2025-07-31 12:48:11.000000",
+        "timezone_type": 3,
+        "timezone": "Europe/Moscow"
+      },
+      "update_time": {
+        "date": "2025-07-31 12:48:11.000000",
+        "timezone_type": 3,
+        "timezone": "Europe/Moscow"
+      },
+      "create_user_id": 509,
+      "update_user_id": 509
+    },
+    "resource_pool_id": 424,
+    "resource_pool": {
+      "id": 424,
+      "service_id": 418,
+      "name": "Услуги ЦОД",
+      "description": "Услуги ЦОД",
+      "location": {
+        "id": 128,
+        "name": "ЦОД К41",
+        "address": "РФ, Москва СЗАО",
+        "create_time": {
+          "date": "2021-04-03 09:34:38.000000",
+          "timezone_type": 3,
+          "timezone": "Europe/Moscow"
+        },
+        "update_time": {
+          "date": "2022-11-03 10:34:40.000000",
+          "timezone_type": 3,
+          "timezone": "Europe/Moscow"
+        },
+        "create_user_id": 439,
+        "update_user_id": 443
+      },
+      "status": {
+        "id": 2,
+        "sys_name": "activate",
+        "name": "Активно",
+        "create_time": {
+          "date": "2018-12-27 19:51:23.000000",
+          "timezone_type": 3,
+          "timezone": "Europe/Moscow"
+        },
+        "update_time": {
+          "date": "2018-12-27 19:51:29.000000",
+          "timezone_type": 3,
+          "timezone": "Europe/Moscow"
+        },
+        "create_user_id": 4,
+        "update_user_id": 4
+      },
+      "create_time": {
+        "date": "2021-04-03 09:44:47.000000",
+        "timezone_type": 3,
+        "timezone": "Europe/Moscow"
+      },
+      "update_time": {
+        "date": "2021-05-12 22:40:26.000000",
+        "timezone_type": 3,
+        "timezone": "Europe/Moscow"
+      },
+      "create_user_id": 439,
+      "update_user_id": 439
+    },
+    "resource_atom_id": 274,
+    "resource_atom": {
+      "id": 274,
+      "name": "Размещение в шкафу 19\" -  21 U (1/2 стойки), 2 ввода, 2 PDU, 2.5 кВт",
+      "description": null,
+      "category": {
+        "id": 263,
+        "name": "Размещение в шкафу 19\"",
+        "unitMeasure": {
+          "id": 61,
+          "name": "Шт"
+        },
+        "typeRef": {
+          "id": 1,
+          "name": "IaaS"
+        }
+      },
+      "create_time": {
+        "date": "2021-04-02 22:31:28.000000",
+        "timezone_type": 3,
+        "timezone": "Europe/Moscow"
+      },
+      "update_time": {
+        "date": "2025-02-19 09:21:06.000000",
+        "timezone_type": 3,
+        "timezone": "Europe/Moscow"
+      },
+      "create_user_id": 439,
+      "update_user_id": 443
+    },
+    "type_state_of_resource": 1,
+    "type_right_render": 1,
+    "resource_value": 337663,
+    "resource_value_min": null,
+    "resource_value_max": null,
+    "base_price_active": 13,
+    "base_price_passive": 2,
+    "time_of_base_price": 2,
+    "create_time": {
+      "date": "2025-07-31 12:48:38.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-07-31 12:48:39.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 509,
+    "update_user_id": 509
+  }
+]

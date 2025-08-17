@@ -1,0 +1,15 @@
+{
+  "header": {
+    "report_type": "Services",
+    "format": "json",
+    "begin_date": "18.02.2025",
+    "end_date": "17.08.2025",
+    "$organization": {
+      "id": 477,
+      "name": "Gray-Washington",
+      "number_contract": "333597070"
+    }
+  },
+  "items": [],
+  "comment": "prebilling data"
+}

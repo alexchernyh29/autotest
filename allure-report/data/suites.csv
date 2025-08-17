@@ -1,0 +1,393 @@
+"DESCRIPTION","DURATION IN MS","NAME","PARENT SUITE","START TIME","STATUS","STOP TIME","SUB SUITE","SUITE","TEST CLASS","TEST METHOD"
+"Получение списка настроек арендатора по ID связи с организацией","921","test_get_tariff_tenants_settings","tests.tariff.tariff_tenants_settings","Sun Aug 17 22:36:10 MSK 2025","passed","Sun Aug 17 22:36:11 MSK 2025","","test_tariff_tenants_settings_read","",""
+"
+Тест получения списка организаций по tenant_id
+Проверяет:
+1. Успешный статус-код (200)
+2. Наличие обязательных полей в ответе
+3. Соответствие запрошенного tenant_id
+","1450","test_get_organizations_by_tenant_id","tests.organizations","Sun Aug 17 22:35:27 MSK 2025","passed","Sun Aug 17 22:35:28 MSK 2025","","test_organizations_read","",""
+"
+Тест: получение данных о пуле ресурсов по ID
+Эндпоинт: GET /api/v1/resource_pool/{id}
+Проверяет:
+  - статус 200
+  - валидный JSON
+  - наличие и корректность всех полей
+  - соответствие ожидаемым данным (если указаны)
+","4","test_get_resource_pool_by_id","tests.resource.resource_pool","Sun Aug 17 22:35:53 MSK 2025","failed","Sun Aug 17 22:35:53 MSK 2025","","test_resource_pool_read","",""
+"
+Тест обновления атомарного ресурса через PUT /api/v1/resource_atom/{id}
+Проверяет:
+1. Успешный статус-код (200 или 201)
+2. Валидность JSON-ответа
+3. Наличие обязательных полей
+4. Соответствие обновлённых данных отправленным
+","1260","test_update_resource_atom_by_id","tests.resource.resource_atom","Sun Aug 17 22:35:47 MSK 2025","failed","Sun Aug 17 22:35:49 MSK 2025","","test_resource_atom_update","",""
+"Тест удаления организации","1294","Удаление организации","tests.organizations","Sun Aug 17 22:35:25 MSK 2025","failed","Sun Aug 17 22:35:27 MSK 2025","","test_organization_delete","",""
+"
+Тест обновления единицы измерения через PUT /api/v1/resource_unit_measure/{id}
+Проверяет:
+1. Успешный статус-код (200)
+2. Валидность ответа
+3. Соответствие обновлённых данных
+","1044","test_update_resource_unit_measure","tests.resource.resource_units_measure","Sun Aug 17 22:36:02 MSK 2025","failed","Sun Aug 17 22:36:03 MSK 2025","","test_resource_units_measure_update","",""
+"
+Тест: создание связи между пулом ресурсов и атомом
+Эндпоинт: POST /api/v1/resource_pool_link_atom
+Поля: pool_id, atom_id, min_count, max_count, cost_price_active, cost_price_passive, type_use
+Проверяет:
+  - успешный статус (200, 201)
+  - корректный JSON в ответе
+  - наличие ID и совпадение входных параметров
+","4","test_create_resource_pool_atom_link","tests.resource.resource_pool_link_atom","Sun Aug 17 22:35:53 MSK 2025","failed","Sun Aug 17 22:35:53 MSK 2025","","test_resource_pool_link_atom_create","",""
+"
+Параметризованный тест: получение связей тарифов с организациями
+по каждому фильтру по отдельности.
+","606","test_get_tariff_links_organization_filtered[by_name]","tests.tariff.tariff_links_organization","Sun Aug 17 22:36:07 MSK 2025","failed","Sun Aug 17 22:36:07 MSK 2025","","test_tariff_links_organization_read","",""
+"Получение роли по ID. Проверка точного соответствия name и system_name","611","test_get_role_by_id[2]","tests.role","Sun Aug 17 22:35:32 MSK 2025","passed","Sun Aug 17 22:35:32 MSK 2025","TestGetRoles","test_role_read_id","",""
+"
+Тест: получение данных о местоположении по ID
+Эндпоинт: GET /api/v1/resource_location/{id}
+Проверяет:
+  - статус 200
+  - валидный JSON
+  - наличие и корректность всех полей
+  - соответствие ID
+","5","test_get_resource_location_by_id","tests.resource.resource_location","Sun Aug 17 22:35:52 MSK 2025","failed","Sun Aug 17 22:35:52 MSK 2025","","test_resource_location_read","",""
+"
+Параметризованный тест: получение связей тарифов с организациями
+по каждому фильтру по отдельности.
+","715","test_get_tariff_links_organization_filtered[by_tariff_id]","tests.tariff.tariff_links_organization","Sun Aug 17 22:36:06 MSK 2025","passed","Sun Aug 17 22:36:07 MSK 2025","","test_tariff_links_organization_read","",""
+"Получение списка типов настроек","585","test_get_tariff_setting_types","tests.tariff.tariff_setting_types","Sun Aug 17 22:36:09 MSK 2025","failed","Sun Aug 17 22:36:10 MSK 2025","","test_tariff_setting_types_read","",""
+"
+Тест: получение списка всех категорий ресурсов
+Эндпоинт: GET /api/v1/resource_categoryes_ref
+Проверяет:
+  - статус 200
+  - ответ в формате JSON
+  - наличие массива данных
+  - структуру каждого элемента
+  - обязательные поля и типы
+","1248","test_get_resource_categories_list","tests.resource.resource_category_ref","Sun Aug 17 22:35:50 MSK 2025","passed","Sun Aug 17 22:35:52 MSK 2025","","test_resource_category_ref_list","",""
+"Тест создания организации со случайными данными","1109","test_create_organization","tests.organizations","Sun Aug 17 22:35:20 MSK 2025","passed","Sun Aug 17 22:35:21 MSK 2025","","test_organization_create","",""
+"Тест удаления пользователя","1562","test_delete_user","tests.user","Sun Aug 17 22:35:12 MSK 2025","passed","Sun Aug 17 22:35:13 MSK 2025","","test_user_delete","",""
+"Обновление данных пользователя с обязательными полями и случайным номером телефона","2515","test_update_user","tests.user","Sun Aug 17 22:35:09 MSK 2025","passed","Sun Aug 17 22:35:12 MSK 2025","","test_user_update","",""
+"
+Тест получения списка типов категорий ресурсов
+Проверяет:
+1. Успешный статус-код (200)
+2. Ответ в формате JSON
+3. Наличие ожидаемых полей в каждом элементе
+4. Непустой ответ (если ожидается хотя бы один элемент)
+","1117","test_get_category_types","tests.resource.category_types","Sun Aug 17 22:35:43 MSK 2025","passed","Sun Aug 17 22:35:44 MSK 2025","","test_category_types_read","",""
+"
+Тест проверяет:
+1. Получение пулов ресурсов с фильтрами by_service_id и by_location_id
+2. Все элементы имеют service_id == переданному
+3. Все элементы имеют location.id == переданному
+4. Подсчёт количества элементов (по id)
+","1194","test_get_resource_pools_filtered","tests.resource.resource_pools","Sun Aug 17 22:35:53 MSK 2025","passed","Sun Aug 17 22:35:54 MSK 2025","","test_resource_pools_read","",""
+"
+Тест получения списка типов услуг (type_services)
+Проверяет:
+1. Статус 200
+2. Ответ — валидный JSON и массив
+3. Структуру каждого элемента: id, name, sysname
+4. Полное соответствие ожидаемому списку (включая порядок и значения)
+","1252","test_get_type_services","tests.resource.type_services","Sun Aug 17 22:36:03 MSK 2025","passed","Sun Aug 17 22:36:04 MSK 2025","","test_type_services_read","",""
+"Создание новых настроек арендатора","3","test_create_tariff_tenant_settings","tests.tariff.tariff_tenant_settings_crud","Sun Aug 17 22:36:10 MSK 2025","failed","Sun Aug 17 22:36:10 MSK 2025","","test_tariff_tenant_settings_create","",""
+"
+Тест получения данных о сервисе ресурсов по его ID
+Проверяет:
+1. Успешный статус-код (200)
+2. Валидность JSON-ответа
+3. Наличие обязательных полей
+4. Соответствие запрошенному ID
+5. Корректность типов данных
+","1169","test_get_resource_service_by_id","tests.resource.resource_service","Sun Aug 17 22:35:39 MSK 2025","passed","Sun Aug 17 22:35:40 MSK 2025","","test_resource_service_read","",""
+"
+Тест получения единицы измерения ресурса по ID
+Проверяет:
+1. Успешный статус-код (200)
+2. Валидность JSON-ответа
+3. Наличие обязательных полей
+4. Соответствие ID в URL и в ответе
+5. Корректность типов данных
+","1191","test_get_resource_unit_measure_by_id","tests.resource.resource_units_measure","Sun Aug 17 22:36:00 MSK 2025","failed","Sun Aug 17 22:36:02 MSK 2025","","test_resource_units_measure_read","",""
+"Тест обновления организации","1591","test_update_organization","tests.organizations","Sun Aug 17 22:35:24 MSK 2025","failed","Sun Aug 17 22:35:25 MSK 2025","","test_organization_upload","",""
+"
+Тест получения атомарного ресурса по его ID
+Проверяет:
+1. Успешный статус-код (200)
+2. Валидность JSON-ответа
+3. Наличие обязательных полей
+4. Корректность типа данных
+5. Соответствие запрошенному ID
+","1177","test_get_resource_atom_by_id","tests.resource.resource_atom","Sun Aug 17 22:35:46 MSK 2025","failed","Sun Aug 17 22:35:47 MSK 2025","","test_resource_atom_read","",""
+"Создание связи между пользователем и организацией","701","test_create_user_organization_link","tests.users","Sun Aug 17 22:35:28 MSK 2025","failed","Sun Aug 17 22:35:29 MSK 2025","","test_users_add_org","",""
+"
+Тест: удаление существующего местоположения ресурса по ID
+Эндпоинт: DELETE /api/v1/resource_location/{id}
+Проверяет:
+  - статус 200 или 204
+  - отсутствие тела при 204
+  - невозможность получить объект после удаления (опционально)
+","3","test_delete_resource_location","tests.resource.resource_location","Sun Aug 17 22:35:52 MSK 2025","failed","Sun Aug 17 22:35:52 MSK 2025","","test_resource_location_delete","",""
+"Обновление информации о связи между тарифом и организацией","3","test_update_tariff_link_organization","tests.tariff.tariff_link_organization_crud","Sun Aug 17 22:36:05 MSK 2025","failed","Sun Aug 17 22:36:05 MSK 2025","","test_tariff_link_organization_update","",""
+"Создание новой связи между тарифом и организацией","3","test_create_tariff_link_organization","tests.tariff.tariff_link_organization_crud","Sun Aug 17 22:36:05 MSK 2025","failed","Sun Aug 17 22:36:05 MSK 2025","","test_tariff_link_organization_create","",""
+"Тест проверки созданной организации","1394","test_verify_created_organization","tests.organizations","Sun Aug 17 22:35:21 MSK 2025","passed","Sun Aug 17 22:35:22 MSK 2025","","test_organization_create","",""
+"
+Тест: удаление существующего пула ресурсов по ID
+Эндпоинт: DELETE /api/v1/resource_pool/{id}
+Проверяет:
+  - статус 200 или 204
+  - отсутствие тела при 204
+  - невозможность получить пул после удаления (опционально)
+","3","test_delete_resource_pool","tests.resource.resource_pool","Sun Aug 17 22:35:53 MSK 2025","failed","Sun Aug 17 22:35:53 MSK 2025","","test_resource_pool_delete","",""
+"
+Тест получения списка всех сервисов ресурсов
+Проверяет:
+1. Успешный статус-код (200)
+2. Ответ в формате JSON
+3. Наличие массива данных
+4. Структуру каждого элемента (id, name, system_name, create_time и др.)
+5. Непустой ответ (если ожидается)
+","1478","test_get_resource_services","tests.resource.resource_services","Sun Aug 17 22:35:54 MSK 2025","passed","Sun Aug 17 22:35:56 MSK 2025","","test_resource_services_read","",""
+"
+Тест: обновление существующей связи по ID
+Эндпоинт: PUT /api/v1/resource_pool_link_atom/{id}
+Поля: pool_id, atom_id, min_count, max_count, cost_price_active, cost_price_passive, type_use
+Проверяет:
+  - статус 200
+  - валидный JSON в ответе
+  - совпадение обновлённых полей
+  - неизменность ID
+","4","test_update_resource_pool_atom_link","tests.resource.resource_pool_link_atom","Sun Aug 17 22:35:53 MSK 2025","failed","Sun Aug 17 22:35:53 MSK 2025","","test_resource_pool_link_atom_update","",""
+"
+Тест: обновление существующего пула ресурсов по ID
+Эндпоинт: PUT /api/v1/resource_pool/{id}
+Поля: name, description, status_id, service_id, location_id, type_service_id
+Проверяет:
+  - статус 200
+  - валидный JSON в ответе
+  - совпадение обновлённых полей
+  - неизменность ID
+","3","test_update_resource_pool","tests.resource.resource_pool","Sun Aug 17 22:35:53 MSK 2025","failed","Sun Aug 17 22:35:53 MSK 2025","","test_resource_pool_update","",""
+"Удаление тарифа по ID из .env","3","test_delete_tariff","tests.tariff.tariff_crud","Sun Aug 17 22:36:04 MSK 2025","failed","Sun Aug 17 22:36:04 MSK 2025","","test_tariff_delete","",""
+"Удаление связи между тарифом и арендатором по ID из .env","4","test_delete_tariff_link_tenant","tests.tariff.tariff_link_tenant_crud","Sun Aug 17 22:36:05 MSK 2025","failed","Sun Aug 17 22:36:05 MSK 2025","","test_tariff_link_tenant_delete","",""
+"Получение роли по ID. Проверка точного соответствия name и system_name","607","test_get_role_by_id[1]","tests.role","Sun Aug 17 22:35:31 MSK 2025","passed","Sun Aug 17 22:35:32 MSK 2025","TestGetRoles","test_role_read_id","",""
+"
+Тест: получение данных о связи по ID
+Эндпоинт: GET /api/v1/resource_pool_link_atom/{id}
+Проверяет:
+  - статус 200
+  - валидный JSON
+  - наличие и корректность полей
+  - соответствие ожидаемым данным (если заданы в .env)
+","4","test_get_resource_pool_atom_link_by_id","tests.resource.resource_pool_link_atom","Sun Aug 17 22:35:53 MSK 2025","failed","Sun Aug 17 22:35:53 MSK 2025","","test_resource_pool_link_atom_read","",""
+"
+Тест обновления сервиса ресурсов через PUT /api/v1/resource_service/{id}
+Проверяет:
+1. Успешный статус-код (200)
+2. Валидность JSON-ответа
+3. Наличие и корректность ID в ответе
+4. Соответствие обновлённых данных (косвенно — через GET в будущем)
+","1238","test_update_resource_service_by_id","tests.resource.resource_service","Sun Aug 17 22:35:40 MSK 2025","passed","Sun Aug 17 22:35:41 MSK 2025","","test_resource_service_update","",""
+"
+Тест: получение данных о категории ресурса по ID
+Эндпоинт: GET /api/v1/resource_category_ref/{id}
+Проверяет:
+  - статус 200
+  - валидный JSON
+  - наличие и корректность всех полей
+  - соответствие ID
+","3","test_get_resource_category_by_id","tests.resource.resource_category_ref","Sun Aug 17 22:35:52 MSK 2025","failed","Sun Aug 17 22:35:52 MSK 2025","","test_resource_category_ref_read","",""
+"
+Тест: получение списка всех местоположений ресурсов
+Эндпоинт: GET /api/v1/resource_locations
+Проверяет:
+  - статус 200
+  - ответ в формате JSON
+  - наличие массива данных
+  - структуру каждого элемента
+  - обязательные поля и типы
+","1204","test_get_resource_locations","tests.resource.resource_locations","Sun Aug 17 22:35:52 MSK 2025","passed","Sun Aug 17 22:35:53 MSK 2025","","test_resource_locations_list","",""
+"Проверка получения связи пользователя с организацией","544","Поиск связи пользователя с организацией","tests.users","Sun Aug 17 22:35:29 MSK 2025","skipped","Sun Aug 17 22:35:29 MSK 2025","TestUserOrganizationLinks","test_users_org","",""
+"Создание новой связи между тарифом и арендатором (tenant)","3","test_create_tariff_link_tenant","tests.tariff.tariff_link_tenant_crud","Sun Aug 17 22:36:05 MSK 2025","failed","Sun Aug 17 22:36:05 MSK 2025","","test_tariff_link_tenant_create","",""
+"
+Параметризованный тест: получение связей тарифов с организациями
+по каждому фильтру по отдельности.
+","779","test_get_tariff_links_organization_filtered[by_location_id]","tests.tariff.tariff_links_organization","Sun Aug 17 22:36:08 MSK 2025","failed","Sun Aug 17 22:36:09 MSK 2025","","test_tariff_links_organization_read","",""
+"Получение роли по ID. Проверка точного соответствия name и system_name","628","test_get_role_by_id[4]","tests.role","Sun Aug 17 22:35:33 MSK 2025","passed","Sun Aug 17 22:35:34 MSK 2025","TestGetRoles","test_role_read_id","",""
+"","755","test_get_tariffs_settings","tests.tariff.tariffs_settings","Sun Aug 17 22:36:12 MSK 2025","passed","Sun Aug 17 22:36:13 MSK 2025","","test_tariffs_settings_read","",""
+"Получение информации о связи между тарифом и организацией по ID","3","test_get_tariff_link_organization","tests.tariff.tariff_link_organization_crud","Sun Aug 17 22:36:05 MSK 2025","failed","Sun Aug 17 22:36:05 MSK 2025","","test_tariff_link_organization_read","",""
+"
+Параметризованный тест: получение связей тарифов с организациями
+по каждому фильтру по отдельности.
+","607","test_get_tariff_links_organization_filtered[by_service_id]","tests.tariff.tariff_links_organization","Sun Aug 17 22:36:07 MSK 2025","failed","Sun Aug 17 22:36:08 MSK 2025","","test_tariff_links_organization_read","",""
+"Получение списка всех пользователей","1226","test_get_users_list","tests.users","Sun Aug 17 22:35:29 MSK 2025","passed","Sun Aug 17 22:35:31 MSK 2025","","test_users_read","",""
+"
+Тест удаления единицы измерения через DELETE /api/v1/resource_unit_measure/{id}
+Проверяет:
+1. Успешный статус (200 или 204)
+2. Отсутствие тела при 204
+3. Опционально: проверка, что ресурс больше не доступен (GET → 404)
+","1085","test_delete_resource_unit_measure_by_id","tests.resource.resource_units_measure","Sun Aug 17 22:35:58 MSK 2025","failed","Sun Aug 17 22:35:59 MSK 2025","","test_resource_units_measure_delete","",""
+"
+Тест получения списка единиц измерения (resource_units_measure)
+Проверяет:
+1. Успешный статус-код (200)
+2. Ответ в формате JSON
+3. Наличие массива данных
+4. Структуру каждого элемента (id, name, code и др.)
+5. Непустой ответ (если ожидается)
+","1170","test_get_resource_units_measure","tests.resource.resource_units_measure","Sun Aug 17 22:35:59 MSK 2025","failed","Sun Aug 17 22:36:00 MSK 2025","","test_resource_units_measure_list","",""
+"
+Тест: получение списка атомов ресурсов с фильтрами:
+- by_pool_id
+- by_category_id
+Проверяет:
+  - статус 200
+  - ответ в формате JSON
+  - наличие массива данных
+  - структуру элементов
+  - соответствие фильтрам
+","1652","test_get_resource_atoms_filtered","tests.resource.resource_atoms","Sun Aug 17 22:35:49 MSK 2025","passed","Sun Aug 17 22:35:50 MSK 2025","","test_resource_atoms_read","",""
+"
+Тест: обновление существующей категории ресурса по ID
+Эндпоинт: PUT /api/v1/resource_category_ref/{id}
+Поля: type_ref_id, unit_measure_id, name, category_type_id
+Проверяет:
+  - статус 200
+  - валидный JSON в ответе
+  - совпадение обновлённых значений
+  - неизменность ID
+","3","test_update_resource_category","tests.resource.resource_category_ref","Sun Aug 17 22:35:52 MSK 2025","failed","Sun Aug 17 22:35:52 MSK 2025","","test_resource_category_ref_update","",""
+"Получение данных пользователя по ID","699","test_get_user","tests.user","Sun Aug 17 22:35:08 MSK 2025","passed","Sun Aug 17 22:35:09 MSK 2025","","test_user_read","",""
+"
+Тест создания нового атомарного ресурса через POST /api/v1/resource_atom
+Проверяет:
+1. Успешный статус-код (201 или 200 — зависит от API)
+2. Валидность ответа (наличие ID, имени и других ожидаемых полей)
+3. Корректность переданных данных в ответе
+","1201","test_create_resource_atom","tests.resource.resource_atom","Sun Aug 17 22:35:44 MSK 2025","failed","Sun Aug 17 22:35:45 MSK 2025","","test_resource_atom_create","",""
+"Удаление настроек арендатора по ID из .env","3","test_delete_tariff_tenant_settings","tests.tariff.tariff_tenant_settings_crud","Sun Aug 17 22:36:10 MSK 2025","failed","Sun Aug 17 22:36:10 MSK 2025","","test_tariff_tenant_settings_delete","",""
+"Получение тарифа по ID из .env","728","test_get_tariff","tests.tariff.tariff_crud","Sun Aug 17 22:36:04 MSK 2025","broken","Sun Aug 17 22:36:05 MSK 2025","","test_tariff_read","",""
+"
+Тест: создание нового местоположения ресурса
+Эндпоинт: POST /api/v1/resource_location
+Поля: name, address
+Проверяет:
+  - статус 200 или 201
+  - валидный JSON в ответе
+  - наличие ID и корректность полей
+  - совпадение отправленных и полученных значений
+","3","test_create_resource_location","tests.resource.resource_location","Sun Aug 17 22:35:52 MSK 2025","failed","Sun Aug 17 22:35:52 MSK 2025","","test_resource_location_create","",""
+"Получение роли по ID. Проверка точного соответствия name и system_name","623","test_get_role_by_id[5]","tests.role","Sun Aug 17 22:35:34 MSK 2025","passed","Sun Aug 17 22:35:34 MSK 2025","TestGetRoles","test_role_read_id","",""
+"Пример использования сохранённого токена","18","test_use_saved_token","tests.token","Sun Aug 17 22:35:07 MSK 2025","passed","Sun Aug 17 22:35:07 MSK 2025","","test_auth","",""
+"
+Тест: удаление существующей категории ресурса по ID
+Эндпоинт: DELETE /api/v1/resource_category_ref/{id}
+Проверяет:
+  - статус 200 или 204
+  - отсутствие тела при 204
+  - невозможность получить объект после удаления
+","4","test_delete_resource_category","tests.resource.resource_category_ref","Sun Aug 17 22:35:50 MSK 2025","failed","Sun Aug 17 22:35:50 MSK 2025","","test_resource_category_ref_delete","",""
+"Получение списка связей тарифов с арендаторами по фильтрам","594","test_get_tariff_links_tenant_filtered","tests.tariff.tariff_links_tenant","Sun Aug 17 22:36:09 MSK 2025","broken","Sun Aug 17 22:36:09 MSK 2025","","test_tariff_links_tenant_read","",""
+"Получение списка тарифов по фильтрам: by_service_id и by_name","629","test_get_tariffs_filtered","tests.tariff.tariffs","Sun Aug 17 22:36:12 MSK 2025","passed","Sun Aug 17 22:36:12 MSK 2025","","test_tariffs_read","",""
+"Получение роли по ID. Проверка точного соответствия name и system_name","580","test_get_role_by_id[6]","tests.role","Sun Aug 17 22:35:34 MSK 2025","passed","Sun Aug 17 22:35:35 MSK 2025","TestGetRoles","test_role_read_id","",""
+"DELETE Удаление пользователя /api/v1/user/(id)","1523","test_delete_user","tests.user","Sun Aug 17 22:35:18 MSK 2025","passed","Sun Aug 17 22:35:20 MSK 2025","","test_user_crud","",""
+"PUT Обновление данных пользователя с использованием Faker","2365","test_update_user_with_faker","tests.user","Sun Aug 17 22:35:15 MSK 2025","passed","Sun Aug 17 22:35:17 MSK 2025","","test_user_crud","",""
+"
+Тест создания новой единицы измерения через POST /api/v1/resource_units_measure
+Проверяет:
+1. Успешный статус-код (200 или 201)
+2. Валидность JSON-ответа
+3. Наличие ID и переданных данных в ответе
+4. Корректность типов полей
+","1148","test_create_resource_unit_measure","tests.resource.resource_units_measure","Sun Aug 17 22:35:57 MSK 2025","failed","Sun Aug 17 22:35:58 MSK 2025","","test_resource_units_measure_create","",""
+"Удаление связи между тарифом и организацией по ID из .env","4","test_delete_tariff_link_organization","tests.tariff.tariff_link_organization_crud","Sun Aug 17 22:36:05 MSK 2025","failed","Sun Aug 17 22:36:05 MSK 2025","","test_tariff_link_organization_delete","",""
+"","627","test_get_tariff_time_intervals","tests.tariff.tariff_time_intervals","Sun Aug 17 22:36:11 MSK 2025","passed","Sun Aug 17 22:36:12 MSK 2025","","test_tariff_time_intervals_read","",""
+"
+Тест: удаление существующей связи по ID
+Эндпоинт: DELETE /api/v1/resource_pool_link_atom/{id}
+Проверяет:
+  - статус 200, 204 или 404 (в зависимости от API)
+  - отсутствие тела при 204 или пустой ответ
+  - (опционально) невозможность получить связь после удаления
+","3","test_delete_resource_pool_atom_link","tests.resource.resource_pool_link_atom","Sun Aug 17 22:35:53 MSK 2025","failed","Sun Aug 17 22:35:53 MSK 2025","","test_resource_pool_link_atom_delete","",""
+"Тест: получение токена и сохранение в .env","560","test_get_and_save_token","tests.token","Sun Aug 17 22:35:06 MSK 2025","passed","Sun Aug 17 22:35:07 MSK 2025","","test_auth","",""
+"Получение списка всех ролей из системы и проверка, что их ровно 6","1284","test_get_all_roles","tests.role","Sun Aug 17 22:35:35 MSK 2025","passed","Sun Aug 17 22:35:36 MSK 2025","","test_role_read_list","",""
+"Получение роли по ID. Проверка точного соответствия name и system_name","618","test_get_role_by_id[3]","tests.role","Sun Aug 17 22:35:32 MSK 2025","passed","Sun Aug 17 22:35:33 MSK 2025","TestGetRoles","test_role_read_id","",""
+"
+Тест: создание нового пула ресурсов
+Эндпоинт: POST /api/v1/resource_pool
+Поля: name, description, status_id, service_id, location_id, type_service_id
+Проверяет:
+  - успешный статус (200 или 201)
+  - валидный JSON в ответе
+  - наличие ID и корректность полей
+","4","test_create_resource_pool","tests.resource.resource_pool","Sun Aug 17 22:35:53 MSK 2025","broken","Sun Aug 17 22:35:53 MSK 2025","","test_resource_pool_create","",""
+"
+Тест получения информации об организации по её ID
+Проверяет:
+1. Успешный статус-код (200)
+2. Наличие обязательных полей в ответе
+","1183","test_get_organization_by_id","tests.organizations","Sun Aug 17 22:35:22 MSK 2025","passed","Sun Aug 17 22:35:24 MSK 2025","","test_organization_read","",""
+"
+Тест удаления сервиса ресурсов.
+Проверяет только: статус-код == 200.
+","1329","test_delete_resource_service_by_id","tests.resource.resource_service","Sun Aug 17 22:35:41 MSK 2025","passed","Sun Aug 17 22:35:43 MSK 2025","","test_resource_service_delete","",""
+"Обновление информации о тарифе по ID из .env","3","test_update_tariff","tests.tariff.tariff_crud","Sun Aug 17 22:36:05 MSK 2025","failed","Sun Aug 17 22:36:05 MSK 2025","","test_tariff_update","",""
+"
+Тест создания нового сервиса ресурсов через POST /api/v1/resource_service
+Ожидаемый ответ: {""id"": 123}
+Сохраняет ID в .env как CREATED_RESOURCE_SERVICE_ID
+","1161","test_create_resource_service","tests.resource.resource_service","Sun Aug 17 22:35:38 MSK 2025","passed","Sun Aug 17 22:35:39 MSK 2025","","test_resource_service_create","",""
+"
+Тест получения списка всех типов ресурсов (справочник)
+Проверяет:
+1. Успешный статус-код (200)
+2. Ответ в формате JSON
+3. Наличие массива данных
+4. Структуру каждого элемента (id, name)
+5. Непустой ответ
+","1288","test_get_resource_types_ref","tests.resource.resource_types_ref","Sun Aug 17 22:35:56 MSK 2025","passed","Sun Aug 17 22:35:57 MSK 2025","","test_resource_types_ref_read","",""
+"
+Параметризованный тест: получение связей тарифов с организациями
+по каждому фильтру по отдельности.
+","643","test_get_tariff_links_organization_filtered[by_tenant_id]","tests.tariff.tariff_links_organization","Sun Aug 17 22:36:05 MSK 2025","failed","Sun Aug 17 22:36:06 MSK 2025","","test_tariff_links_organization_read","",""
+"Получение информации о связи тарифа с арендатором по ID","3","test_get_tariff_link_tenant","tests.tariff.tariff_link_tenant_crud","Sun Aug 17 22:36:05 MSK 2025","failed","Sun Aug 17 22:36:05 MSK 2025","","test_tariff_link_tenant_read","",""
+"
+Тест: создание новой категории ресурса
+Эндпоинт: POST /api/v1/resource_category_ref
+Поля: type_ref_id, unit_measure_id, name, category_type_id
+Проверяет:
+  - статус 200 или 201
+  - валидный JSON в ответе
+  - наличие ID и корректность полей
+  - совпадение отправленных и полученных значений
+","3","test_create_resource_category","tests.resource.resource_category_ref","Sun Aug 17 22:35:50 MSK 2025","failed","Sun Aug 17 22:35:50 MSK 2025","","test_resource_category_ref_create","",""
+"
+Тест: обновление существующего местоположения ресурса по ID
+Эндпоинт: PUT /api/v1/resource_location/{id}
+Поля: name, address
+Проверяет:
+  - статус 200
+  - валидный JSON в ответе
+  - совпадение обновлённых значений
+  - неизменность ID
+","4","test_update_resource_location","tests.resource.resource_location","Sun Aug 17 22:35:52 MSK 2025","failed","Sun Aug 17 22:35:52 MSK 2025","","test_resource_location_update","",""
+"
+Тест удаления атомарного ресурса через DELETE /api/v1/resource_atom/{id}
+Проверяет:
+1. Успешный статус-код (200, 204 или 200 с флагом success)
+2. Отсутствие тела или корректный ответ об удалении
+3. Возможную проверку через GET после удаления (опционально)
+","1214","test_delete_resource_atom_by_id","tests.resource.resource_atom","Sun Aug 17 22:35:45 MSK 2025","failed","Sun Aug 17 22:35:46 MSK 2025","","test_resource_atom_delete","",""
+"Получение отчёта по услугам для организации (ORGANIZATION_ID из .env) за последние 6 месяцев","1603","test_get_services_report_for_organization","tests.report","Sun Aug 17 22:35:36 MSK 2025","passed","Sun Aug 17 22:35:38 MSK 2025","","test_report_read","",""
+"Обновление настроек арендатора по ID из .env","3","test_update_tariff_tenant_settings","tests.tariff.tariff_tenant_settings_crud","Sun Aug 17 22:36:10 MSK 2025","failed","Sun Aug 17 22:36:10 MSK 2025","","test_tariff_tenant_settings_update","",""
+"Получение информации о настройках арендатора по ID","4","test_get_tariff_tenant_settings_by_id","tests.tariff.tariff_tenant_settings_crud","Sun Aug 17 22:36:10 MSK 2025","failed","Sun Aug 17 22:36:10 MSK 2025","","test_tariff_tenant_settings_read","",""
+"Создание нового тарифа и сохранение его ID в .env","609","test_create_tariff","tests.tariff.tariff_crud","Sun Aug 17 22:36:04 MSK 2025","failed","Sun Aug 17 22:36:04 MSK 2025","","test_tariff_create","",""
+"Тест создания пользователя с сохранением ID","1487","test_create_user_and_save_id","tests.user","Sun Aug 17 22:35:07 MSK 2025","passed","Sun Aug 17 22:35:08 MSK 2025","","test_user_create","",""

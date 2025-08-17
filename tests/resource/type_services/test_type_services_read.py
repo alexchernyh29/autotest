@@ -1,11 +1,8 @@
-# Получить список всех типов сервисов /api/v1/resource/type_services
-
 import os
 import pytest
 import requests
 import allure
 from dotenv import load_dotenv, find_dotenv
-from pathlib import Path
 from allure_commons.types import AttachmentType
 
 # Путь к .env файлу
@@ -40,10 +37,50 @@ def get_auth_token(login, password, timeoutlive, domain):
         allure.attach(str(response.headers), name="Response Headers", attachment_type=AttachmentType.TEXT)
         allure.attach(str(response.text), name="Response Body", attachment_type=AttachmentType.TEXT)
 
-    response.raise_for_status()  
+    response.raise_for_status()
 
     token_data = response.json()
-    return token_data.get("tockenID")  # Ожидаем поле "tockenID" (с опечаткой)
+    return token_data.get("tockenID")
+
+
+# Ожидаемый ответ
+EXPECTED_TYPE_SERVICES = [
+    {
+        "id": 1,
+        "name": "Нематериальная услуга",
+        "sysname": "simple"
+    },
+    {
+        "id": 2,
+        "name": "Услуга аренды отдельной облачной службы",
+        "sysname": "service"
+    },
+    {
+        "id": 3,
+        "name": "Услуга аренды облачного сервиса",
+        "sysname": "cloud"
+    },
+    {
+        "id": 4,
+        "name": "Услуга аренды программного обеспечения",
+        "sysname": "software"
+    },
+    {
+        "id": 6,
+        "name": "Услуга аренды оборудования",
+        "sysname": "hardware"
+    },
+    {
+        "id": 7,
+        "name": "Услуга размещения оборудования",
+        "sysname": "colacation"
+    },
+    {
+        "id": 8,
+        "name": "Услуга аренды почтового сервиса",
+        "sysname": "mail"
+    }
+]
 
 
 @allure.story("Получение типов услуг")
@@ -51,10 +88,10 @@ def test_get_type_services():
     """
     Тест получения списка типов услуг (type_services)
     Проверяет:
-    1. Успешный статус-код (200)
-    2. Ответ в формате JSON
-    3. Наличие обязательных полей в каждом элементе
-    4. Непустой массив (если по бизнес-логике должен быть хотя бы один элемент)
+    1. Статус 200
+    2. Ответ — валидный JSON и массив
+    3. Структуру каждого элемента: id, name, sysname
+    4. Полное соответствие ожидаемому списку (включая порядок и значения)
     """
     with allure.step("Загрузка переменных окружения"):
         load_dotenv(ENV_FILE)
@@ -106,20 +143,20 @@ def test_get_type_services():
 
         assert isinstance(data, list), "Ожидался массив типов услуг"
 
-    if len(data) == 0:
-        with allure.step("Внимание: список типов услуг пуст"):
-            allure.attach(
-                "Список type_services пуст. Проверьте, есть ли данные в системе.",
-                name="Предупреждение",
-                attachment_type=AttachmentType.TEXT
-            )
-    else:
-        with allure.step("Проверка структуры каждого элемента в списке"):
-            required_fields = ["id", "name", "code"]  # Адаптируй под реальную структуру, если нужно
-            for idx, service in enumerate(data):
-                assert isinstance(service, dict), f"Элемент {idx} не является объектом"
-                missing = [field for field in required_fields if field not in service]
-                assert not missing, f"В типе услуги {idx} отсутствуют поля: {', '.join(missing)}"
+    with allure.step("Проверка структуры и содержимого каждого элемента"):
+        required_fields = ["id", "name", "sysname"]
+        for idx, service in enumerate(data):
+            assert isinstance(service, dict), f"Элемент {idx} не является объектом"
+            missing = [field for field in required_fields if field not in service]
+            assert not missing, f"В типе услуги {idx} отсутствуют поля: {', '.join(missing)}"
+
+    with allure.step("Проверка полного соответствия ожидаемому списку"):
+        assert data == EXPECTED_TYPE_SERVICES, (
+            "Ответ не соответствует ожидаемому списку типов услуг.\n"
+            f"Ожидалось: {EXPECTED_TYPE_SERVICES}\n"
+            f"Получено: {data}"
+        )
 
     with allure.step("Тест успешно пройден"):
-        allure.attach(f"Получено {len(data)} типов услуг", name="Результат", attachment_type=AttachmentType.TEXT)
+        allure.attach(f"Получено {len(data)} типов услуг. Ответ полностью соответствует ожидаемому.", 
+                      name="Результат", attachment_type=AttachmentType.TEXT)

@@ -1,0 +1,7 @@
+
+Успешно создан пользователь:
+ID: 909
+Login: autotest_0817223507
+Email: autotest+0817223507@example.com
+Phone: 798648339
+FIO: Autotest User mqaobp

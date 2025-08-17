@@ -1,10 +1,8 @@
-# Возвращает список пулов ресурсов /api/v1/resource_pools?by_service_id={id}&by_location_id={id}
 import os
-import pytest
 import requests
 import allure
+import pytest
 from dotenv import load_dotenv, find_dotenv
-from pathlib import Path
 from allure_commons.types import AttachmentType
 
 # Путь к .env файлу
@@ -34,28 +32,20 @@ def get_auth_token(login, password, timeoutlive, domain):
         allure.attach(str(params), name="Request Params", attachment_type=AttachmentType.TEXT)
 
         response = requests.post(url, headers=headers, params=params)
+        response.raise_for_status()
 
-        allure.attach(str(response.status_code), name="Response Status Code", attachment_type=AttachmentType.TEXT)
-        allure.attach(str(response.headers), name="Response Headers", attachment_type=AttachmentType.TEXT)
-        allure.attach(str(response.text), name="Response Body", attachment_type=AttachmentType.TEXT)
-
-    response.raise_for_status()
-    token_data = response.json()
-    return token_data.get("tockenID")  
+        token_data = response.json()
+        return token_data.get("tockenID")
 
 
 @allure.story("Получение списка пулов ресурсов с фильтрацией")
 def test_get_resource_pools_filtered():
     """
-    Тест получения списка пулов ресурсов с фильтрами:
-    - by_service_id=1
-    - by_location_id=1
-    Проверяет:
-    1. Успешный статус-код (200)
-    2. Ответ в формате JSON
-    3. Наличие массива данных
-    4. Соответствие структуры элементов
-    5. Опционально: проверка соответствия фильтрам
+    Тест проверяет:
+    1. Получение пулов ресурсов с фильтрами by_service_id и by_location_id
+    2. Все элементы имеют service_id == переданному
+    3. Все элементы имеют location.id == переданному
+    4. Подсчёт количества элементов (по id)
     """
     with allure.step("Загрузка переменных окружения"):
         load_dotenv(ENV_FILE)
@@ -66,9 +56,9 @@ def test_get_resource_pools_filtered():
         password = os.getenv("API_PASSWORD")
         domain = os.getenv("API_DOMAIN")
 
-        # Значения по умолчанию или из .env
-        service_id = os.getenv("FILTER_BY_SERVICE_ID", "1")
-        location_id = os.getenv("FILTER_BY_LOCATION_ID", "1")
+        # Значения фильтров — из .env или по умолчанию
+        service_id = os.getenv("FILTER_BY_SERVICE_ID", "414")
+        location_id = os.getenv("FILTER_BY_LOCATION_ID", "125")
 
     with allure.step("Проверка обязательных переменных окружения"):
         assert base_url, "API_URL не задан в .env"
@@ -90,12 +80,12 @@ def test_get_resource_pools_filtered():
         token = get_auth_token(login, password, 600, domain)
         assert token, "Не удалось получить токен аутентификации"
 
-    with allure.step("Формирование параметров запроса (query params)"):
+    with allure.step("Формирование параметров запроса"):
         params = {
             "by_service_id": service_id,
             "by_location_id": location_id
         }
-        allure.attach(str(params), name="Query Parameters", attachment_type=AttachmentType.JSON)
+        allure.attach(str(params), "Query Parameters", AttachmentType.JSON)
 
     with allure.step("Формирование URL и заголовков"):
         url = f"{base_url}/api/v1/resource_pools"
@@ -103,19 +93,19 @@ def test_get_resource_pools_filtered():
             "accept": "application/json",
             "tockenid": token
         }
-        allure.attach(url, name="Request URL", attachment_type=AttachmentType.TEXT)
-        allure.attach(str(headers), name="Request Headers", attachment_type=AttachmentType.JSON)
+        allure.attach(url, "Request URL", AttachmentType.TEXT)
+        allure.attach(str(headers), "Request Headers", AttachmentType.JSON)
 
-    with allure.step("Отправка GET-запроса с фильтрами"):
+    with allure.step("Отправка GET-запроса"):
         response = requests.get(url, headers=headers, params=params)
-        allure.attach(str(response.status_code), name="Response Status Code", attachment_type=AttachmentType.TEXT)
-        allure.attach(str(response.text), name="Response Body", attachment_type=AttachmentType.TEXT)
-        allure.attach(str(response.headers), name="Response Headers", attachment_type=AttachmentType.JSON)
+
+        allure.attach(str(response.status_code), "Response Status Code", AttachmentType.TEXT)
+        allure.attach(response.text, "Response Body", AttachmentType.TEXT)
+        allure.attach(str(dict(response.headers)), "Response Headers", AttachmentType.JSON)
 
     with allure.step("Проверка статуса ответа"):
         assert response.status_code == 200, (
-            f"Ошибка при получении пулов ресурсов. "
-            f"Статус: {response.status_code}, Ответ: {response.text}"
+            f"Ошибка при получении пулов ресурсов. Статус: {response.status_code}, Ответ: {response.text}"
         )
 
     with allure.step("Парсинг JSON-ответа"):
@@ -124,46 +114,55 @@ def test_get_resource_pools_filtered():
         except ValueError:
             pytest.fail("Ответ не является валидным JSON")
 
-        allure.attach(str(data), name="Parsed Response Data", attachment_type=AttachmentType.JSON)
+        allure.attach(str(data), "Parsed Response", AttachmentType.JSON)
 
         assert isinstance(data, list), "Ожидался массив пулов ресурсов"
 
-    if len(data) == 0:
-        with allure.step("Внимание: список пулов ресурсов пуст"):
-            allure.attach(
-                "Фильтр вернул пустой список. Проверьте, существуют ли пулы с by_service_id=1 и by_location_id=1.",
-                name="Предупреждение",
-                attachment_type=AttachmentType.TEXT
+    with allure.step("Проверка соответствия фильтрам и подсчёт id"):
+        if len(data) == 0:
+            pytest.fail("Ответ вернул пустой список. Проверьте, существуют ли данные для указанных фильтров.")
+
+        received_ids = []
+
+        for idx, pool in enumerate(data):
+            assert isinstance(pool, dict), f"Элемент [{idx}] не является объектом"
+
+            # Проверка обязательных полей
+            assert "id" in pool, f"Отсутствует 'id' в элементе [{idx}]"
+            assert "service_id" in pool, f"Отсутствует 'service_id' в элементе [{idx}]"
+            assert "location" in pool, f"Отсутствует 'location' в элементе [{idx}]"
+            assert isinstance(pool["location"], dict), f"'location' должен быть объектом в элементе [{idx}]"
+            assert "id" in pool["location"], f"Отсутствует 'location.id' в элементе [{idx}]"
+
+            # Собираем id
+            received_ids.append(pool["id"])
+
+            # Проверка фильтров
+            assert pool["service_id"] == service_id, (
+                f"Пул ID={pool['id']} имеет service_id={pool['service_id']}, ожидался {service_id}"
             )
-    else:
-        with allure.step("Проверка структуры элементов в списке"):
-            # Базовые обязательные поля (можно уточнить по реальному ответу)
-            required_fields = ["id", "name", "service_id", "location_id", "pool_type"]
+            assert pool["location"]["id"] == location_id, (
+                f"Пул ID={pool['id']} имеет location.id={pool['location']['id']}, ожидался {location_id}"
+            )
 
-            for idx, pool in enumerate(data):
-                assert isinstance(pool, dict), f"Элемент [{idx}] не является объектом"
+        # Подсчёт и вывод количества
+        count = len(received_ids)
+        unique_count = len(set(received_ids))
 
-                missing = [field for field in required_fields if field not in pool]
-                assert not missing, f"В элементе [{idx}] отсутствуют обязательные поля: {', '.join(missing)}"
+        with allure.step("Проверка уникальности id"):
+            assert count == unique_count, "Обнаружены дубликаты id в ответе"
 
-                # Проверка типов
-                assert isinstance(pool["id"], int), f"id элемента [{idx}] должно быть числом"
-                assert isinstance(pool["name"], str), f"name элемента [{idx}] должно быть строкой"
-                assert isinstance(pool["service_id"], int), f"service_id элемента [{idx}] должно быть числом"
-                assert isinstance(pool["location_id"], int), f"location_id элемента [{idx}] должно быть числом"
-                assert isinstance(pool["pool_type"], (str, type(None))), f"pool_type элемента [{idx}] должно быть строкой или null"
+        with allure.step("Результат подсчёта"):
+            allure.attach(
+                f"Найдено {count} уникальных пулов ресурсов с by_service_id={service_id} и by_location_id={location_id}",
+                "Количество элементов",
+                AttachmentType.TEXT
+            )
+            allure.attach(
+                ", ".join(map(str, sorted(received_ids))),
+                "Список ID",
+                AttachmentType.TEXT
+            )
 
-                # Проверка соответствия фильтрам (опционально)
-                assert pool["service_id"] == service_id, (
-                    f"Пул ID={pool['id']} имеет service_id={pool['service_id']}, ожидался {service_id}"
-                )
-                assert pool["location_id"] == location_id, (
-                    f"Пул ID={pool['id']} имеет location_id={pool['location_id']}, ожидался {location_id}"
-                )
-
-    with allure.step("Тест завершён успешно"):
-        allure.attach(
-            f"Получено {len(data)} пулов ресурсов с by_service_id={service_id} и by_location_id={location_id}",
-            name="Результат",
-            attachment_type=AttachmentType.TEXT
-        )
+    # Финальная проверка — можно использовать значение в других тестах
+    assert count > 0, "Не найдено ни одного пула ресурсов по заданным фильтрам"

@@ -1,4 +1,5 @@
-# Создает новый сервис ресурсов /api/v1/resource_service
+# tests/resource_service/test_create_resource_service.py
+
 import os
 import pytest
 import requests
@@ -41,18 +42,38 @@ def get_auth_token(login, password, timeoutlive, domain):
 
     response.raise_for_status()
     token_data = response.json()
-    return token_data.get("tockenID")  
+    return token_data.get("tockenID")
+
+
+def set_env_variable(key: str, value: str, env_path: str = ENV_FILE):
+    """
+    Добавляет или обновляет переменную в .env файле
+    """
+    env_path = Path(env_path)
+    lines = []
+    key_found = False
+
+    if env_path.exists():
+        with open(env_path, "r", encoding="utf-8") as file:
+            lines = file.readlines()
+
+    with open(env_path, "w", encoding="utf-8") as file:
+        for line in lines:
+            if line.strip().startswith(f"{key}="):
+                file.write(f"{key}={value}\n")
+                key_found = True
+            else:
+                file.write(line)
+        if not key_found:
+            file.write(f"{key}={value}\n")
 
 
 @allure.story("Создание нового сервиса ресурсов (resource_service)")
 def test_create_resource_service():
     """
     Тест создания нового сервиса ресурсов через POST /api/v1/resource_service
-    Проверяет:
-    1. Успешный статус-код (200 или 201)
-    2. Валидность JSON-ответа
-    3. Наличие ID и переданных данных в ответе
-    4. Корректность типов полей
+    Ожидаемый ответ: {"id": 123}
+    Сохраняет ID в .env как CREATED_RESOURCE_SERVICE_ID
     """
     with allure.step("Загрузка переменных окружения"):
         load_dotenv(ENV_FILE)
@@ -102,7 +123,6 @@ def test_create_resource_service():
         allure.attach(str(response.headers), name="Response Headers", attachment_type=AttachmentType.JSON)
 
     with allure.step("Проверка статуса ответа"):
-        # Обычно 200 или 201 при успешном создании
         assert response.status_code in [200, 201], (
             f"Ошибка при создании сервиса ресурсов. "
             f"Статус: {response.status_code}, Ответ: {response.text}"
@@ -117,28 +137,26 @@ def test_create_resource_service():
         allure.attach(str(data), name="Parsed Response Data", attachment_type=AttachmentType.JSON)
 
     with allure.step("Проверка структуры ответа"):
-        required_fields = ["id", "name", "system_name"]
-        missing = [field for field in required_fields if field not in data]
-        assert not missing, f"В ответе отсутствуют обязательные поля: {', '.join(missing)}"
+        assert "id" in data, "В ответе отсутствует поле 'id'"
+        assert isinstance(data["id"], int), "Поле 'id' должно быть целым числом"
+        assert data["id"] > 0, "ID должен быть положительным числом"
 
-        # Проверка типов
-        assert isinstance(data["id"], int), "Поле 'id' должно быть числом"
-        assert isinstance(data["name"], str), "Поле 'name' должно быть строкой"
-        assert isinstance(data["system_name"], str), "Поле 'system_name' должно быть строкой"
+    created_id = data["id"]
 
-        # Проверка соответствия данных
-        assert data["name"] == request_body["name"], "Поле 'name' в ответе не совпадает с отправленным"
-        assert data["system_name"] == request_body["system_name"], "Поле 'system_name' не совпадает"
+    with allure.step("Сохранение ID в .env файл"):
+        set_env_variable("CREATED_RESOURCE_SERVICE_ID", str(created_id))
+        allure.attach(
+            f"Сохранён ID сервиса: {created_id} → .env переменная CREATED_RESOURCE_SERVICE_ID",
+            name="Сохранение ID",
+            attachment_type=AttachmentType.TEXT
+        )
 
-        # Проверка, что ID положительный
-        assert data["id"] > 0, "ID созданного сервиса должен быть положительным"
-
-    with allure.step("Тест завершён успешно"):
+    with allure.step("✅ Тест завершён успешно"):
         allure.attach(
             f"Создан сервис ресурсов:\n"
-            f"  ID: {data['id']}\n"
-            f"  Name: {data['name']}\n"
-            f"  System Name: {data['system_name']}",
+            f"  ID: {created_id}\n"
+            f"  Name (в запросе): {unique_name}\n"
+            f"  System Name (в запросе): {unique_system_name}",
             name="Результат",
             attachment_type=AttachmentType.TEXT
         )

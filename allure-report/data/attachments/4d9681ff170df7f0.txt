@@ -1,0 +1,3 @@
+ID: 2
+Name (RU): Владелец Организации
+System Name (EN): ROLE_ORGANIZATION_OWNER

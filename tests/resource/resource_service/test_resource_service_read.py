@@ -1,10 +1,10 @@
-# Возвращает информацию о сервисе ресурсов /api/v1/resource_service/{id}
+# tests/resource_service/test_get_resource_service_by_id.py
+
 import os
 import pytest
 import requests
 import allure
 from dotenv import load_dotenv, find_dotenv
-from pathlib import Path
 from allure_commons.types import AttachmentType
 
 # Путь к .env файлу
@@ -41,7 +41,7 @@ def get_auth_token(login, password, timeoutlive, domain):
 
     response.raise_for_status()
     token_data = response.json()
-    return token_data.get("tockenID")  # Ожидается "tockenID" (с опечаткой)
+    return token_data.get("tockenID")  # Обратите внимание на опечатку: tockenID
 
 
 @allure.story("Получение информации о сервисе ресурсов по ID")
@@ -63,20 +63,25 @@ def test_get_resource_service_by_id():
         login = os.getenv("API_LOGIN")
         password = os.getenv("API_PASSWORD")
         domain = os.getenv("API_DOMAIN")
-        service_id = os.getenv("RESOURCE_SERVICE_ID", "12112121")  # Можно задать в .env
+
+        # 🔹 Берём ID из созданного ранее сервиса
+        service_id_str = os.getenv("CREATED_RESOURCE_SERVICE_ID")
 
     with allure.step("Проверка обязательных переменных окружения"):
         assert base_url, "API_URL не задан в .env"
         assert login, "API_LOGIN не задан в .env"
         assert password, "API_PASSWORD не задан в .env"
         assert domain, "API_DOMAIN не задан в .env"
-        assert service_id, "RESOURCE_SERVICE_ID не задан"
+        assert service_id_str, (
+            "CREATED_RESOURCE_SERVICE_ID не найден в .env. "
+            "Сначала выполните тест создания сервиса ресурсов."
+        )
 
     try:
-        service_id = int(service_id)
+        service_id = int(service_id_str)
         assert service_id > 0, "ID сервиса ресурсов должен быть положительным числом"
     except (ValueError, TypeError):
-        pytest.fail("RESOURCE_SERVICE_ID должен быть целым положительным числом")
+        pytest.fail("CREATED_RESOURCE_SERVICE_ID должен быть целым положительным числом")
 
     with allure.step("Получение токена аутентификации"):
         token = get_auth_token(login, password, 600, domain)
@@ -99,9 +104,10 @@ def test_get_resource_service_by_id():
 
     with allure.step("Проверка статуса ответа"):
         if response.status_code == 404:
-            pytest.fail(f"Сервис ресурсов с ID={service_id} не найден. Проверьте корректность ID.")
+            pytest.fail(f"Сервис ресурсов с ID={service_id} не найден. "
+                       "Возможно, он был удалён или не был создан.")
         elif response.status_code == 400:
-            pytest.fail(f"Некорректный формат ID. Возможно, передано не число.")
+            pytest.fail(f"Некорректный формат ID: {service_id}.")
         elif response.status_code != 200:
             pytest.fail(f"Ошибка API: статус {response.status_code}, тело: {response.text}")
 
@@ -119,22 +125,22 @@ def test_get_resource_service_by_id():
         assert not missing, f"Отсутствуют обязательные поля: {', '.join(missing)}"
 
         # Проверка типов
-        assert isinstance(data["id"], int), "Поле 'id' должно быть числом"
+        assert isinstance(data["id"], int), "Поле 'id' должно быть целым числом"
         assert isinstance(data["name"], str), "Поле 'name' должно быть строкой"
         assert isinstance(data["system_name"], str), "Поле 'system_name' должно быть строкой"
 
         # Проверка соответствия ID
         assert data["id"] == service_id, (
-            f"Ожидался сервис с ID={service_id}, но получен ID={data['id']}"
+            f"Ожидался ID={service_id}, но получен ID={data['id']}"
         )
 
         # Проверка, что строки не пустые
         assert data["name"].strip() != "", "Поле 'name' не должно быть пустым"
         assert data["system_name"].strip() != "", "Поле 'system_name' не должно быть пустым"
 
-    with allure.step("Тест завершён успешно"):
+    with allure.step("✅ Тест завершён успешно"):
         allure.attach(
-            f"Получен сервис ресурсов:\n"
+            f"Успешно получен сервис ресурсов:\n"
             f"  ID: {data['id']}\n"
             f"  Name: {data['name']}\n"
             f"  System Name: {data['system_name']}",

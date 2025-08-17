@@ -1,10 +1,11 @@
-# Возвращает список всех типов ресурсов (справочник) /api/v1/resource_types_ref
+# tests/resource/test_get_resource_types_ref.py
+
 import os
 import pytest
+import json
 import requests
 import allure
-from dotenv import load_dotenv
-from pathlib import Path
+from dotenv import load_dotenv, find_dotenv
 from allure_commons.types import AttachmentType
 
 # Путь к .env файлу
@@ -41,7 +42,7 @@ def get_auth_token(login, password, timeoutlive, domain):
 
     response.raise_for_status()
     token_data = response.json()
-    return token_data.get("tockenID")  # Ожидаем поле "tockenID" (с опечаткой)
+    return token_data.get("tockenID")  # Обратите внимание на опечатку: tockenID
 
 
 @allure.story("Получение справочника типов ресурсов (resource_types_ref)")
@@ -52,8 +53,8 @@ def test_get_resource_types_ref():
     1. Успешный статус-код (200)
     2. Ответ в формате JSON
     3. Наличие массива данных
-    4. Структуру каждого элемента (id, name, code)
-    5. Непустой ответ (если ожидается)
+    4. Структуру каждого элемента (id, name)
+    5. Непустой ответ
     """
     with allure.step("Загрузка переменных окружения"):
         load_dotenv(ENV_FILE)
@@ -81,13 +82,21 @@ def test_get_resource_types_ref():
             "tockenid": token
         }
         allure.attach(url, name="Request URL", attachment_type=AttachmentType.TEXT)
-        allure.attach(str(headers), name="Request Headers", attachment_type=AttachmentType.JSON)
+        allure.attach(
+            json.dumps(headers, ensure_ascii=False, indent=2),
+            name="Request Headers",
+            attachment_type=AttachmentType.JSON
+        )
 
     with allure.step("Отправка GET-запроса к /resource_types_ref"):
         response = requests.get(url, headers=headers)
         allure.attach(str(response.status_code), name="Response Status Code", attachment_type=AttachmentType.TEXT)
         allure.attach(str(response.text), name="Response Body", attachment_type=AttachmentType.TEXT)
-        allure.attach(str(response.headers), name="Response Headers", attachment_type=AttachmentType.JSON)
+        allure.attach(
+            json.dumps(dict(response.headers), ensure_ascii=False, indent=2),
+            name="Response Headers",
+            attachment_type=AttachmentType.JSON
+        )
 
     with allure.step("Проверка статуса ответа"):
         assert response.status_code == 200, (
@@ -101,38 +110,38 @@ def test_get_resource_types_ref():
         except ValueError:
             pytest.fail("Ответ не является валидным JSON")
 
-        allure.attach(str(data), name="Parsed Response Data", attachment_type=AttachmentType.JSON)
+        allure.attach(
+            json.dumps(data, ensure_ascii=False, indent=2),
+            name="Parsed Response Data",
+            attachment_type=AttachmentType.JSON
+        )
 
         assert isinstance(data, list), "Ожидался массив типов ресурсов"
 
-    if len(data) == 0:
-        with allure.step("Внимание: справочник пуст"):
-            allure.attach(
-                "Список типов ресурсов пуст. Проверьте, заполнены ли данные в системе.",
-                name="Предупреждение",
-                attachment_type=AttachmentType.TEXT
-            )
-    else:
-        with allure.step("Проверка структуры каждого элемента"):
-            required_fields = ["id", "name", "code"]
-            for idx, item in enumerate(data):
-                assert isinstance(item, dict), f"Элемент [{idx}] не является объектом"
+    with allure.step("Проверка: список не должен быть пустым"):
+        assert len(data) > 0, "Список типов ресурсов пуст — ожидался хотя бы один элемент"
+
+    with allure.step(f"Проверка структуры {len(data)} элементов"):
+        required_fields = ["id", "name"]  # Поле 'code' отсутствует в ответе
+
+        for idx, item in enumerate(data):
+            with allure.step(f"Тип ресурса #{idx + 1} (ID={item.get('id')})"):
+                assert isinstance(item, dict), "Каждый элемент должен быть объектом"
 
                 missing = [field for field in required_fields if field not in item]
-                assert not missing, f"В элементе [{idx}] отсутствуют поля: {', '.join(missing)}"
+                assert not missing, f"Отсутствуют обязательные поля: {', '.join(missing)}"
 
                 # Проверка типов
-                assert isinstance(item["id"], int), f"id элемента [{idx}] должно быть числом"
-                assert isinstance(item["name"], str), f"name элемента [{idx}] должно быть строкой"
-                assert isinstance(item["code"], str), f"code элемента [{idx}] должно быть строкой"
+                assert isinstance(item["id"], int), "Поле 'id' должно быть целым числом"
+                assert isinstance(item["name"], str), "Поле 'name' должно быть строкой"
 
-                # Проверка, что строки не пустые
-                assert item["name"].strip() != "", f"name элемента [{idx}] не должен быть пустым"
-                assert item["code"].strip() != "", f"code элемента [{idx}] не должен быть пустым"
+                # Проверка, что имя не пустое
+                assert item["name"].strip() != "", "Поле 'name' не должно быть пустым"
 
-    with allure.step("Тест завершён успешно"):
+    with allure.step("✅ Тест завершён успешно"):
+        names = [item["name"] for item in data]
         allure.attach(
-            f"Получено {len(data)} типов ресурсов",
+            f"Получены типы ресурсов: {', '.join(names)}",
             name="Результат",
             attachment_type=AttachmentType.TEXT
         )

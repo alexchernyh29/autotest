@@ -1,10 +1,11 @@
-# Возвращает список всех сервисов ресурсов /api/v1/resource_services
+# tests/resource_service/test_get_resource_services.py
+
 import os
 import pytest
+import json
 import requests
 import allure
 from dotenv import load_dotenv, find_dotenv
-from pathlib import Path
 from allure_commons.types import AttachmentType
 
 # Путь к .env файлу
@@ -41,7 +42,7 @@ def get_auth_token(login, password, timeoutlive, domain):
 
     response.raise_for_status()
     token_data = response.json()
-    return token_data.get("tockenID")  # Ожидается "tockenID" (с опечаткой)
+    return token_data.get("tockenID")  # Обратите внимание на опечатку: tockenID
 
 
 @allure.story("Получение списка всех сервисов ресурсов (resource_services)")
@@ -52,7 +53,7 @@ def test_get_resource_services():
     1. Успешный статус-код (200)
     2. Ответ в формате JSON
     3. Наличие массива данных
-    4. Структуру каждого элемента (id, name, code, type_service_ref и др.)
+    4. Структуру каждого элемента (id, name, system_name, create_time и др.)
     5. Непустой ответ (если ожидается)
     """
     with allure.step("Загрузка переменных окружения"):
@@ -101,7 +102,11 @@ def test_get_resource_services():
         except ValueError:
             pytest.fail("Ответ не является валидным JSON")
 
-        allure.attach(str(data), name="Parsed Response Data", attachment_type=AttachmentType.JSON)
+        allure.attach(
+            json.dumps(data, ensure_ascii=False, indent=2),
+            name="Parsed Response Data",
+            attachment_type=AttachmentType.JSON
+        )
 
         assert isinstance(data, list), "Ожидался массив сервисов ресурсов"
 
@@ -112,31 +117,44 @@ def test_get_resource_services():
                 name="Предупреждение",
                 attachment_type=AttachmentType.TEXT
             )
-    else:
-        with allure.step("Проверка структуры каждого элемента в списке"):
-            # Базовые обязательные поля (можно уточнить по реальному ответу)
-            required_fields = ["id", "name", "code", "type_service_ref"]
+        return
 
-            for idx, service in enumerate(data):
-                assert isinstance(service, dict), f"Элемент [{idx}] не является объектом"
+    with allure.step(f"Проверка структуры каждого из {len(data)} элементов"):
+        required_fields = ["id", "name", "system_name", "create_time", "update_time", "create_user_id", "update_user_id"]
 
+        for idx, service in enumerate(data):
+            with allure.step(f"Сервис #{idx + 1} (ID={service.get('id')})"):
+                assert isinstance(service, dict), "Каждый элемент должен быть объектом"
+
+                # Проверка обязательных полей
                 missing = [field for field in required_fields if field not in service]
-                assert not missing, f"В элементе [{idx}] отсутствуют обязательные поля: {', '.join(missing)}"
+                assert not missing, f"Отсутствуют поля: {', '.join(missing)}"
 
                 # Проверка типов
-                assert isinstance(service["id"], int), f"id элемента [{idx}] должно быть числом"
-                assert isinstance(service["name"], str), f"name элемента [{idx}] должно быть строкой"
-                assert isinstance(service["code"], str), f"code элемента [{idx}] должно быть строкой"
-                assert isinstance(service["type_service_ref"], (int, type(None))), \
-                    f"type_service_ref элемента [{idx}] должно быть числом или null"
+                assert isinstance(service["id"], int), "Поле 'id' должно быть целым числом"
+                assert isinstance(service["name"], str), "Поле 'name' должно быть строкой"
+                assert isinstance(service["system_name"], str), "Поле 'system_name' должно быть строкой"
+                assert isinstance(service["create_user_id"], int), "Поле 'create_user_id' должно быть числом"
+                assert isinstance(service["update_user_id"], int), "Поле 'update_user_id' должно быть числом"
+
+                # Проверка времени
+                for time_field in ["create_time", "update_time"]:
+                    time_obj = service[time_field]
+                    assert isinstance(time_obj, dict), f"Поле '{time_field}' должно быть объектом"
+                    assert "date" in time_obj, f"В '{time_field}' отсутствует 'date'"
+                    assert "timezone_type" in time_obj, f"В '{time_field}' отсутствует 'timezone_type'"
+                    assert "timezone" in time_obj, f"В '{time_field}' отсутствует 'timezone'"
+                    assert isinstance(time_obj["date"], str), f"date в '{time_field}' должно быть строкой"
+                    assert isinstance(time_obj["timezone_type"], int), f"timezone_type в '{time_field}' должно быть числом"
+                    assert isinstance(time_obj["timezone"], str), f"timezone в '{time_field}' должно быть строкой"
 
                 # Проверка, что строки не пустые
-                assert service["name"].strip() != "", f"name элемента [{idx}] не должен быть пустым"
-                assert service["code"].strip() != "", f"code элемента [{idx}] не должен быть пустым"
+                assert service["name"].strip() != "", "Поле 'name' не должно быть пустым"
+                assert service["system_name"].strip() != "", "Поле 'system_name' не должно быть пустым"
 
-    with allure.step("Тест завершён успешно"):
+    with allure.step("✅ Тест завершён успешно"):
         allure.attach(
-            f"Получено {len(data)} сервисов ресурсов",
+            f"Успешно получено {len(data)} сервисов ресурсов.",
             name="Результат",
             attachment_type=AttachmentType.TEXT
         )

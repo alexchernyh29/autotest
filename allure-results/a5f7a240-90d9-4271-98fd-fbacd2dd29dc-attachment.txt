@@ -1,0 +1,1 @@
+URL с параметрами: https://dev1api.cloudpanel.ru/api/v1/tariffs?by_service_id=304&by_name=%D0%A3%D1%81%D0%BB%D1%83%D0%B3%D0%B8+%D0%A6%D0%9E%D0%94
