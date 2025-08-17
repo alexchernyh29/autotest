@@ -37,10 +37,10 @@ def get_auth_token(login, password, timeoutlive, domain):
         allure.attach(str(response.headers), name="Response Headers", attachment_type=AttachmentType.TEXT)
         allure.attach(str(response.text), name="Response Body", attachment_type=AttachmentType.TEXT)
         
-    response.raise_for_status()  # Проверка на ошибки HTTP
+    response.raise_for_status()  
 
     token_data = response.json()
-    return token_data.get("tockenID")  # Предполагается, что ответ содержит поле "tockenID"
+    return token_data.get("tockenID")  
 
 @allure.story("Получение информации об организации")
 def test_get_organization_by_id():

@@ -1,0 +1,6 @@
+Успешно создан пользователь:
+ID: 868
+Login: autotest_0817175608
+Email: autotest+0817175608@example.com
+Phone: 793894207
+FIO: Autotest User hll1s5

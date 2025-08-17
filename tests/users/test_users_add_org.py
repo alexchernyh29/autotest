@@ -19,13 +19,13 @@ def test_create_user_organization_link():
         load_dotenv(ENV_FILE)
         base_url = os.getenv("API_URL")
         token = os.getenv("TOKEN_ID")
-        user_id = os.getenv("TEST_USER_ID")
+        user_id = os.getenv("CREATED_USER_ID")
         org_id = os.getenv("ORGANIZATION_ID")
 
         # Проверка обязательных переменных
         assert base_url, "API_URL не задан в .env"
         assert token, "TOKEN_ID не задан в .env"
-        assert user_id, "TEST_USER_ID не задан в .env"
+        assert user_id, "CREATED_USER_ID не задан в .env"
         assert org_id, "ORGANIZATION_ID не задан в .env"
 
         try:

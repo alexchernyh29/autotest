@@ -1,0 +1,15 @@
+{
+  "header": {
+    "report_type": "Services",
+    "format": "json",
+    "begin_date": "18.02.2025",
+    "end_date": "17.08.2025",
+    "$organization": {
+      "id": 464,
+      "name": "Thompson, Parks and Moreno",
+      "number_contract": "813712919"
+    }
+  },
+  "items": [],
+  "comment": "prebilling data"
+}
