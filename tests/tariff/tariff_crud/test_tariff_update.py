@@ -1,32 +1,43 @@
 # Обновляет информацию о тарифе /api/v1/tariff/{id}
-# tests/test_update_tariff.py
+# tests/tariff/tariff_crud/test_tariff_update.py
 
 import os
+import json  # Добавлен импорт
 import requests
 import pytest
 import allure
 from dotenv import load_dotenv, find_dotenv
-from pathlib import Path
+from allure_commons.types import AttachmentType
 
 # Путь к .env файлу
 ENV_FILE = find_dotenv()
 assert ENV_FILE, "Файл .env не найден в корне проекта"
 
-@allure.feature("Обновление тарифа")
+
+@allure.feature("Тарифы")
+@allure.story("Обновление тарифа")
 def test_update_tariff():
-    """Обновление информации о тарифе по ID из .env"""
+    """
+    Тест обновления тарифа через PUT /api/v1/tariff/{id}
+    Проверяет:
+    1. Успешный статус 200 при обновлении
+    2. Все обновлённые поля через GET-запрос (включая вложенные объекты)
+    """
     with allure.step("Подготовка тестовых данных"):
         load_dotenv(ENV_FILE)
         base_url = os.getenv("API_URL")
         token = os.getenv("TOKEN_ID")
         tariff_id = os.getenv("CREATED_TARIFF_ID")
 
-        # Проверяем обязательные переменные
         assert base_url, "API_URL не задан в .env"
         assert token, "TOKEN_ID не задан в .env"
-        assert tariff_id, "CREATED_TARIFF_ID не задан в .env. Запустите сначала test_create_tariff.py"
+        assert tariff_id, "CREATED_TARIFF_ID не задан в .env"
 
-        tariff_id = int(tariff_id)  # Приводим к int для удобства
+        try:
+            tariff_id = int(tariff_id)
+            assert tariff_id > 0, "CREATED_TARIFF_ID должен быть положительным числом"
+        except (ValueError, TypeError):
+            pytest.fail("CREATED_TARIFF_ID должен быть целым положительным числом")
 
     url = f"{base_url}/api/v1/tariff/{tariff_id}"
     headers = {
@@ -35,83 +46,101 @@ def test_update_tariff():
         "tockenid": token
     }
 
-    # Тело запроса с обновлёнными данными
     payload = {
-        "name": "Новый тариф",
-        "description": "Подробное описание тарифа",
-        "service_id": 123,
-        "status_id": 1,
-        "type_level_resource": 1,
-        "location_id": 1,
-        "time_interval_id": 1,
-        "permanent_service": 0
+        "name": "Новый AutoTest Tariff",
+        "description": "Created by API test",
+        "service_id": 418,
+        "status_id": 2,
+        "type_level_resource": 2,
+        "location_id": 125,
+        "time_interval_id": 3,
+        "permanent_service": 1
     }
 
-    with allure.step(f"Отправка PUT-запроса на {url} для обновления тарифа"):
+    with allure.step(f"Отправка PUT-запроса на обновление тарифа (ID={tariff_id})"):
         curl_command = (
             f"curl -X PUT '{url}' "
             f"-H 'accept: */*' "
             f"-H 'Content-Type: application/json' "
             f"-H 'tockenid: {token}' "
-            f"-d '{str(payload).replace(' ', '').replace("'", '"')}'"
+            f"-d '{json.dumps(payload)}'"
         )
+        allure.attach(curl_command, name="CURL команда", attachment_type=AttachmentType.TEXT)
         allure.attach(
-            curl_command,
-            name="CURL команда",
-            attachment_type=allure.attachment_type.TEXT
-        )
-
-        allure.attach(
-            str(headers),
+            json.dumps(headers, indent=2, ensure_ascii=False),
             name="Request Headers",
-            attachment_type=allure.attachment_type.TEXT
+            attachment_type=AttachmentType.JSON
         )
-
         allure.attach(
-            payload,
+            json.dumps(payload, indent=2, ensure_ascii=False),
             name="Request Body (JSON)",
-            attachment_type=allure.attachment_type.JSON
+            attachment_type=AttachmentType.JSON
         )
 
         response = requests.put(url, json=payload, headers=headers)
 
-        with allure.step("Проверка ответа на обновление"):
-            allure.attach(
-                f"Status Code: {response.status_code}\nResponse: {response.text}",
-                name="Response Details",
-                attachment_type=allure.attachment_type.TEXT
+        allure.attach(
+            f"Status Code: {response.status_code}\nResponse Body: {response.text}",
+            name="Response Details",
+            attachment_type=AttachmentType.TEXT
+        )
+
+        with allure.step("Проверка: статус-код должен быть 200"):
+            assert response.status_code == 200, (
+                f"Ожидался статус 200, но получен {response.status_code}. "
+                f"Тело ответа: {response.text}"
             )
 
-            assert response.status_code == 200, \
-                f"Ожидался статус 200, но получен {response.status_code}"
-
-            try:
-                updated_data = response.json()
-            except ValueError:
-                pytest.fail("Ответ не является валидным JSON")
-
-            allure.attach(
-                updated_data,
-                name="Updated Tariff Data",
-                attachment_type=allure.attachment_type.JSON
-            )
-
-            with allure.step("Проверка, что обновлённые данные соответствуют отправленным"):
-                assert updated_data.get("id") == tariff_id, "ID тарифа в ответе не совпадает"
-                assert updated_data.get("name") == payload["name"], "Имя тарифа не обновилось"
-                assert updated_data.get("description") == payload["description"], "Описание не обновилось"
-                assert updated_data.get("service_id") == payload["service_id"], "service_id не обновился"
-                assert updated_data.get("status_id") == payload["status_id"], "status_id не обновился"
-                assert updated_data.get("type_level_resource") == payload["type_level_resource"], "type_level_resource не обновился"
-                assert updated_data.get("location_id") == payload["location_id"], "location_id не обновился"
-                assert updated_data.get("time_interval_id") == payload["time_interval_id"], "time_interval_id не обновился"
-                assert updated_data.get("permanent_service") == payload["permanent_service"], "permanent_service не обновился"
-
-    # Дополнительно: GET-запрос для проверки, что изменения сохранились
-    with allure.step("Дополнительная проверка: GET-запрос для подтверждения изменений"):
+    # === Проверка через GET ===
+    with allure.step("Проверка изменений через GET-запрос"):
         get_response = requests.get(url, headers={"accept": "*/*", "tockenid": token})
-        assert get_response.status_code == 200, "GET после обновления вернул не 200"
+        allure.attach(
+            f"Status: {get_response.status_code}\nBody: {get_response.text}",
+            name="GET Response",
+            attachment_type=AttachmentType.TEXT
+        )
 
-        actual_data = get_response.json()
-        assert actual_data.get("name") == payload["name"], "Имя не сохранилось после обновления"
-        assert actual_data.get("description") == payload["description"], "Описание не сохранилось"
+        assert get_response.status_code == 200, "GET-запрос вернул не 200"
+
+        try:
+            actual_data = get_response.json()
+        except ValueError:
+            pytest.fail("GET-ответ не является валидным JSON")
+
+        # ✅ Исправлено: преобразуем dict в JSON-строку
+        allure.attach(
+            json.dumps(actual_data, ensure_ascii=False, indent=2),
+            name="Actual Tariff Data (GET)",
+            attachment_type=AttachmentType.JSON
+        )
+
+        with allure.step("Проверка соответствия обновлённых данных"):
+            # Простые поля (на верхнем уровне)
+            assert actual_data.get("name") == payload["name"], "Имя тарифа не сохранилось"
+            assert actual_data.get("description") == payload["description"], "Описание не сохранилось"
+            assert actual_data.get("status_id") == payload["status_id"], "status_id не сохранился"
+            assert actual_data.get("type_level_resource") == payload["type_level_resource"], "type_level_resource не сохранился"
+            assert actual_data.get("permanent_service") == payload["permanent_service"], "permanent_service не сохранился"
+
+            # Проверка service_id через вложенный объект
+            service = actual_data.get("service")
+            assert service is not None, "Отсутствует объект 'service' в ответе"
+            assert service.get("id") == payload["service_id"], "service_id не совпадает"
+
+            # Проверка location_id через вложенный объект
+            location = actual_data.get("location")
+            assert location is not None, "Отсутствует объект 'location' в ответе"
+            assert location.get("id") == payload["location_id"], "location_id не совпадает"
+
+            # Проверка time_interval_id через вложенный объект
+            time_interval = actual_data.get("time_interval")
+            assert time_interval is not None, "Отсутствует объект 'time_interval' в ответе"
+            assert time_interval.get("id") == payload["time_interval_id"], "time_interval_id не совпадает"
+
+    with allure.step("Тест успешно завершён"):
+        allure.attach(
+            f"Тариф с ID={tariff_id} успешно обновлён и проверен.\n"
+            f"Все поля соответствуют ожидаемым значениям.",
+            name="Результат",
+            attachment_type=AttachmentType.TEXT
+        )

@@ -1,0 +1,4 @@
+API_URL: https://dev1api.cloudpanel.ru
+ORGANIZATION_ID: 497
+API_LOGIN: AutoTest
+DOMAIN: cloudpanel.ru

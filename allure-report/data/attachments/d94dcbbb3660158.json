@@ -1,0 +1,13 @@
+{
+  "Alt-Svc": "h3=\":443\"; ma=2592000",
+  "Cache-Control": "no-cache, private",
+  "Content-Length": "70",
+  "Content-Type": "application/json",
+  "Date": "Mon, 18 Aug 2025 22:27:35 GMT",
+  "Server": "nginx/1.28.0",
+  "Via": "1.1 Caddy",
+  "X-Debug-Token": "baf297",
+  "X-Debug-Token-Link": "http://dev1api.cloudpanel.ru/_profiler/baf297",
+  "X-Powered-By": "PHP/8.0.30",
+  "X-Robots-Tag": "noindex"
+}

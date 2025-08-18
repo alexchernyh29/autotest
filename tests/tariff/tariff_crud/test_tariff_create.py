@@ -34,12 +34,12 @@ def test_create_tariff():
     payload = {
         "name": "AutoTest Tariff",
         "description": "Created by API test",
-        "service_id": 1,
-        "status_id": 1,
-        "type_level_resource": 1,
-        "location_id": 1,
-        "time_interval_id": 1,
-        "permanent_service": 0
+        "service_id": 418,
+        "status_id": 2,
+        "type_level_resource": 2,
+        "location_id": 125,
+        "time_interval_id": 3,
+        "permanent_service": 1
     }
 
     with allure.step("Формирование и отправка POST-запроса"):

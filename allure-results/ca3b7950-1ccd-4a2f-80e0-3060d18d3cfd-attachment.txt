@@ -1,1 +1,0 @@
-Токен сохранен в файл: C:\Users\annal_e209e90\OneDrive\Рабочий стол\test\corpsoft\tests\token\..\..\.env

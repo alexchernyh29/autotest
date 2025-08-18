@@ -1,0 +1,125 @@
+[
+  {
+    "id": 654,
+    "tariff_id": 300,
+    "tariff": {
+      "id": 300,
+      "service_id": 418,
+      "service": {
+        "id": 418,
+        "name": "Услуги ЦОД",
+        "create_time": {
+          "date": "2021-04-02 20:53:13.000000",
+          "timezone_type": 3,
+          "timezone": "Europe/Moscow"
+        },
+        "update_time": {
+          "date": "2021-04-02 20:53:13.000000",
+          "timezone_type": 3,
+          "timezone": "Europe/Moscow"
+        },
+        "create_user_id": 439,
+        "update_user_id": 439
+      },
+      "status": {
+        "id": 2,
+        "name": "Активно",
+        "sys_name": "activate",
+        "create_time": {
+          "date": "2018-12-27 19:51:23.000000",
+          "timezone_type": 3,
+          "timezone": "Europe/Moscow"
+        },
+        "update_time": {
+          "date": "2018-12-27 19:51:29.000000",
+          "timezone_type": 3,
+          "timezone": "Europe/Moscow"
+        },
+        "create_user_id": 4,
+        "update_user_id": 4
+      },
+      "location": {
+        "id": 130,
+        "name": "ЦОД М9",
+        "address": "РФ, Москва",
+        "create_time": {
+          "date": "2021-04-03 09:35:20.000000",
+          "timezone_type": 3,
+          "timezone": "Europe/Moscow"
+        },
+        "update_time": {
+          "date": "2021-04-03 09:35:20.000000",
+          "timezone_type": 3,
+          "timezone": "Europe/Moscow"
+        },
+        "create_user_id": 439,
+        "update_user_id": 439
+      },
+      "status_id": 2,
+      "name": "TestOrg22",
+      "description": "паии",
+      "type_level_resource": 1,
+      "create_time": {
+        "date": "2025-07-08 14:17:36.000000",
+        "timezone_type": 3,
+        "timezone": "Europe/Moscow"
+      },
+      "update_time": {
+        "date": "2025-07-08 14:17:36.000000",
+        "timezone_type": 3,
+        "timezone": "Europe/Moscow"
+      },
+      "create_user_id": 509,
+      "update_user_id": 509
+    },
+    "tenant_id": 123,
+    "tenant": {
+      "id": 123,
+      "account": "1",
+      "number_contract": "1",
+      "sub_right_ref_id": 2,
+      "sub_right_ref": {
+        "id": 2,
+        "name": "Юридическое лицо"
+      },
+      "type_right_ref_id": 1,
+      "type_right_ref": {
+        "id": 1,
+        "name": "Коммерческие организации"
+      },
+      "address": "Россия, г. Москва , Селезневская 32",
+      "name": "Корп Софт",
+      "contact_name": "Отдел продаж",
+      "contact_data": "8 (495) 983-04-12 / 8 (800) 707-04-12",
+      "domain": "cloudpanel.ru",
+      "create_time": {
+        "date": "2019-03-04 10:48:41.000000",
+        "timezone_type": 3,
+        "timezone": "Europe/Moscow"
+      },
+      "update_time": {
+        "date": "2022-10-26 09:54:49.000000",
+        "timezone_type": 3,
+        "timezone": "Europe/Moscow"
+      },
+      "create_user_id": 4,
+      "update_user_id": 444
+    },
+    "name": "пвкпыукпыук",
+    "type_tariff": 0,
+    "is_organization": false,
+    "description": "кафукпфукп",
+    "create_time": {
+      "date": "2025-07-08 14:22:22.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-07-08 14:22:22.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 509,
+    "update_user_id": 509
+  }
+]

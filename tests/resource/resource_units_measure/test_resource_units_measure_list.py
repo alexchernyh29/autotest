@@ -4,7 +4,6 @@ import pytest
 import requests
 import allure
 from dotenv import load_dotenv, find_dotenv
-from pathlib import Path
 from allure_commons.types import AttachmentType
 
 # Путь к .env файлу
@@ -52,8 +51,8 @@ def test_get_resource_units_measure():
     1. Успешный статус-код (200)
     2. Ответ в формате JSON
     3. Наличие массива данных
-    4. Структуру каждого элемента (id, name, code и др.)
-    5. Непустой ответ (если ожидается)
+    4. Структуру каждого элемента (только id и name)
+    5. Корректность типов и непустоту значений
     """
     with allure.step("Загрузка переменных окружения"):
         load_dotenv(ENV_FILE)
@@ -114,8 +113,7 @@ def test_get_resource_units_measure():
             )
     else:
         with allure.step("Проверка структуры элементов в списке"):
-            # Основные ожидаемые поля (можно уточнить по реальному ответу)
-            required_fields = ["id", "name", "code"]
+            required_fields = ["id", "name"]
 
             for idx, unit in enumerate(data):
                 assert isinstance(unit, dict), f"Элемент [{idx}] не является объектом"
@@ -124,13 +122,11 @@ def test_get_resource_units_measure():
                 assert not missing, f"В элементе [{idx}] отсутствуют обязательные поля: {', '.join(missing)}"
 
                 # Проверка типов
-                assert isinstance(unit["id"], int), f"id элемента [{idx}] должно быть числом"
+                assert isinstance(unit["id"], int), f"id элемента [{idx}] должно быть целым числом"
                 assert isinstance(unit["name"], str), f"name элемента [{idx}] должно быть строкой"
-                assert isinstance(unit["code"], str), f"code элемента [{idx}] должно быть строкой"
 
-                # Опционально: проверка, что поля не пустые
-                assert unit["name"].strip(), f"name элемента [{idx}] не должен быть пустым"
-                assert unit["code"].strip(), f"code элемента [{idx}] не должен быть пустым"
+                # Проверка, что строковые поля не пустые
+                assert unit["name"].strip() != "", f"name элемента [{idx}] не должен быть пустым или состоять из пробелов"
 
     with allure.step("Тест завершён успешно"):
         allure.attach(

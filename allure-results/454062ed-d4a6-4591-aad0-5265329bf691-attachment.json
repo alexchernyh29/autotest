@@ -1,0 +1,495 @@
+[
+  {
+    "id": 414,
+    "name": "Виртуальная инфраструктура",
+    "system_name": "cloud",
+    "create_time": {
+      "date": "2021-04-02 10:19:01.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 10:19:02.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 134,
+    "update_user_id": 134
+  },
+  {
+    "id": 416,
+    "name": "Программное обеспечение",
+    "system_name": "soft",
+    "create_time": {
+      "date": "2021-04-02 10:19:46.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 10:19:46.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 134,
+    "update_user_id": 134
+  },
+  {
+    "id": 417,
+    "name": "Резервное копирование",
+    "system_name": "backup",
+    "create_time": {
+      "date": "2021-04-02 20:52:50.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 20:52:50.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 418,
+    "name": "Услуги ЦОД",
+    "system_name": "datacenter",
+    "create_time": {
+      "date": "2021-04-02 20:53:13.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 20:53:13.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 419,
+    "name": "Техническая поддержка",
+    "system_name": "support",
+    "create_time": {
+      "date": "2021-04-02 20:53:35.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 20:53:35.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 420,
+    "name": "Информационная безопасность",
+    "system_name": "security",
+    "create_time": {
+      "date": "2021-04-02 20:53:49.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 20:53:49.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 415,
+    "name": "Корпоративная почта",
+    "system_name": "mail",
+    "create_time": {
+      "date": "2021-04-02 10:19:17.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 10:19:17.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 134,
+    "update_user_id": 134
+  },
+  {
+    "id": 424,
+    "name": "Тестовый сервис 1755431453",
+    "system_name": "test_service_1755431453",
+    "create_time": {
+      "date": "2025-08-17 14:50:54.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-08-17 14:50:54.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 509,
+    "update_user_id": 509
+  },
+  {
+    "id": 425,
+    "name": "Тестовый сервис 1755432119",
+    "system_name": "test_service_1755432119",
+    "create_time": {
+      "date": "2025-08-17 15:01:59.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-08-17 15:01:59.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 509,
+    "update_user_id": 509
+  },
+  {
+    "id": 426,
+    "name": "Тестовый сервис 1755433492",
+    "system_name": "test_service_1755433492",
+    "create_time": {
+      "date": "2025-08-17 15:24:53.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-08-17 15:24:53.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 509,
+    "update_user_id": 509
+  },
+  {
+    "id": 427,
+    "name": "Тестовый сервис 1755435434",
+    "system_name": "test_service_1755435434",
+    "create_time": {
+      "date": "2025-08-17 15:57:15.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-08-17 15:57:15.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 509,
+    "update_user_id": 509
+  },
+  {
+    "id": 428,
+    "name": "Тестовый сервис 1755436650",
+    "system_name": "test_service_1755436650",
+    "create_time": {
+      "date": "2025-08-17 16:17:31.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-08-17 16:17:31.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 509,
+    "update_user_id": 509
+  },
+  {
+    "id": 429,
+    "name": "Тестовый сервис 1755437380",
+    "system_name": "test_service_1755437380",
+    "create_time": {
+      "date": "2025-08-17 16:29:41.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-08-17 16:29:41.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 509,
+    "update_user_id": 509
+  },
+  {
+    "id": 430,
+    "name": "Тестовый сервис 1755438068",
+    "system_name": "test_service_1755438068",
+    "create_time": {
+      "date": "2025-08-17 16:41:09.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-08-17 16:41:09.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 509,
+    "update_user_id": 509
+  },
+  {
+    "id": 431,
+    "name": "Тестовый сервис 1755438268",
+    "system_name": "test_service_1755438268",
+    "create_time": {
+      "date": "2025-08-17 16:44:29.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-08-17 16:44:29.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 509,
+    "update_user_id": 509
+  },
+  {
+    "id": 432,
+    "name": "Тестовый сервис 1755438486",
+    "system_name": "test_service_1755438486",
+    "create_time": {
+      "date": "2025-08-17 16:48:06.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-08-17 16:48:06.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 509,
+    "update_user_id": 509
+  },
+  {
+    "id": 433,
+    "name": "Тестовый сервис 1755440371",
+    "system_name": "test_service_1755440371",
+    "create_time": {
+      "date": "2025-08-17 17:19:32.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-08-17 17:19:32.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 509,
+    "update_user_id": 509
+  },
+  {
+    "id": 434,
+    "name": "Тестовый сервис 1755440714",
+    "system_name": "test_service_1755440714",
+    "create_time": {
+      "date": "2025-08-17 17:25:15.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-08-17 17:25:15.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 509,
+    "update_user_id": 509
+  },
+  {
+    "id": 435,
+    "name": "Тестовый сервис 1755441200",
+    "system_name": "test_service_1755441200",
+    "create_time": {
+      "date": "2025-08-17 17:33:21.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-08-17 17:33:21.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 509,
+    "update_user_id": 509
+  },
+  {
+    "id": 436,
+    "name": "Тестовый сервис 1755442610",
+    "system_name": "test_service_1755442610",
+    "create_time": {
+      "date": "2025-08-17 17:56:51.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-08-17 17:56:51.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 509,
+    "update_user_id": 509
+  },
+  {
+    "id": 437,
+    "name": "Тестовый сервис 1755449836",
+    "system_name": "test_service_1755449836",
+    "create_time": {
+      "date": "2025-08-17 19:57:17.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-08-17 19:57:17.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 509,
+    "update_user_id": 509
+  },
+  {
+    "id": 438,
+    "name": "Тестовый сервис 1755450412",
+    "system_name": "test_service_1755450412",
+    "create_time": {
+      "date": "2025-08-17 20:06:54.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-08-17 20:06:54.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 509,
+    "update_user_id": 509
+  },
+  {
+    "id": 439,
+    "name": "Тестовый сервис 1755451195",
+    "system_name": "test_service_1755451195",
+    "create_time": {
+      "date": "2025-08-17 20:19:56.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-08-17 20:19:56.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 509,
+    "update_user_id": 509
+  },
+  {
+    "id": 440,
+    "name": "Тестовый сервис 1755451569",
+    "system_name": "test_service_1755451569",
+    "create_time": {
+      "date": "2025-08-17 20:26:10.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-08-17 20:26:10.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 509,
+    "update_user_id": 509
+  },
+  {
+    "id": 441,
+    "name": "Тестовый сервис 1755451846",
+    "system_name": "test_service_1755451846",
+    "create_time": {
+      "date": "2025-08-17 20:30:47.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-08-17 20:30:47.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 509,
+    "update_user_id": 509
+  },
+  {
+    "id": 442,
+    "name": "Тестовый сервис 1755452981",
+    "system_name": "test_service_1755452981",
+    "create_time": {
+      "date": "2025-08-17 20:49:42.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-08-17 20:49:42.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 509,
+    "update_user_id": 509
+  },
+  {
+    "id": 443,
+    "name": "Тестовый сервис 1755453850",
+    "system_name": "test_service_1755453850",
+    "create_time": {
+      "date": "2025-08-17 21:04:11.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-08-17 21:04:11.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 509,
+    "update_user_id": 509
+  },
+  {
+    "id": 444,
+    "name": "Тестовый сервис 1755455570",
+    "system_name": "test_service_1755455570",
+    "create_time": {
+      "date": "2025-08-17 21:32:51.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-08-17 21:32:51.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 509,
+    "update_user_id": 509
+  },
+  {
+    "id": 472,
+    "name": "Тестовый сервис 1755556028",
+    "system_name": "test_service_1755556028",
+    "create_time": {
+      "date": "2025-08-19 01:27:09.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-08-19 01:27:09.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 942,
+    "update_user_id": 942
+  }
+]

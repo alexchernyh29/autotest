@@ -109,8 +109,39 @@ def pytest_collection_modifyitems(items):
     ordered_items.extend(other_resource_tests)
 
     # 13. Тесты тарифов
-    tariff_tests = [i for i in items if "tariff/" in i.nodeid and i not in ordered_items]
-    ordered_items.extend(tariff_tests)
+    # tariff_crud
+    ordered_items.extend([i for i in items if "tariff/tariff_crud/test_tariff_create" in i.nodeid])
+    ordered_items.extend([i for i in items if "tariff/tariff_crud/test_tariff_read" in i.nodeid])
+    ordered_items.extend([i for i in items if "tariff/tariff_crud/test_tariff_update" in i.nodeid])
+    ordered_items.extend([i for i in items if "tariff/tariff_crud/test_tariff_delete" in i.nodeid])
+    # tariff_link_organization_crud
+    ordered_items.extend([i for i in items if "tariff/tariff_link_organization_crud/test_tariff_link_organization_create" in i.nodeid])
+    ordered_items.extend([i for i in items if "tariff/tariff_link_organization_crud/test_tariff_link_organization_read" in i.nodeid])
+    ordered_items.extend([i for i in items if "tariff/tariff_link_organization_crud/test_tariff_link_organization_update" in i.nodeid])
+    ordered_items.extend([i for i in items if "tariff/tariff_link_organization_crud/test_tariff_link_organization_delete" in i.nodeid])
+    # tariff_link_tenant_crud
+    ordered_items.extend([i for i in items if "tariff/tariff_link_tenant_crud/test_tariff_link_tenant_create" in i.nodeid])
+    ordered_items.extend([i for i in items if "tariff/tariff_link_tenant_crud/test_tariff_link_tenant_read" in i.nodeid])
+    ordered_items.extend([i for i in items if "tariff/tariff_link_tenant_crud/test_tariff_link_tenant_delete" in i.nodeid])
+    # tariff_links_organization
+    ordered_items.extend([i for i in items if "tariff/tariff_links_organization/test_tariff_links_organization_read" in i.nodeid])
+    # tariff_links_tenant
+    ordered_items.extend([i for i in items if "tariff/tariff_links_tenant/test_tariff_links_tenant_read" in i.nodeid])
+    # tariff_setting_types
+    ordered_items.extend([i for i in items if "tariff/tariff_setting_types/test_tariff_setting_types_read" in i.nodeid])
+    # tariff_tenant_settings_crud
+    ordered_items.extend([i for i in items if "tariff/tariff_tenant_settings_crud/test_tariff_tenant_settings_create" in i.nodeid])
+    ordered_items.extend([i for i in items if "tariff/tariff_tenant_settings_crud/test_tariff_tenant_settings_read" in i.nodeid])
+    ordered_items.extend([i for i in items if "tariff/tariff_tenant_settings_crud/test_tariff_tenant_settings_update" in i.nodeid])
+    ordered_items.extend([i for i in items if "tariff/tariff_tenant_settings_crud/test_tariff_tenant_settings_delete" in i.nodeid])
+    # tariff_tenants_settings
+    ordered_items.extend([i for i in items if "tariff/tariff_tenants_settings/test_tariff_tenants_settings_read" in i.nodeid])
+    # tariff_time_intervals
+    ordered_items.extend([i for i in items if "tariff/tariff_time_intervals/test_tariff_time_intervals_read" in i.nodeid])
+    # tariffs
+    ordered_items.extend([i for i in items if "tariff/tariffs/test_tariffs_read" in i.nodeid])
+    # tariffs_settings
+    ordered_items.extend([i for i in items if "tariff/tariffs_settings/test_tariffs_settings_read" in i.nodeid])
 
     # 14. Все остальные тесты
     remaining = [i for i in items if i not in ordered_items]

@@ -4,7 +4,6 @@ import pytest
 import requests
 import allure
 from dotenv import load_dotenv, find_dotenv
-from pathlib import Path
 from allure_commons.types import AttachmentType
 
 # Путь к .env файлу
@@ -44,17 +43,29 @@ def get_auth_token(login, password, timeoutlive, domain):
     return token_data.get("tockenID")
 
 
+# Список тестовых данных: id → ожидаемое имя
+TEST_DATA = [
+    {"id": 67, "name": "Час"},
+    {"id": 4, "name": "Гбайт"},
+    {"id": 61, "name": "Шт"},
+    {"id": 71, "name": "Мбит/с"}
+]
+
+
 @allure.story("Получение единицы измерения по ID")
-def test_get_resource_unit_measure_by_id():
+@pytest.mark.parametrize("unit_data", TEST_DATA, ids=[f"ID={d['id']}" for d in TEST_DATA])
+def test_get_resource_unit_measure_by_id(unit_data):
     """
-    Тест получения единицы измерения ресурса по ID
+    Параметризованный тест получения единицы измерения по ID.
     Проверяет:
-    1. Успешный статус-код (200)
-    2. Валидность JSON-ответа
-    3. Наличие обязательных полей
-    4. Соответствие ID в URL и в ответе
-    5. Корректность типов данных
+    1. Успешный статус (200)
+    2. Корректность ID и имени в ответе
+    3. Валидность JSON
+    4. Структуру ответа
     """
+    unit_id = unit_data["id"]
+    expected_name = unit_data["name"]
+
     with allure.step("Загрузка переменных окружения"):
         load_dotenv(ENV_FILE)
 
@@ -63,20 +74,12 @@ def test_get_resource_unit_measure_by_id():
         login = os.getenv("API_LOGIN")
         password = os.getenv("API_PASSWORD")
         domain = os.getenv("API_DOMAIN")
-        unit_id = os.getenv("RESOURCE_UNIT_MEASURE_ID", "1231231")  # Можно задать в .env
 
     with allure.step("Проверка обязательных переменных окружения"):
         assert base_url, "API_URL не задан в .env"
         assert login, "API_LOGIN не задан в .env"
         assert password, "API_PASSWORD не задан в .env"
         assert domain, "API_DOMAIN не задан в .env"
-        assert unit_id, "RESOURCE_UNIT_MEASURE_ID не задан"
-
-    try:
-        unit_id = int(unit_id)
-        assert unit_id > 0, "ID единицы измерения должен быть положительным числом"
-    except (ValueError, TypeError):
-        pytest.fail("RESOURCE_UNIT_MEASURE_ID должен быть целым положительным числом")
 
     with allure.step("Получение токена аутентификации"):
         token = get_auth_token(login, password, 600, domain)
@@ -99,9 +102,9 @@ def test_get_resource_unit_measure_by_id():
 
     with allure.step("Проверка статуса ответа"):
         if response.status_code == 404:
-            pytest.fail(f"Единица измерения с ID={unit_id} не найдена. Проверьте корректность ID.")
+            pytest.fail(f"Единица измерения с ID={unit_id} не найдена. Возможно, справочник изменился.")
         elif response.status_code == 400:
-            pytest.fail(f"Некорректный формат ID. Возможно, передано не число.")
+            pytest.fail(f"Некорректный ID: {unit_id}. Ответ сервера: {response.text}")
         elif response.status_code != 200:
             pytest.fail(f"Ошибка API: статус {response.status_code}, тело: {response.text}")
 
@@ -113,26 +116,26 @@ def test_get_resource_unit_measure_by_id():
 
         allure.attach(str(data), name="Parsed Response Data", attachment_type=AttachmentType.JSON)
 
-    with allure.step("Проверка структуры ответа"):
+    with allure.step("Проверка структуры и содержимого ответа"):
         required_fields = ["id", "name"]
         missing = [field for field in required_fields if field not in data]
         assert not missing, f"Отсутствуют обязательные поля: {', '.join(missing)}"
 
         # Проверка типов
-        assert isinstance(data["id"], int), "Поле 'id' должно быть числом"
+        assert isinstance(data["id"], int), "Поле 'id' должно быть целым числом"
         assert isinstance(data["name"], str), "Поле 'name' должно быть строкой"
 
-        # Проверка соответствия ID
+        # Проверка значений
         assert data["id"] == unit_id, (
-            f"Ожидалась единица измерения с ID={unit_id}, но получен ID={data['id']}"
+            f"Ожидался ID={unit_id}, но получен ID={data['id']}"
         )
-
-        # Проверка, что имя не пустое
-        assert data["name"].strip() != "", "Поле 'name' не должно быть пустым"
+        assert data["name"] == expected_name, (
+            f"Ожидалось имя '{expected_name}', но получено '{data['name']}'"
+        )
 
     with allure.step("Тест завершён успешно"):
         allure.attach(
-            f"Получена единица измерения:\n"
+            f"Успешно получена единица измерения:\n"
             f"  ID: {data['id']}\n"
             f"  Name: {data['name']}",
             name="Результат",

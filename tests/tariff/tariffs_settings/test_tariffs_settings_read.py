@@ -14,16 +14,16 @@ def test_get_tariffs_settings():
     load_dotenv(ENV_FILE)
     base_url = os.getenv("API_URL")
     token = os.getenv("TOKEN_ID")
-    tariff_id_str = os.getenv("CREATED_TARIFF_ID", "304")
+    tariff_id_str = os.getenv("TARIFF_ID", "304")
 
     assert base_url, "API_URL не задан в .env"
     assert token, "TOKEN_ID не задан в .env"
-    assert tariff_id_str, "CREATED_TARIFF_ID не задан"
+    assert tariff_id_str, "TARIFF_ID не задан"
 
     try:
         tariff_id = int(tariff_id_str)
     except ValueError:
-        pytest.fail("CREATED_TARIFF_ID должен быть числом")
+        pytest.fail("TARIFF_ID должен быть числом")
 
     url = f"{base_url}/api/v1/tariffs_settings"
     headers = {

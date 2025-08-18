@@ -1,2 +1,0 @@
-Status Code: 500
-Response: {"error":"Error message:Entity of type 'Tariff' for IDs id(255) was not found, Error line:33, Error file:\/IBSAPI\/vendor\/doctrine\/orm\/lib\/Doctrine\/ORM\/EntityNotFoundException.php"}
