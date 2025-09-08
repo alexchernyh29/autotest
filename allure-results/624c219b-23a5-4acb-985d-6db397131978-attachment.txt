@@ -1,7 +1,0 @@
-
-Успешно создан пользователь:
-ID: 970
-Login: autotest_0819012637
-Email: autotest+0819012637@example.com
-Phone: 796561773
-FIO: Autotest User sz28l4

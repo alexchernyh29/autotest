@@ -1,1 +1,0 @@
-ID 310 сохранён в .env как RESOURCE_CATEGORY_REF_ID

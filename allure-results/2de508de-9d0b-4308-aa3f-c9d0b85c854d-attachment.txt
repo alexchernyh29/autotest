@@ -1,1 +1,0 @@
-GET после DELETE — статус: 404, тело: {"error":"tariff not found"}

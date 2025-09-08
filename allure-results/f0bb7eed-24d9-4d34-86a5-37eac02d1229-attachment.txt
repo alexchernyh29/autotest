@@ -1,1 +1,0 @@
-ID 361 успешно сохранён в D:\project\autotest\.env как RESOURCE_ATOM_ID

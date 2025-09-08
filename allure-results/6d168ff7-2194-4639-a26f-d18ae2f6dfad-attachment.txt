@@ -1,4 +1,0 @@
-🔢 Status Code: 200
-
-📄 Response Body:
-{"header":{"report_type":"Services","format":"json","begin_date":"20.02.2025","end_date":"19.08.2025","$organization":{"id":497,"name":"Taylor-Moore","number_contract":"3881734116"}},"items":[],"comment":"prebilling data"}

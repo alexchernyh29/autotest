@@ -1,1 +1,0 @@
-{"error":"Code: 'Not valid json format', 'body': {}","error_launcher":"Error message:, Error line:145, Error file:\/IBSAPI\/src\/v1\/core\/core.php"}
