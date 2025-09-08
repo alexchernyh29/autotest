@@ -1,1 +1,0 @@
-https://dev1api.cloudpanel.ru/api/v1/tariff_links_organization?by_location_id=125

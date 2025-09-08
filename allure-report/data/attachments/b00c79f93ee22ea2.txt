@@ -1,1 +1,0 @@
-Токен сохранен в файл: D:\project\autotest\tests\token\..\..\.env

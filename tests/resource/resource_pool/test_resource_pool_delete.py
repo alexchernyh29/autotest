@@ -4,7 +4,6 @@ import pytest
 import requests
 import allure
 from dotenv import load_dotenv, find_dotenv
-from pathlib import Path
 from allure_commons.types import AttachmentType
 
 # Путь к .env файлу
@@ -14,7 +13,7 @@ assert ENV_FILE, "Файл .env не найден в корне проекта"
 
 def get_auth_token(login, password, timeoutlive, domain):
     """
-    Получение токена аутентификации (как в предыдущих тестах)
+    Получение токена аутентификации
     """
     base_url = os.getenv("API_URL")
     url = f"{base_url}/api/v1/tocken"
@@ -41,7 +40,7 @@ def get_auth_token(login, password, timeoutlive, domain):
 
     response.raise_for_status()
     token_data = response.json()
-    return token_data.get("tockenID")  
+    return token_data.get("tockenID")
 
 
 @allure.story("Удаление пула ресурсов по ID")
@@ -50,9 +49,8 @@ def test_delete_resource_pool():
     Тест: удаление существующего пула ресурсов по ID
     Эндпоинт: DELETE /api/v1/resource_pool/{id}
     Проверяет:
-      - статус 200 или 204
-      - отсутствие тела при 204
-      - невозможность получить пул после удаления (опционально)
+      - статус 200 (допускает ответ null)
+      - подтверждение удаления через GET-запрос
     """
     with allure.step("Загрузка переменных окружения"):
         load_dotenv(ENV_FILE)
@@ -62,22 +60,20 @@ def test_delete_resource_pool():
         login = os.getenv("API_LOGIN")
         password = os.getenv("API_PASSWORD")
         domain = os.getenv("API_DOMAIN")
-
-        # ID пула для удаления
-        pool_id = os.getenv("RESOURCE_POOL_ID_TO_DELETE")
+        pool_id = os.getenv("POOL_ID")
 
     with allure.step("Проверка обязательных переменных окружения"):
         assert base_url, "API_URL не задан в .env"
         assert login, "API_LOGIN не задан в .env"
         assert password, "API_PASSWORD не задан в .env"
         assert domain, "API_DOMAIN не задан в .env"
-        assert pool_id, "RESOURCE_POOL_ID_TO_DELETE не задан в .env"
+        assert pool_id, "POOL_ID не задан в .env"
 
     try:
         pool_id = int(pool_id)
-        assert pool_id > 0, "RESOURCE_POOL_ID_TO_DELETE должен быть положительным числом"
+        assert pool_id > 0, "POOL_ID должен быть положительным числом"
     except (ValueError, TypeError):
-        pytest.fail("RESOURCE_POOL_ID_TO_DELETE должен быть целым положительным числом")
+        pytest.fail("POOL_ID должен быть целым положительным числом")
 
     with allure.step("Получение токена аутентификации"):
         token = get_auth_token(login, password, 600, domain)
@@ -86,7 +82,7 @@ def test_delete_resource_pool():
     with allure.step("Формирование URL и заголовков"):
         url = f"{base_url}/api/v1/resource_pool/{pool_id}"
         headers = {
-            "accept": "*/*",
+            "accept": "application/json",
             "tockenid": token
         }
         allure.attach(url, name="Request URL", attachment_type=AttachmentType.TEXT)
@@ -96,36 +92,37 @@ def test_delete_resource_pool():
         response = requests.delete(url, headers=headers)
 
         allure.attach(str(response.status_code), name="Response Status Code", attachment_type=AttachmentType.TEXT)
-        allure.attach(str(response.headers), name="Response Headers", attachment_type=AttachmentType.JSON)
         allure.attach(str(response.text), name="Response Body", attachment_type=AttachmentType.TEXT)
+        allure.attach(str(response.headers), name="Response Headers", attachment_type=AttachmentType.JSON)
 
     with allure.step("Проверка статуса ответа"):
         if response.status_code == 204:
             with allure.step("Успешно удалено (204 No Content)"):
-                assert not response.text.strip(), "Ожидалось пустое тело при статусе 204"
+                assert not response.text.strip(), "Тело ответа должно быть пустым при статусе 204"
         elif response.status_code == 200:
             with allure.step("Успешно удалено (200 OK)"):
-                # Может вернуться подтверждение
+                # Допускаем null
                 if response.text.strip():
                     try:
                         data = response.json()
                         allure.attach(str(data), name="Response JSON", attachment_type=AttachmentType.JSON)
-                        # Проверяем, что удаление подтверждено
-                        assert data.get("success") is True or data.get("deleted") is True or data.get("id") == pool_id
+                        # Опционально: проверяем флаги вроде {"deleted": true}
+                        if isinstance(data, dict):
+                            assert data.get("deleted") is True or data.get("success") is True or data.get("id") == pool_id
                     except ValueError:
-                        pass  # необязательно
+                        pytest.fail("Ответ 200 содержит невалидный JSON")
+                else:
+                    with allure.step("Ответ 200 с пустым телом — допустимо"):
+                        pass
         elif response.status_code == 404:
-            pytest.fail(f"Пул с ID={pool_id} уже не существует (404). Возможно, был удалён ранее.")
+            pytest.fail(f"Пул с ID={pool_id} не найден. Возможно, он уже удалён.")
         elif response.status_code == 403:
-            pytest.fail(f"Доступ запрещён (403). Проверьте права токена.")
-        elif response.status_code != 200 and response.status_code != 204:
-            pytest.fail(f"Ошибка: статус {response.status_code}, ответ: {response.text}")
+            pytest.fail(f"Доступ запрещён (403). Проверьте права пользователя.")
         else:
-            with allure.step("Пул успешно удалён"):
-                pass
+            pytest.fail(f"Ошибка: статус {response.status_code}, ответ: {response.text}")
 
-    # Опциональная проверка: попробуем получить пул после удаления
-    with allure.step("Проверка, что пул действительно удалён (опционально)"):
+    # 🔁 Проверка, что пул действительно удалён
+    with allure.step("Подтверждение удаления: GET-запрос должен вернуть 400"):
         get_url = f"{base_url}/api/v1/resource_pool/{pool_id}"
         get_headers = {
             "accept": "application/json",
@@ -133,24 +130,28 @@ def test_delete_resource_pool():
         }
         verify_response = requests.get(get_url, headers=get_headers)
 
-        if verify_response.status_code == 404:
-            allure.attach(
-                f"Подтверждено: пул с ID={pool_id} больше не существует (404).",
-                name="Проверка удаления",
-                attachment_type=AttachmentType.TEXT
-            )
+        allure.attach(
+            str(verify_response.status_code),
+            name="GET после удаления — статус",
+            attachment_type=AttachmentType.TEXT
+        )
+        allure.attach(
+            verify_response.text,
+            name="GET после удаления — тело",
+            attachment_type=AttachmentType.TEXT
+        )
+
+        if verify_response.status_code == 400:
+            with allure.step(f"Пул с ID={pool_id} больше не существует — удаление подтверждено"):
+                pass
         elif verify_response.status_code == 200:
             pytest.fail(f"Ошибка: пул с ID={pool_id} всё ещё доступен после удаления!")
         else:
-            allure.attach(
-                f"Получен статус {verify_response.status_code} при проверке удаления.",
-                name="Проверка удаления",
-                attachment_type=AttachmentType.TEXT
-            )
+            pytest.fail(f"Неожиданный статус при проверке удаления: {verify_response.status_code}")
 
     with allure.step("Тест завершён успешно"):
         allure.attach(
-            f"Пул с ID={pool_id} успешно удалён.",
+            f"Пул с ID={pool_id} успешно удалён и подтверждено отсутствие ресурса.",
             name="Результат",
             attachment_type=AttachmentType.TEXT
         )

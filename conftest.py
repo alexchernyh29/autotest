@@ -33,7 +33,7 @@ def pytest_collection_modifyitems(items):
     # 3. Тесты организаций
     ordered_items.extend([i for i in items if "organizations/test_organization_create" in i.nodeid])
     ordered_items.extend([i for i in items if "organizations/test_organization_read" in i.nodeid])
-    ordered_items.extend([i for i in items if "organizations/test_organization_upload" in i.nodeid])
+    ordered_items.extend([i for i in items if "organizations/test_organization_update" in i.nodeid])
     ordered_items.extend([i for i in items if "organizations/test_organization_delete" in i.nodeid])
     ordered_items.extend([i for i in items if "organizations/test_organizations_read" in i.nodeid])
 
@@ -62,7 +62,19 @@ def pytest_collection_modifyitems(items):
     ordered_items.extend(update_rs)
     ordered_items.extend(delete_rs)
 
-    # 8. Тесты resource_atom — CRUD порядок
+    # 8. Тесты resource_pool — CRUD порядок
+    resource_pool_path = "resource_pool/"
+    create_rp = [i for i in items if resource_pool_path in i.nodeid and "test_resource_pool_create" in i.nodeid]
+    read_rp = [i for i in items if resource_pool_path in i.nodeid and "test_resource_pool_read" in i.nodeid]
+    update_rp = [i for i in items if resource_pool_path in i.nodeid and "test_resource_pool_update" in i.nodeid]
+    delete_rp = [i for i in items if resource_pool_path in i.nodeid and "test_resource_pool_delete" in i.nodeid]
+
+    ordered_items.extend(create_rp)
+    ordered_items.extend(read_rp)
+    ordered_items.extend(update_rp)
+    ordered_items.extend(delete_rp)
+
+    # 9. Тесты resource_atom — CRUD порядок
     resource_atom_path = "resource_atom/"
     create_ra = [i for i in items if resource_atom_path in i.nodeid and "test_create_resource_atom" in i.nodeid]
     read_ra = [i for i in items if resource_atom_path in i.nodeid and "test_get_resource_atom_by_id" in i.nodeid]
@@ -74,7 +86,7 @@ def pytest_collection_modifyitems(items):
     ordered_items.extend(update_ra)
     ordered_items.extend(delete_ra)
 
-    # 9. Тесты resource_atom — CRUD порядок
+    # 10. Тесты resource_atom — CRUD порядок
     resource_location_path = "resource_location/"
     create_rl = [i for i in items if resource_location_path in i.nodeid and "test_resource_location_create" in i.nodeid]
     read_rl = [i for i in items if resource_location_path in i.nodeid and "test_resource_location_read" in i.nodeid]
@@ -86,7 +98,7 @@ def pytest_collection_modifyitems(items):
     ordered_items.extend(update_rl)
     ordered_items.extend(delete_rl)
 
-    # 10. Тесты resource_atom — CRUD порядок
+    # 11. Тесты resource_atom — CRUD порядок
     resource_category_path = "resource_category_ref/"
     create_rc = [i for i in items if resource_category_path in i.nodeid and "test_resource_category_ref_create" in i.nodeid]
     read_rc = [i for i in items if resource_category_path in i.nodeid and "test_resource_category_ref_read" in i.nodeid]
@@ -100,7 +112,7 @@ def pytest_collection_modifyitems(items):
     ordered_items.extend(delete_rc)
     ordered_items.extend(list_rc)
 
-    # 11. Остальные тесты ресурсов (например, /resource/, /resource_pools/ и т.д.)
+    # 12. Остальные тесты ресурсов (например, /resource/, /resource_pools/ и т.д.)
     other_resource_tests = [
         i for i in items 
         if ("resource/" in i.nodeid or "resource_pools" in i.nodeid) 

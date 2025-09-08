@@ -60,20 +60,20 @@ def test_delete_resource_service_by_id():
         domain = os.getenv("API_DOMAIN")
 
         # 🔹 Берём ID из созданного сервиса
-        service_id_str = os.getenv("CREATED_RESOURCE_SERVICE_ID")
+        service_id = os.getenv("LAST_CREATED_SERVICE_ID")
 
     with allure.step("Проверка обязательных переменных окружения"):
         assert base_url, "API_URL не задан в .env"
         assert login, "API_LOGIN не задан в .env"
         assert password, "API_PASSWORD не задан в .env"
         assert domain, "API_DOMAIN не задан в .env"
-        assert service_id_str, (
-            "CREATED_RESOURCE_SERVICE_ID не найден. "
+        assert service_id, (
+            "LAST_CREATED_SERVICE_ID не найден. "
             "Сначала выполните тест создания сервиса."
         )
 
     try:
-        service_id = int(service_id_str)
+        service_id = int(service_id)
         assert service_id > 0, "ID должен быть положительным числом"
     except (ValueError, TypeError):
         pytest.fail("CREATED_RESOURCE_SERVICE_ID должен быть целым числом")

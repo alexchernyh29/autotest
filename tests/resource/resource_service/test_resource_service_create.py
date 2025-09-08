@@ -1,11 +1,10 @@
-# tests/resource_service/test_create_resource_service.py
-
+# Создает новый сервис ресурсов /api/v1/resource_service
 import os
 import pytest
 import requests
 import allure
+import json
 from dotenv import load_dotenv, find_dotenv
-from pathlib import Path
 from allure_commons.types import AttachmentType
 
 # Путь к .env файлу
@@ -31,49 +30,58 @@ def get_auth_token(login, password, timeoutlive, domain):
 
     with allure.step("Отправка запроса для получения токена"):
         allure.attach(f"URL: {url}", name="Request URL", attachment_type=AttachmentType.TEXT)
-        allure.attach(str(headers), name="Request Headers", attachment_type=AttachmentType.TEXT)
-        allure.attach(str(params), name="Request Params", attachment_type=AttachmentType.TEXT)
+        allure.attach(json.dumps(headers, indent=2, ensure_ascii=False),
+                      name="Request Headers", attachment_type=AttachmentType.JSON)
+        allure.attach(json.dumps(params, indent=2, ensure_ascii=False),
+                      name="Request Params", attachment_type=AttachmentType.JSON)
 
         response = requests.post(url, headers=headers, params=params)
 
         allure.attach(str(response.status_code), name="Response Status Code", attachment_type=AttachmentType.TEXT)
-        allure.attach(str(response.headers), name="Response Headers", attachment_type=AttachmentType.TEXT)
-        allure.attach(str(response.text), name="Response Body", attachment_type=AttachmentType.TEXT)
+        allure.attach(str(dict(response.headers)), name="Response Headers", attachment_type=AttachmentType.JSON)
+        allure.attach(response.text, name="Response Body", attachment_type=AttachmentType.TEXT)
 
-    response.raise_for_status()
-    token_data = response.json()
-    return token_data.get("tockenID")
+        response.raise_for_status()
+        token_data = response.json()
+        token = token_data.get("tockenID")
+        assert token, "Ключ 'tockenID' отсутствует в ответе"
+        return token
 
 
-def set_env_variable(key: str, value: str, env_path: str = ENV_FILE):
-    """
-    Добавляет или обновляет переменную в .env файле
-    """
-    env_path = Path(env_path)
+def write_env_var(key: str, value: str, env_file: str = ".env"):
+    """Обновляет или добавляет переменную в .env файл"""
+    from pathlib import Path
+
+    env_path = Path(env_file)
     lines = []
-    key_found = False
 
     if env_path.exists():
         with open(env_path, "r", encoding="utf-8") as file:
             lines = file.readlines()
 
     with open(env_path, "w", encoding="utf-8") as file:
+        var_set = False
         for line in lines:
-            if line.strip().startswith(f"{key}="):
+            stripped = line.strip()
+            if stripped.startswith(f"{key}="):
                 file.write(f"{key}={value}\n")
-                key_found = True
+                var_set = True
             else:
                 file.write(line)
-        if not key_found:
+        if not var_set:
             file.write(f"{key}={value}\n")
 
 
-@allure.story("Создание нового сервиса ресурсов (resource_service)")
+@allure.story("Создание нового сервиса ресурсов")
 def test_create_resource_service():
     """
-    Тест создания нового сервиса ресурсов через POST /api/v1/resource_service
-    Ожидаемый ответ: {"id": 123}
-    Сохраняет ID в .env как CREATED_RESOURCE_SERVICE_ID
+    Тест: создание нового сервиса ресурсов
+    Эндпоинт: POST /api/v1/resource_service
+    Поля: name, sys_name
+    Проверяет:
+      - успешный статус (200 или 201)
+      - валидный JSON с ID
+      - сохранение ID в .env для последующих тестов
     """
     with allure.step("Загрузка переменных окружения"):
         load_dotenv(ENV_FILE)
@@ -84,79 +92,118 @@ def test_create_resource_service():
         password = os.getenv("API_PASSWORD")
         domain = os.getenv("API_DOMAIN")
 
-    with allure.step("Проверка обязательных переменных окружения"):
+        # Генерируем уникальные значения, если не заданы
+        import time
+        timestamp = int(time.time())
+        name = os.getenv("SERVICE_NAME", f"Тестовый сервис {timestamp}")
+        sys_name = os.getenv("SERVICE_SYS_NAME", f"test_service_{timestamp}")  # Уникальный!
+
+        # Убираем лишние пробелы
+        name = name.strip()
+        sys_name = sys_name.strip()
+
+        # Логируем значения
+        env_values = {
+            "API_URL": base_url,
+            "API_LOGIN": login,
+            "API_PASSWORD": "***" if password else None,
+            "API_DOMAIN": domain,
+            "SERVICE_NAME": name,
+            "SERVICE_SYS_NAME": sys_name
+        }
+        allure.attach(
+            json.dumps(env_values, indent=2, ensure_ascii=False),
+            name="Значения из .env",
+            attachment_type=AttachmentType.JSON
+        )
+
+        # Проверка обязательных переменных
         assert base_url, "API_URL не задан в .env"
         assert login, "API_LOGIN не задан в .env"
         assert password, "API_PASSWORD не задан в .env"
         assert domain, "API_DOMAIN не задан в .env"
+        assert name, "SERVICE_NAME не может быть пустым"
+        assert sys_name, "SERVICE_SYS_NAME не может быть пустым"
 
     with allure.step("Получение токена аутентификации"):
         token = get_auth_token(login, password, 600, domain)
         assert token, "Не удалось получить токен аутентификации"
-
-    # Генерация уникальных данных
-    import time
-    unique_name = f"Тестовый сервис {int(time.time())}"
-    unique_system_name = f"test_service_{int(time.time())}"
+        allure.attach(token, name="Authentication Token", attachment_type=AttachmentType.TEXT)
 
     with allure.step("Формирование тела запроса"):
-        request_body = {
-            "name": unique_name,
-            "system_name": unique_system_name
+        payload = {
+            "name": name,
+            "system_name": sys_name
         }
-        allure.attach(str(request_body), name="Request Body (JSON)", attachment_type=AttachmentType.JSON)
+        # Защита от отсутствия поля
+        assert "system_name" in payload and payload["system_name"], "Поле system_name отсутствует или пустое"
+        allure.attach(
+            json.dumps(payload, indent=2, ensure_ascii=False),
+            name="Request Body",
+            attachment_type=AttachmentType.JSON
+        )
 
     with allure.step("Формирование URL и заголовков"):
         url = f"{base_url}/api/v1/resource_service"
         headers = {
             "accept": "application/json",
-            "Content-Type": "application/json",
-            "tockenid": token
+            "tockenid": token,
+            "Content-Type": "application/json"
         }
         allure.attach(url, name="Request URL", attachment_type=AttachmentType.TEXT)
-        allure.attach(str(headers), name="Request Headers", attachment_type=AttachmentType.JSON)
+        allure.attach(
+            json.dumps(headers, indent=2, ensure_ascii=False),
+            name="Request Headers",
+            attachment_type=AttachmentType.JSON
+        )
 
-    with allure.step("Отправка POST-запроса на создание сервиса ресурсов"):
-        response = requests.post(url, json=request_body, headers=headers)
+    with allure.step("Отправка POST-запроса на создание сервиса"):
+        response = requests.post(url, json=payload, headers=headers)
+
         allure.attach(str(response.status_code), name="Response Status Code", attachment_type=AttachmentType.TEXT)
-        allure.attach(str(response.text), name="Response Body", attachment_type=AttachmentType.TEXT)
-        allure.attach(str(response.headers), name="Response Headers", attachment_type=AttachmentType.JSON)
+        allure.attach(response.text, name="Response Body", attachment_type=AttachmentType.TEXT)
+        allure.attach(
+            json.dumps(dict(response.headers), indent=2, ensure_ascii=False),
+            name="Response Headers",
+            attachment_type=AttachmentType.JSON
+        )
 
     with allure.step("Проверка статуса ответа"):
         assert response.status_code in [200, 201], (
-            f"Ошибка при создании сервиса ресурсов. "
-            f"Статус: {response.status_code}, Ответ: {response.text}"
+            f"Ошибка при создании сервиса. Статус: {response.status_code}, Ответ: {response.text}"
         )
 
-    with allure.step("Парсинг JSON-ответа"):
+    with allure.step("Парсинг и валидация JSON-ответа"):
         try:
             data = response.json()
         except ValueError:
-            pytest.fail("Ответ не является валидным JSON")
+            pytest.fail(f"Ответ не является валидным JSON: {response.text}")
 
-        allure.attach(str(data), name="Parsed Response Data", attachment_type=AttachmentType.JSON)
-
-    with allure.step("Проверка структуры ответа"):
-        assert "id" in data, "В ответе отсутствует поле 'id'"
-        assert isinstance(data["id"], int), "Поле 'id' должно быть целым числом"
-        assert data["id"] > 0, "ID должен быть положительным числом"
-
-    created_id = data["id"]
-
-    with allure.step("Сохранение ID в .env файл"):
-        set_env_variable("CREATED_RESOURCE_SERVICE_ID", str(created_id))
         allure.attach(
-            f"Сохранён ID сервиса: {created_id} → .env переменная CREATED_RESOURCE_SERVICE_ID",
+            json.dumps(data, indent=2, ensure_ascii=False),
+            name="Parsed Response Data",
+            attachment_type=AttachmentType.JSON
+        )
+
+        assert isinstance(data, dict), "Ожидался объект в ответе"
+        assert "id" in data, "В ответе отсутствует поле 'id'"
+        assert isinstance(data["id"], int) and data["id"] > 0, "ID должен быть положительным целым числом"
+
+        created_id = data["id"]
+
+    with allure.step(f"Сохранение ID={created_id} в .env как LAST_CREATED_SERVICE_ID"):
+        write_env_var("LAST_CREATED_SERVICE_ID", str(created_id), env_file=ENV_FILE)
+        allure.attach(
+            f"Сохранено: LAST_CREATED_SERVICE_ID={created_id}",
             name="Сохранение ID",
             attachment_type=AttachmentType.TEXT
         )
 
-    with allure.step("✅ Тест завершён успешно"):
-        allure.attach(
-            f"Создан сервис ресурсов:\n"
-            f"  ID: {created_id}\n"
-            f"  Name (в запросе): {unique_name}\n"
-            f"  System Name (в запросе): {unique_system_name}",
-            name="Результат",
-            attachment_type=AttachmentType.TEXT
+    with allure.step("Тест завершён успешно"):
+        result_msg = (
+            f"Сервис ресурсов успешно создан:\n"
+            f"ID = {created_id}\n"
+            f"Name = '{name}'\n"
+            f"SysName = '{sys_name}'"
         )
+        allure.attach(result_msg, name="Результат", attachment_type=AttachmentType.TEXT)

@@ -64,7 +64,7 @@ def test_update_resource_service_by_id():
         domain = os.getenv("API_DOMAIN")
 
         # 🔹 Используем ID из ранее созданного сервиса
-        service_id_str = os.getenv("CREATED_RESOURCE_SERVICE_ID")
+        service_id_str = os.getenv("LAST_CREATED_SERVICE_ID")
 
     with allure.step("Проверка обязательных переменных окружения"):
         assert base_url, "API_URL не задан в .env"
@@ -72,7 +72,7 @@ def test_update_resource_service_by_id():
         assert password, "API_PASSWORD не задан в .env"
         assert domain, "API_DOMAIN не задан в .env"
         assert service_id_str, (
-            "CREATED_RESOURCE_SERVICE_ID не найден в .env. "
+            "LAST_CREATED_SERVICE_ID не найден в .env. "
             "Сначала выполните тест создания сервиса."
         )
 
@@ -80,7 +80,7 @@ def test_update_resource_service_by_id():
         service_id = int(service_id_str)
         assert service_id > 0, "ID сервиса ресурсов должен быть положительным числом"
     except (ValueError, TypeError):
-        pytest.fail("CREATED_RESOURCE_SERVICE_ID должен быть целым положительным числом")
+        pytest.fail("LAST_CREATED_SERVICE_ID должен быть целым положительным числом")
 
     with allure.step("Получение токена аутентификации"):
         token = get_auth_token(login, password, 600, domain)

@@ -17,8 +17,8 @@ assert ENV_FILE, "Файл .env не найден в корне проекта"
 # Фильтры для параметризации
 FILTERS = {
     "by_tenant_id": 123,
-    "by_tariff_id": 302,
-    "by_service_id": 418,
+    "by_tariff_id": 257,
+    "by_service_id": 414,
     "by_location_id": 125
 }
 

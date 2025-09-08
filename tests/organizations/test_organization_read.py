@@ -51,7 +51,9 @@ def test_get_organization_by_id():
     2. Наличие обязательных полей в ответе
     """
     with allure.step("Загрузка переменных окружения"):
-        load_dotenv(ENV_FILE)
+        load_dotenv(ENV_FILE, override=True)
+        organization_id = os.getenv("ORGANIZATION_ID")
+    assert organization_id, "ORGANIZATION_ID не найден в .env"
 
     with allure.step("Получение параметров из .env"):
         base_url = os.getenv("API_URL")

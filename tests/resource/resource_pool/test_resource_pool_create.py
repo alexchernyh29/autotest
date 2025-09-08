@@ -14,7 +14,7 @@ assert ENV_FILE, "Файл .env не найден в корне проекта"
 
 def get_auth_token(login, password, timeoutlive, domain):
     """
-    Получение токена аутентификации (как в предыдущих тестах)
+    Получение токена аутентификации
     """
     base_url = os.getenv("API_URL")
     url = f"{base_url}/api/v1/tocken"
@@ -41,7 +41,32 @@ def get_auth_token(login, password, timeoutlive, domain):
 
     response.raise_for_status()
     token_data = response.json()
-    return token_data.get("tockenID")  
+    return token_data.get("tockenID")
+
+
+def write_env_var(key: str, value: str, env_file: str = ".env"):
+    """
+    Обновляет или добавляет переменную в .env файл
+    """
+    env_path = Path(env_file)
+    lines = []
+
+    if env_path.exists():
+        with open(env_path, "r", encoding="utf-8") as file:
+            lines = file.readlines()
+
+    with open(env_path, "w", encoding="utf-8") as file:
+        var_set = False
+        for line in lines:
+            # Пропускаем пустые строки и комментарии
+            stripped = line.strip()
+            if stripped.startswith(f"{key}="):
+                file.write(f"{key}={value}\n")
+                var_set = True
+            else:
+                file.write(line)
+        if not var_set:
+            file.write(f"{key}={value}\n")
 
 
 @allure.story("Создание нового пула ресурсов")
@@ -50,10 +75,8 @@ def test_create_resource_pool():
     Тест: создание нового пула ресурсов
     Эндпоинт: POST /api/v1/resource_pool
     Поля: name, description, status_id, service_id, location_id, type_service_id
-    Проверяет:
-      - успешный статус (200 или 201)
-      - валидный JSON в ответе
-      - наличие ID и корректность полей
+    Ожидаемый ответ: {"id": <int>}
+    Сохраняет ID в .env как POOL_ID
     """
     with allure.step("Загрузка переменных окружения"):
         load_dotenv(ENV_FILE)
@@ -65,15 +88,12 @@ def test_create_resource_pool():
         domain = os.getenv("API_DOMAIN")
 
         # Параметры для создания пула
-        name = os.getenv("POOL_NAME", f"test-pool-{int(time.time())}")  # уникальное имя
+        name = os.getenv("POOL_NAME", "Тестовый пул ресурсов")
         description = os.getenv("POOL_DESCRIPTION", "Тестовый пул ресурсов")
-        status_id = os.getenv("POOL_STATUS_ID", "1")
-        service_id = os.getenv("POOL_SERVICE_ID", "1")
-        location_id = os.getenv("POOL_LOCATION_ID", "1")
-        type_service_id = os.getenv("POOL_TYPE_SERVICE_ID", "2")
-
-    # Импортируем time здесь, чтобы использовать в значении по умолчанию
-    import time
+        status_id = os.getenv("POOL_STATUS_ID", "2")
+        service_id = os.getenv("POOL_SERVICE_ID", "414")
+        location_id = os.getenv("POOL_LOCATION_ID", "125")
+        type_service_id = os.getenv("POOL_TYPE_SERVICE_ID", "1")
 
     with allure.step("Проверка обязательных переменных окружения"):
         assert base_url, "API_URL не задан в .env"
@@ -133,7 +153,7 @@ def test_create_resource_pool():
             f"Ошибка при создании пула ресурсов. Статус: {response.status_code}, Ответ: {response.text}"
         )
 
-    with allure.step("Парсинг и валидация JSON-ответа"):
+    with allure.step("Парсинг и валидация JSON-ответа (ожидается только ID)"):
         try:
             data = response.json()
         except ValueError:
@@ -141,32 +161,24 @@ def test_create_resource_pool():
 
         allure.attach(str(data), name="Parsed Response Data", attachment_type=AttachmentType.JSON)
 
-        # Ожидаемые поля в ответе
-        required_fields = [
-            "id", "name", "description", "status_id", "service_id",
-            "location_id", "type_service_id", "created_at"
-        ]
-
         assert isinstance(data, dict), "Ожидался объект в ответе"
-        missing = [field for field in required_fields if field not in data]
-        assert not missing, f"Отсутствуют обязательные поля: {', '.join(missing)}"
+        assert "id" in data, "В ответе отсутствует поле 'id'"
 
-        # Проверка значений
-        assert isinstance(data["id"], int) and data["id"] > 0, "ID должен быть положительным целым"
-        assert data["name"] == name, f"Имя: ожидаем '{name}', получено '{data['name']}'"
-        assert data["description"] == description, "Описание не совпадает"
-        assert data["status_id"] == status_id, "status_id не совпадает"
-        assert data["service_id"] == service_id, "service_id не совпадает"
-        assert data["location_id"] == location_id, "location_id не совпадает"
-        assert data["type_service_id"] == type_service_id, "type_service_id не совпадает"
+        created_id = data["id"]
+        assert isinstance(created_id, int), "Поле 'id' должно быть целым числом"
+        assert created_id > 0, "Поле 'id' должно быть положительным"
 
-        assert isinstance(data["created_at"], str), "created_at должно быть строкой"
-        assert "T" in data["created_at"] and "Z" in data["created_at"], "created_at должно быть в формате ISO8601"
+    with allure.step(f"Сохранение ID={created_id} в .env файл"):
+        write_env_var("POOL_ID", str(created_id), env_file=ENV_FILE)
+        allure.attach(
+            f"Сохранено в .env: POOL_ID='{created_id}'",
+            name="Сохранение ID",
+            attachment_type=AttachmentType.TEXT
+        )
 
     with allure.step("Тест завершён успешно"):
         allure.attach(
-            f"Пул ресурсов успешно создан: ID={data['id']}, Name='{data['name']}', "
-            f"Service ID={data['service_id']}, Location ID={data['location_id']}",
+            f"Пул ресурсов успешно создан. Присвоен ID: {created_id}",
             name="Результат",
             attachment_type=AttachmentType.TEXT
         )

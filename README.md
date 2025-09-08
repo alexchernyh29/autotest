@@ -1,5 +1,6 @@
 ```markdown
 # API Autotests
+
 ## 📋 Требования
 
 - Python 3.11+ (рекомендуется 3.11.4)
@@ -9,29 +10,28 @@
 ## 🛠️ Установка
 
 ### 1. Установите Python
+
 [Скачайте Python](https://www.python.org/downloads/) и установите с опцией:
 ```
+
 [✓] Add Python to PATH
-```
+
+````
 
 Проверьте установку:
 ```bash
 python --version
 pip --version
-```
+````
 
-### 2. Клонируйте репозиторий
-```bash
-git clone git@github.com:alexchernyh29/autotest.git
-cd autotest
-```
+### 2. Установите зависимости
 
-### 3. Установите зависимости
 ```bash
 pip install -r requirements.txt
 ```
 
 Если файла нет, установите пакеты вручную:
+
 ```bash
 pip install requests pytest python-dotenv allure-pytest
 ```
@@ -39,6 +39,7 @@ pip install requests pytest python-dotenv allure-pytest
 ## ⚙️ Настройка окружения
 
 1. Создайте файл `.env` в корне проекта:
+
 ```ini
 API_URL=your_url
 API_LOGIN=your_login
@@ -49,6 +50,7 @@ TOKEN_ID=
 ```
 
 2. Добавьте `.env` в `.gitignore`:
+
 ```bash
 echo ".env" >> .gitignore
 ```
@@ -56,6 +58,7 @@ echo ".env" >> .gitignore
 ## 🚀 Запуск тестов
 
 ### Основные команды
+
 ```bash
 # Все тесты
 pytest tests/ -v
@@ -69,6 +72,7 @@ allure serve allure-results
 ```
 
 ### Параметризованный запуск
+
 ```bash
 # Только smoke-тесты
 pytest -m smoke
@@ -78,6 +82,7 @@ pytest -v --capture=no
 ```
 
 ## 📁 Структура проекта
+
 ```
 autotest/
 ├── tests/               # Тесты
@@ -92,7 +97,9 @@ autotest/
 ```
 
 ## 🔧 CI/CD (GitHub Actions)
+
 Пример файла `.github/workflows/tests.yml`:
+
 ```yaml
 name: Run Tests
 
@@ -106,7 +113,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: "3.11"
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
@@ -124,6 +131,7 @@ jobs:
 ## 🛠️ Дополнительные инструменты
 
 ### Генерация отчетов
+
 ```bash
 # HTML отчет
 pytest --html=report.html
@@ -134,6 +142,7 @@ allure open allure-report
 ```
 
 ### Виртуальное окружение
+
 ```bash
 python -m venv venv
 # Windows:
@@ -143,7 +152,9 @@ source venv/bin/activate
 ```
 
 ## 📞 Поддержка
+
 При проблемах:
+
 1. Проверьте `.env` файл
 2. Запустите с параметром `--capture=no`
 3. Откройте Issue в репозитории
@@ -157,8 +168,4 @@ source venv/bin/activate
 4. **CI/CD пример** для GitHub Actions
 5. **Структура проекта** в виде дерева
 6. **Дополнительные инструменты** для отчетов
-
-Для использования:
-1. Сохраните как `README.md` в корне проекта
-2. Обновите данные API в секции "Настройка окружения"
-3. При необходимости добавьте свои теги (например, `@pytest.mark.smoke`)
+```

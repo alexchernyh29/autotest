@@ -18,7 +18,7 @@ assert ENV_FILE, "Файл .env не найден в корне проекта"
 FILTERS = {
     "by_tariff_id": 291,
     "by_name": "Доступ в Интернет с бонусной полосой 20_11_24",
-    "by_service_id": 418,
+    "by_service_id": 414,
     "by_location_id": 125
 }
 

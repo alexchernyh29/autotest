@@ -1,1 +1,0 @@
-Категория получена: ID=310, Name='Категория автотест 3_71_2', TypeRef ID=3, UnitMeasure ID=71, Category Type ID=2

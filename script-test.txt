@@ -17,7 +17,7 @@ pytest tests/organizations/test_organization_delete.py -v
 Добавление пользователя в организацию
 pytest tests/users/test_users_add_org.py -v
 pytest tests/users/test_users_read.py -v
-pytest tests/users/test_users_organization -v
+pytest tests/users/test_users_org.py -v
 
 Справочники (типы, интервалы)
 pytest tests/tariff/tariff_setting_types/test_tariff_setting_types_read.py -v 
@@ -52,6 +52,7 @@ pytest tests/tariff/tariff_tenant_settings/test_tariff_tenants_settings_read.py 
 pytest tests/tariff/tariff_tenant_settings/test_tariff_tenant_settings_read_filtered.py -v 
 pytest tests/tariff/tariff_tenant_settings/test_tariff_tenant_settings_update.py -v 
 pytest tests/tariff/tariff_tenant_settings/test_tariff_tenant_settings_delete.py -v 
+pytest tests/tariff/tariffs_settings/test_tariffs_settings_read.py -v 
 
 Настройки тарифов (tariffs_settings)
 pytest tests/tariff/tariffs/test_tariffs_read.py -v 
