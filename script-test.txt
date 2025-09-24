@@ -129,6 +129,8 @@ pytest tests/resource/resource_units_measure/test_resource_units_measure_list.py
 Список всех типов сервисов
 pytest tests/resource/type_services/test_type_services_read.py -v
 
+pytest tests/billing-report/test_organization_services_and_report.py --alluredir=./allure-results -v
+
 pytest --html=report.html
 
 # Очистка старых результатов
@@ -147,4 +149,11 @@ allure serve ./allure-results
 Remove-Item -Path "allure-results/*", "allure-report/*" -Recurse -Force -ErrorAction SilentlyContinue
 pytest tests/ --alluredir=./allure-results -v
 allure generate ./allure-results -o ./allure-report --clean
+allure serve ./allure-results
+
+
+------------------
+Remove-Item -Path "allure-results/*", "allure-report/*" -Recurse -Force -ErrorAction SilentlyContinue
+pytest tests/organizations/test_organization_create.py  --alluredir=./allure-results -v
+pytest tests/billing-report/test_organization_services_and_report.py --alluredir=./allure-results -v
 allure serve ./allure-results

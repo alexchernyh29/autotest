@@ -1,0 +1,4447 @@
+[
+  {
+    "id": 202,
+    "name": "Процессорное время (1 vCPU)",
+    "description": null,
+    "category": {
+      "id": 251,
+      "name": "Процессорное время",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 291,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 10:21:07.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 10:21:07.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 134,
+    "update_user_id": 134
+  },
+  {
+    "id": 210,
+    "name": "Подсеть /25 (128 IP)",
+    "description": null,
+    "category": {
+      "id": 254,
+      "name": "IP-адрес",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 308,
+    "max_count": 256,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 20:57:09.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 20:57:09.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 211,
+    "name": "Подсеть /26 (64 IP)",
+    "description": null,
+    "category": {
+      "id": 254,
+      "name": "IP-адрес",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 310,
+    "max_count": 256,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 20:57:31.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 20:57:31.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 212,
+    "name": "Подсеть /27 (32 IP)",
+    "description": null,
+    "category": {
+      "id": 254,
+      "name": "IP-адрес",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 309,
+    "max_count": 256,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 20:57:51.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 20:57:51.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 213,
+    "name": "Подсеть /28 (16 IP)",
+    "description": null,
+    "category": {
+      "id": 254,
+      "name": "IP-адрес",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 311,
+    "max_count": 256,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 20:58:19.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 20:58:19.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 214,
+    "name": "Подсеть /29 (8 IP)",
+    "description": null,
+    "category": {
+      "id": 254,
+      "name": "IP-адрес",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 312,
+    "max_count": 256,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 20:58:48.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 20:58:48.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 218,
+    "name": "Лицензия на «1C-Битрикс24» (Корпоративный портал, 25 пользователей)",
+    "description": null,
+    "category": {
+      "id": 256,
+      "name": "Программное обеспечение 1C-Битрикс",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 323,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 21:49:38.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 21:49:38.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 219,
+    "name": "Лицензия на «1C-Битрикс24» (Холдинг, 25 пользователей)",
+    "description": null,
+    "category": {
+      "id": 256,
+      "name": "Программное обеспечение 1C-Битрикс",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 324,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 21:52:40.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 21:52:40.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 220,
+    "name": "Лицензия на «1С-Битрикс: Управление сайтом - Бизнес веб-кластер»",
+    "description": null,
+    "category": {
+      "id": 256,
+      "name": "Программное обеспечение 1C-Битрикс",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 326,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 21:52:58.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 21:52:58.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 221,
+    "name": "Лицензия на «1С-Битрикс: Управление сайтом - Бизнес»",
+    "description": null,
+    "category": {
+      "id": 256,
+      "name": "Программное обеспечение 1C-Битрикс",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 325,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 21:53:12.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 21:53:12.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 222,
+    "name": "Лицензия на «1С-Битрикс: Управление сайтом - Веб-кластер»",
+    "description": null,
+    "category": {
+      "id": 256,
+      "name": "Программное обеспечение 1C-Битрикс",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 327,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 21:53:31.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 21:53:31.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 223,
+    "name": "Лицензия на «1С-Битрикс: Управление сайтом - Малый бизнес»",
+    "description": null,
+    "category": {
+      "id": 256,
+      "name": "Программное обеспечение 1C-Битрикс",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 328,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 21:53:48.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 21:53:48.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 224,
+    "name": "Лицензия на «1С-Битрикс: Управление сайтом - Первый сайт»",
+    "description": null,
+    "category": {
+      "id": 256,
+      "name": "Программное обеспечение 1C-Битрикс",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 329,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 21:54:05.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 21:54:05.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 225,
+    "name": "Лицензия на «1С-Битрикс: Управление сайтом - Стандарт»",
+    "description": null,
+    "category": {
+      "id": 256,
+      "name": "Программное обеспечение 1C-Битрикс",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 330,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 21:54:27.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 21:54:27.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 226,
+    "name": "Лицензия на «1С-Битрикс: Управление сайтом - Старт»",
+    "description": null,
+    "category": {
+      "id": 256,
+      "name": "Программное обеспечение 1C-Битрикс",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 331,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 21:54:45.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 21:54:45.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 227,
+    "name": "Лицензия на «1С-Битрикс: Управление сайтом - Эксперт»",
+    "description": null,
+    "category": {
+      "id": 256,
+      "name": "Программное обеспечение 1C-Битрикс",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 332,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 21:54:59.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 21:54:59.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 228,
+    "name": "Расширение лицензии на «1С-Битрикс24» (Корпоративный портал/Холдинг) доп. пользователь. Минимально 5.",
+    "description": null,
+    "category": {
+      "id": 256,
+      "name": "Программное обеспечение 1C-Битрикс",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 333,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 21:55:43.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 21:55:43.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 229,
+    "name": "Расширение лицензии на «1С-Битрикс24» (Корпоративный портал/Холдинг) неогр. кол-во пользователей",
+    "description": null,
+    "category": {
+      "id": 256,
+      "name": "Программное обеспечение 1C-Битрикс",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 334,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 21:56:05.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 21:56:05.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 230,
+    "name": "Право использования ПО 1C:Бухгалтерия 8 ПРОФ",
+    "description": null,
+    "category": {
+      "id": 257,
+      "name": "Программное обеспечение 1С",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": null,
+    "max_count": null,
+    "min_count": null,
+    "cost_price_active": null,
+    "cost_price_passive": null,
+    "type_use": null,
+    "create_time": {
+      "date": "2021-04-02 21:56:40.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 21:56:40.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 231,
+    "name": "Право использования ПО 1С MSSQL Сервис. Пространство HIGH (GB), включая резервное копирование",
+    "description": null,
+    "category": {
+      "id": 257,
+      "name": "Программное обеспечение 1С",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": null,
+    "max_count": null,
+    "min_count": null,
+    "cost_price_active": null,
+    "cost_price_passive": null,
+    "type_use": null,
+    "create_time": {
+      "date": "2021-04-02 21:57:03.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 21:57:03.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 232,
+    "name": "Право использования ПО 1С MSSQL Сервис. Пространство SSD (GB), включая резервное копирование",
+    "description": null,
+    "category": {
+      "id": 257,
+      "name": "Программное обеспечение 1С",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": null,
+    "max_count": null,
+    "min_count": null,
+    "cost_price_active": null,
+    "cost_price_passive": null,
+    "type_use": null,
+    "create_time": {
+      "date": "2021-04-02 21:57:20.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 21:57:20.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 233,
+    "name": "Право использования ПО 1С:CRM ПРОФ. Клиентская лицензия на рабочее место",
+    "description": null,
+    "category": {
+      "id": 257,
+      "name": "Программное обеспечение 1С",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": null,
+    "max_count": null,
+    "min_count": null,
+    "cost_price_active": null,
+    "cost_price_passive": null,
+    "type_use": null,
+    "create_time": {
+      "date": "2021-04-02 21:57:36.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 21:57:36.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 234,
+    "name": "Право использования ПО 1С:Бухгалтерия 8 КОРП",
+    "description": null,
+    "category": {
+      "id": 257,
+      "name": "Программное обеспечение 1С",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": null,
+    "max_count": null,
+    "min_count": null,
+    "cost_price_active": null,
+    "cost_price_passive": null,
+    "type_use": null,
+    "create_time": {
+      "date": "2021-04-02 21:57:51.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 21:57:51.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 235,
+    "name": "Право использования ПО 1С:Зарплата и Управление Персоналом 8",
+    "description": null,
+    "category": {
+      "id": 257,
+      "name": "Программное обеспечение 1С",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": null,
+    "max_count": null,
+    "min_count": null,
+    "cost_price_active": null,
+    "cost_price_passive": null,
+    "type_use": null,
+    "create_time": {
+      "date": "2021-04-02 21:58:07.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 21:58:07.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 236,
+    "name": "Право использования ПО 1С:Предприятие 8 CRM ПРОФ",
+    "description": null,
+    "category": {
+      "id": 257,
+      "name": "Программное обеспечение 1С",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": null,
+    "max_count": null,
+    "min_count": null,
+    "cost_price_active": null,
+    "cost_price_passive": null,
+    "type_use": null,
+    "create_time": {
+      "date": "2021-04-02 21:58:20.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 21:58:20.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 237,
+    "name": "Право использования ПО 1С:Предприятие 8. Управление торговлей",
+    "description": null,
+    "category": {
+      "id": 257,
+      "name": "Программное обеспечение 1С",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": null,
+    "max_count": null,
+    "min_count": null,
+    "cost_price_active": null,
+    "cost_price_passive": null,
+    "type_use": null,
+    "create_time": {
+      "date": "2021-04-02 21:58:38.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 21:58:38.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 238,
+    "name": "Право использования ПО 1С:Розница 8",
+    "description": null,
+    "category": {
+      "id": 257,
+      "name": "Программное обеспечение 1С",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": null,
+    "max_count": null,
+    "min_count": null,
+    "cost_price_active": null,
+    "cost_price_passive": null,
+    "type_use": null,
+    "create_time": {
+      "date": "2021-04-02 21:59:04.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 21:59:04.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 239,
+    "name": "Право использования ПО 1С:Розница 8. Аптека",
+    "description": null,
+    "category": {
+      "id": 257,
+      "name": "Программное обеспечение 1С",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": null,
+    "max_count": null,
+    "min_count": null,
+    "cost_price_active": null,
+    "cost_price_passive": null,
+    "type_use": null,
+    "create_time": {
+      "date": "2021-04-02 21:59:19.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 21:59:19.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 240,
+    "name": "Право использования ПО 1С:Управление небольшой фирмой 8",
+    "description": null,
+    "category": {
+      "id": 257,
+      "name": "Программное обеспечение 1С",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": null,
+    "max_count": null,
+    "min_count": null,
+    "cost_price_active": null,
+    "cost_price_passive": null,
+    "type_use": null,
+    "create_time": {
+      "date": "2021-04-02 21:59:39.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 21:59:39.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 241,
+    "name": "Лицензия на Microsoft Remote Desktop - WinRmtDsktpSrvcsSAL ALNG LicSAPk MVL на пользователя",
+    "description": null,
+    "category": {
+      "id": 258,
+      "name": "Программное обеспечение Microsoft",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 485,
+    "max_count": 100,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 22:02:11.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 22:02:11.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 242,
+    "name": "Право использования ОС Windows Server - WinSvrDCCore ALNG LicSAPk MVL 2Lic CoreLic на процессор",
+    "description": null,
+    "category": {
+      "id": 258,
+      "name": "Программное обеспечение Microsoft",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 336,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 22:02:31.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 22:02:31.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 243,
+    "name": "Право использования ОС Windows Server - WinSvrEssntls ALNG LicSAPk MVL 1Proc на процессор",
+    "description": null,
+    "category": {
+      "id": 258,
+      "name": "Программное обеспечение Microsoft",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 337,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 22:03:02.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 22:03:02.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 244,
+    "name": "Право использования ОС Windows Server - WinSvrSTDCore ALNG LicSAPk MVL 2Lic CoreLic на процессор",
+    "description": null,
+    "category": {
+      "id": 258,
+      "name": "Программное обеспечение Microsoft",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 486,
+    "max_count": 100,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 22:03:31.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 22:03:31.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 245,
+    "name": "Право использования ПО ExchgBscSAL ALNG LicSAPk MVL на пользователя",
+    "description": null,
+    "category": {
+      "id": 258,
+      "name": "Программное обеспечение Microsoft",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 339,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 22:04:45.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 22:04:45.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 246,
+    "name": "Право использования ПО ExchgEntPlusSAL ALNG LicSAPk MVL на пользователя",
+    "description": null,
+    "category": {
+      "id": 258,
+      "name": "Программное обеспечение Microsoft",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 340,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 22:05:06.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 22:05:06.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 247,
+    "name": "Право использования ПО ExchgEntSAL ALNG LicSAPk MVL на пользователя",
+    "description": null,
+    "category": {
+      "id": 258,
+      "name": "Программное обеспечение Microsoft",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 341,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 22:05:24.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 22:05:24.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 248,
+    "name": "Право использования ПО ExchgStdPlusSAL ALNG LicSAPk MVL на пользователя",
+    "description": null,
+    "category": {
+      "id": 258,
+      "name": "Программное обеспечение Microsoft",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 343,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 22:05:52.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 22:05:52.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 249,
+    "name": "Право использования ПО ExchgStdSAL ALNG LicSAPk MVL на пользователя",
+    "description": null,
+    "category": {
+      "id": 258,
+      "name": "Программное обеспечение Microsoft",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 342,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 22:07:15.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 22:07:15.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 250,
+    "name": "Право использования ПО SharePointSvr ALNG LicSAPk MVL Std SAL на пользователя",
+    "description": null,
+    "category": {
+      "id": 258,
+      "name": "Программное обеспечение Microsoft",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 357,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 22:22:15.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 22:22:15.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 251,
+    "name": "Право использования ПО SharePointSvr ALNG LicSAPk MVL Ent SAL на пользователя",
+    "description": null,
+    "category": {
+      "id": 258,
+      "name": "Программное обеспечение Microsoft",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 356,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 22:22:37.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 22:22:37.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 252,
+    "name": "Право использования ПО SharePointHosting ALNG LicSAPk MVL на сервер",
+    "description": null,
+    "category": {
+      "id": 258,
+      "name": "Программное обеспечение Microsoft",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 355,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 22:23:03.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 22:23:03.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 253,
+    "name": "Право использования ПО Microsoft Visio - VisioStd ALNG LicSAPk MVL SAL на пользователя",
+    "description": null,
+    "category": {
+      "id": 258,
+      "name": "Программное обеспечение Microsoft",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 354,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 22:23:24.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 22:23:24.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 254,
+    "name": "Право использования ПО Microsoft Visio - VisioPro ALNG LicSAPk MVL SAL на пользователя",
+    "description": null,
+    "category": {
+      "id": 258,
+      "name": "Программное обеспечение Microsoft",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 353,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 22:23:40.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 22:23:40.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 209,
+    "name": "Подсеть /24 (256 IP)",
+    "description": null,
+    "category": {
+      "id": 254,
+      "name": "IP-адрес",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 307,
+    "max_count": 256,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 20:56:49.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 23:30:56.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 205,
+    "name": "Дисковое пространство MEDIUM",
+    "description": null,
+    "category": {
+      "id": 281,
+      "name": "Дисковое пространство MEDIUM",
+      "unitMeasure": {
+        "id": 4,
+        "name": "Гбайт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 419,
+    "max_count": 1000000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 10:24:58.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-05-03 22:30:22.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 134,
+    "update_user_id": 134
+  },
+  {
+    "id": 255,
+    "name": "Право использования ПО Microsoft SQL Server - SQLSvrWeb ALNG LicSAPk MVL 2Lic CoreLic на 2 ядра процессора",
+    "description": null,
+    "category": {
+      "id": 258,
+      "name": "Программное обеспечение Microsoft",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 352,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 22:23:56.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 22:23:56.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 207,
+    "name": "Дисковое пространство SSD",
+    "description": null,
+    "category": {
+      "id": 253,
+      "name": "Дисковое пространство SSD",
+      "unitMeasure": {
+        "id": 4,
+        "name": "Гбайт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 421,
+    "max_count": 1000000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 20:55:55.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2023-07-27 10:25:51.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 443
+  },
+  {
+    "id": 216,
+    "name": "Доступ в Интернет Dedicated",
+    "description": null,
+    "category": {
+      "id": 289,
+      "name": "Доступ в Интернет.",
+      "unitMeasure": {
+        "id": 71,
+        "name": "Мбит/с"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 314,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 21:48:22.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2023-08-08 15:25:00.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 443
+  },
+  {
+    "id": 217,
+    "name": "Доступ в Интернет Shared",
+    "description": null,
+    "category": {
+      "id": 289,
+      "name": "Доступ в Интернет.",
+      "unitMeasure": {
+        "id": 71,
+        "name": "Мбит/с"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 315,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 21:49:03.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2023-08-08 15:27:03.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 443
+  },
+  {
+    "id": 206,
+    "name": "Дисковое пространство HIGH",
+    "description": null,
+    "category": {
+      "id": 282,
+      "name": "Дисковое пространство HIGH",
+      "unitMeasure": {
+        "id": 4,
+        "name": "Гбайт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 420,
+    "max_count": 1000000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 20:55:31.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2023-08-09 14:04:32.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 443
+  },
+  {
+    "id": 256,
+    "name": "Право использования ПО Microsoft SQL Server - SQLSvrStdCore ALNG LicSAPk MVL 2Lic CoreLic на 2 ядра процессора",
+    "description": null,
+    "category": {
+      "id": 258,
+      "name": "Программное обеспечение Microsoft",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 351,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 22:24:13.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 22:24:13.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 257,
+    "name": "Право использования ПО Microsoft SQL Server - SQLSvrStd ALNG LicSAPk MVL SAL на пользователя",
+    "description": null,
+    "category": {
+      "id": 258,
+      "name": "Программное обеспечение Microsoft",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 487,
+    "max_count": 100,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 22:24:26.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 22:24:26.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 258,
+    "name": "Право использования ПО Microsoft SQL Server - SQLSvrEntCore ALNG LicSAPk MVL 2Lic CoreLic на 2 ядра процессора",
+    "description": null,
+    "category": {
+      "id": 258,
+      "name": "Программное обеспечение Microsoft",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 349,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 22:24:43.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 22:24:43.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 259,
+    "name": "Право использования ПО Microsoft Project - PrjctSvr ALNG LicSAPk MVL SAL на пользователя",
+    "description": null,
+    "category": {
+      "id": 258,
+      "name": "Программное обеспечение Microsoft",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 348,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 22:24:57.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 22:24:57.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 260,
+    "name": "Право использования ПО Microsoft Project - PrjctPro ALNG LicSAPk MVL SAL w1PrjctSvrSAL на пользователя",
+    "description": null,
+    "category": {
+      "id": 258,
+      "name": "Программное обеспечение Microsoft",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 346,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 22:25:12.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 22:25:12.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 261,
+    "name": "Право использования ПО Microsoft Project - Prjct Std ALNG LicSAPk MVL SAL на пользователя",
+    "description": null,
+    "category": {
+      "id": 258,
+      "name": "Программное обеспечение Microsoft",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 347,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 22:25:26.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 22:25:26.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 262,
+    "name": "Право использования ПО Microsoft Office - OfficeProPlus ALNG LicSAPk MVL SAL на пользователя",
+    "description": null,
+    "category": {
+      "id": 258,
+      "name": "Программное обеспечение Microsoft",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 344,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 22:25:43.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 22:25:43.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 263,
+    "name": "Право использования ПО Microsoft Office - Office Standard ALNG LicSAPk MVL SAL Corporate Standard на пользователя",
+    "description": null,
+    "category": {
+      "id": 258,
+      "name": "Программное обеспечение Microsoft",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 488,
+    "max_count": 100,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 22:25:57.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 22:25:57.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 264,
+    "name": "Дисковое пространство для резервного копирования",
+    "description": null,
+    "category": {
+      "id": 259,
+      "name": "Резервное копирование (диск)",
+      "unitMeasure": {
+        "id": 4,
+        "name": "Гбайт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": null,
+    "max_count": null,
+    "min_count": null,
+    "cost_price_active": null,
+    "cost_price_passive": null,
+    "type_use": null,
+    "create_time": {
+      "date": "2021-04-02 22:26:54.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 22:26:54.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 271,
+    "name": "Аренда выделенного сервера",
+    "description": null,
+    "category": {
+      "id": 262,
+      "name": "Аренда выделенного сервера",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 392,
+    "max_count": 256,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 22:30:34.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 22:30:34.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 279,
+    "name": "SSL-сертификат (проверка по домену, 1 домен, 1 год)",
+    "description": null,
+    "category": {
+      "id": 266,
+      "name": "SSL-сертификат",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 375,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 22:33:26.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 22:33:26.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 280,
+    "name": "SSL-сертификат (проверка по домену, поддомены, 1 год)",
+    "description": null,
+    "category": {
+      "id": 266,
+      "name": "SSL-сертификат",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 376,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 22:34:14.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 22:34:14.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 281,
+    "name": "Организация VPN канала",
+    "description": null,
+    "category": {
+      "id": 267,
+      "name": "Виртуальная частная сеть",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 377,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 22:37:36.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 22:37:36.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 282,
+    "name": "Час работ специалиста поддержки, тип срочности \"Приоритетный\" 10-19/7",
+    "description": null,
+    "category": {
+      "id": 276,
+      "name": "Техническая поддержка. Час работы.",
+      "unitMeasure": {
+        "id": 67,
+        "name": "Час"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 369,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 23:02:13.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 23:02:13.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 283,
+    "name": "Час работ специалиста поддержки, тип срочности \"Критичный\" 24/7",
+    "description": null,
+    "category": {
+      "id": 276,
+      "name": "Техническая поддержка. Час работы.",
+      "unitMeasure": {
+        "id": 67,
+        "name": "Час"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 368,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 23:02:36.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 23:02:36.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 284,
+    "name": "Час работ специалиста поддержки, тип срочности \"Базовый\" 10-19/5",
+    "description": null,
+    "category": {
+      "id": 276,
+      "name": "Техническая поддержка. Час работы.",
+      "unitMeasure": {
+        "id": 67,
+        "name": "Час"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 367,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 23:03:01.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 23:03:01.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 285,
+    "name": "Поддержка виртуальной машины, тариф \"Мастер 4\"",
+    "description": null,
+    "category": {
+      "id": 275,
+      "name": "Техническая поддержка. Подписка.",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 372,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 23:03:31.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 23:03:31.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 286,
+    "name": "Поддержка виртуальной машины, тариф \"Мастер 3\"",
+    "description": null,
+    "category": {
+      "id": 275,
+      "name": "Техническая поддержка. Подписка.",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 371,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 23:03:54.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 23:03:54.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 287,
+    "name": "Поддержка виртуальной машины, тариф \"Мастер 2\"",
+    "description": null,
+    "category": {
+      "id": 275,
+      "name": "Техническая поддержка. Подписка.",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 370,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 23:04:12.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 23:04:12.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 288,
+    "name": "Дополнительный час работ по тарифам поддержки «Мастер 2», «Мастер 4»",
+    "description": null,
+    "category": {
+      "id": 276,
+      "name": "Техническая поддержка. Час работы.",
+      "unitMeasure": {
+        "id": 67,
+        "name": "Час"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 366,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 23:04:35.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 23:04:35.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 289,
+    "name": "DNS-хостинг (1 домен)",
+    "description": null,
+    "category": {
+      "id": 273,
+      "name": "DNS-хостинг",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 404,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 23:04:59.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 23:04:59.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 291,
+    "name": "Пентест",
+    "description": null,
+    "category": {
+      "id": 272,
+      "name": "Разработка документации",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 391,
+    "max_count": 256,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 23:06:00.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 23:06:00.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 293,
+    "name": "Оценка эффективности мер защиты",
+    "description": null,
+    "category": {
+      "id": 272,
+      "name": "Разработка документации",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 390,
+    "max_count": 256,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 23:06:48.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 23:06:48.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 294,
+    "name": "Модель угроз",
+    "description": null,
+    "category": {
+      "id": 272,
+      "name": "Разработка документации",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 389,
+    "max_count": 256,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 23:07:22.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 23:07:22.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 297,
+    "name": "Средство защиты информации от несанкционированного доступа Secret Net Studio",
+    "description": null,
+    "category": {
+      "id": 270,
+      "name": "СЗИ от НСД",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 384,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 23:09:31.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 23:09:31.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 299,
+    "name": "Виртуальный межсетевой экран Edge Gateway",
+    "description": null,
+    "category": {
+      "id": 269,
+      "name": "Межсетевой экран",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 382,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 23:10:18.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-02 23:10:18.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 208,
+    "name": "Публичный IP-адрес",
+    "description": null,
+    "category": {
+      "id": 254,
+      "name": "IP-адрес",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 442,
+    "max_count": 255,
+    "min_count": 1,
+    "cost_price_active": 92.26,
+    "cost_price_passive": 92.26,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 20:56:24.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-03 09:23:40.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 277,
+    "name": "Проброс USB-порта в ВМ",
+    "description": null,
+    "category": {
+      "id": 278,
+      "name": "Проброс USB",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 358,
+    "max_count": 256,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 22:32:36.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-03 09:41:38.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 290,
+    "name": "ЛНА и ОРД",
+    "description": null,
+    "category": {
+      "id": 272,
+      "name": "Разработка документации",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 388,
+    "max_count": 256,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 23:05:37.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-03 12:45:02.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 304,
+    "name": "Проброс USB-порта",
+    "description": null,
+    "category": {
+      "id": 278,
+      "name": "Проброс USB",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 405,
+    "max_count": 100,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-03 09:25:22.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-03 09:42:25.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 266,
+    "name": "Почтовый ящик Exchange (1 Гб Mailbox, резервное копирование 7 дней, антиспам, антивирус)",
+    "description": null,
+    "category": {
+      "id": 261,
+      "name": "Корпоративная почта Exchange SaaS",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 3,
+        "name": "SaaS"
+      }
+    },
+    "link_id": 316,
+    "max_count": 1024,
+    "min_count": 0,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 22:28:01.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-05-12 18:44:09.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 278,
+    "name": "Контроль и анализ защищенности на базе XSpider (1 URL/IP)",
+    "description": null,
+    "category": {
+      "id": 265,
+      "name": "Сканер уязвимостей",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 374,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 22:33:06.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-04-03 12:44:03.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 303,
+    "name": "Подключение к защищенной сети ViPNet с использованием КШ ViPNet Coordinator HW50",
+    "description": null,
+    "category": {
+      "id": 267,
+      "name": "Виртуальная частная сеть",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 378,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 23:15:28.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-05-13 00:05:16.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 298,
+    "name": "Организация защищенного контура на базе МЭ ViPNet Coordinator",
+    "description": null,
+    "category": {
+      "id": 267,
+      "name": "Виртуальная частная сеть",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 383,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 23:10:01.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-05-13 00:04:37.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 302,
+    "name": "Подключение к защищенной сети ViPNet с использованием ПО ViPNet Client",
+    "description": null,
+    "category": {
+      "id": 267,
+      "name": "Виртуальная частная сеть",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 379,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 23:14:51.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-05-13 00:05:20.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 296,
+    "name": "Средство антивирусной защиты Dr.Web",
+    "description": null,
+    "category": {
+      "id": 271,
+      "name": "Антивирусная защита",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 385,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 23:09:06.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-05-13 00:18:49.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 295,
+    "name": "Средство антивирусной защиты Kaspersky Endpoint Security",
+    "description": null,
+    "category": {
+      "id": 271,
+      "name": "Антивирусная защита",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 386,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 23:08:44.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-05-30 14:33:36.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 204,
+    "name": "Дисковое пространство LOW",
+    "description": "Дисковое пространство LOW",
+    "category": {
+      "id": 280,
+      "name": "Дисковое пространство LOW",
+      "unitMeasure": {
+        "id": 4,
+        "name": "Гбайт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 418,
+    "max_count": 1000000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 10:24:45.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-05-03 22:30:27.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 134,
+    "update_user_id": 134
+  },
+  {
+    "id": 301,
+    "name": "Защита от DDoS-атак (100 Мбит/c)",
+    "description": null,
+    "category": {
+      "id": 268,
+      "name": "Защита от DDoS-атак",
+      "unitMeasure": {
+        "id": 71,
+        "name": "Мбит/с"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 380,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 23:13:57.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2023-08-09 11:22:13.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 443
+  },
+  {
+    "id": 300,
+    "name": "Защита от DDoS-атак (200 Мбит/c)",
+    "description": null,
+    "category": {
+      "id": 268,
+      "name": "Защита от DDoS-атак",
+      "unitMeasure": {
+        "id": 71,
+        "name": "Мбит/с"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 381,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 23:13:06.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2023-08-09 11:22:27.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 443
+  },
+  {
+    "id": 273,
+    "name": "Размещение в шкафу 19\" - 42 U (1 стойка), 2 ввода, 2 PDU, 5 кВт",
+    "description": null,
+    "category": {
+      "id": 263,
+      "name": "Размещение в шкафу 19\"",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 363,
+    "max_count": 256,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 22:31:07.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-02-19 09:20:47.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 443
+  },
+  {
+    "id": 275,
+    "name": "Подключение к порту Ethernet 1 Гбит/с",
+    "description": null,
+    "category": {
+      "id": 264,
+      "name": "Сеть и передача данных",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 365,
+    "max_count": 256,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 22:31:49.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-02-19 09:26:58.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 443
+  },
+  {
+    "id": 272,
+    "name": "Размещение в шкафу 19\" - 1 U, 2 ввода, 2 PDU, 150 Вт",
+    "description": null,
+    "category": {
+      "id": 263,
+      "name": "Размещение в шкафу 19\"",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 361,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 22:30:51.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-02-19 09:20:33.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 443
+  },
+  {
+    "id": 274,
+    "name": "Размещение в шкафу 19\" -  21 U (1/2 стойки), 2 ввода, 2 PDU, 2.5 кВт",
+    "description": null,
+    "category": {
+      "id": 263,
+      "name": "Размещение в шкафу 19\"",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 362,
+    "max_count": 256,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 22:31:28.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-02-19 09:21:06.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 443
+  },
+  {
+    "id": 315,
+    "name": "Расширение защищенного контура на 1 туннелируемый IP-адрес",
+    "description": null,
+    "category": {
+      "id": 267,
+      "name": "Виртуальная частная сеть",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 432,
+    "max_count": 99999,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-05-13 00:01:37.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-05-13 00:04:45.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 316,
+    "name": "Средство защиты информации от несанкционированного доступа Secret Net LSP",
+    "description": null,
+    "category": {
+      "id": 270,
+      "name": "СЗИ от НСД",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 433,
+    "max_count": 9999,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-05-30 14:42:22.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-05-30 14:42:22.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 317,
+    "name": "Средство защиты информации от несанкционированного доступа Secret Net",
+    "description": null,
+    "category": {
+      "id": 270,
+      "name": "СЗИ от НСД",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 434,
+    "max_count": 9999,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-05-30 14:59:24.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-05-30 14:59:24.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 319,
+    "name": "Дисковое пространство для резервных копий ВМ (backup)",
+    "description": "Дисковое пространство для резервных копий ВМ (backup) Вар",
+    "category": {
+      "id": 259,
+      "name": "Резервное копирование (диск)",
+      "unitMeasure": {
+        "id": 4,
+        "name": "Гбайт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 437,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-10-28 15:22:42.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-10-28 15:22:42.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 443,
+    "update_user_id": 443
+  },
+  {
+    "id": 318,
+    "name": "Постановка ВМ на резервное копирование (backup)",
+    "description": "Постановка ВМ на резервное копирование (backup) Вар",
+    "category": {
+      "id": 260,
+      "name": "Резервное копирование (лицензия)",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 435,
+    "max_count": 1000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-10-28 15:20:45.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-10-28 15:22:48.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 443,
+    "update_user_id": 443
+  },
+  {
+    "id": 292,
+    "name": "Аттестация",
+    "description": null,
+    "category": {
+      "id": 272,
+      "name": "Разработка документации",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 387,
+    "max_count": 256,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-04-02 23:06:24.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2022-11-07 11:47:58.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 443
+  },
+  {
+    "id": 203,
+    "name": "Оперативная память",
+    "description": null,
+    "category": {
+      "id": 252,
+      "name": "Оперативная память",
+      "unitMeasure": {
+        "id": 4,
+        "name": "Гбайт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 292,
+    "max_count": 10000,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 10:21:27.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2023-02-03 13:18:18.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 134,
+    "update_user_id": 469
+  },
+  {
+    "id": 320,
+    "name": "Доступ в Интернет",
+    "description": "Доступ в Интернет 10_21 Вар",
+    "category": {
+      "id": 289,
+      "name": "Доступ в Интернет.",
+      "unitMeasure": {
+        "id": 71,
+        "name": "Мбит/с"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 466,
+    "max_count": 1000,
+    "min_count": 101,
+    "cost_price_active": 7.44,
+    "cost_price_passive": 7.44,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-10-28 18:41:08.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2023-08-09 11:20:00.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 443,
+    "update_user_id": 443
+  },
+  {
+    "id": 309,
+    "name": "Защита от DDoS-атак (300 Мбит/с)",
+    "description": null,
+    "category": {
+      "id": 268,
+      "name": "Защита от DDoS-атак",
+      "unitMeasure": {
+        "id": 71,
+        "name": "Мбит/с"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 426,
+    "max_count": 999,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-05-12 23:39:04.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2023-08-09 11:22:35.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 443
+  },
+  {
+    "id": 269,
+    "name": "Почтовый ящик Exchange (2 Гб Mailbox, резервное копирование 7 дней, антиспам, антивирус)",
+    "description": null,
+    "category": {
+      "id": 261,
+      "name": "Корпоративная почта Exchange SaaS",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 3,
+        "name": "SaaS"
+      }
+    },
+    "link_id": 317,
+    "max_count": 2048,
+    "min_count": 1025,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 22:28:59.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-05-12 18:44:32.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 305,
+    "name": "Почтовый ящик Exchange (5 Гб Mailbox, резервное копирование 7 дней, антиспам, антивирус)",
+    "description": null,
+    "category": {
+      "id": 261,
+      "name": "Корпоративная почта Exchange SaaS",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 3,
+        "name": "SaaS"
+      }
+    },
+    "link_id": 422,
+    "max_count": 5120,
+    "min_count": 2049,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-05-12 18:45:11.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-05-12 20:46:38.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 321,
+    "name": "Доступ в Интернет. Бонусная полоса",
+    "description": "Доступ в Интернет. Бонусная полоса. Варак. 04_24",
+    "category": {
+      "id": 289,
+      "name": "Доступ в Интернет.",
+      "unitMeasure": {
+        "id": 71,
+        "name": "Мбит/с"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 443,
+    "max_count": 100,
+    "min_count": 1,
+    "cost_price_active": 0,
+    "cost_price_passive": 0,
+    "type_use": 2,
+    "create_time": {
+      "date": "2024-04-18 13:31:08.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2024-04-18 13:47:09.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 443,
+    "update_user_id": 443
+  },
+  {
+    "id": 322,
+    "name": "Доступ в Интернет. Превышение",
+    "description": "Доступ в Интернет. Превышение",
+    "category": {
+      "id": 289,
+      "name": "Доступ в Интернет.",
+      "unitMeasure": {
+        "id": 71,
+        "name": "Мбит/с"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 465,
+    "max_count": 1000,
+    "min_count": 1,
+    "cost_price_active": 7.44,
+    "cost_price_passive": 7.44,
+    "type_use": 2,
+    "create_time": {
+      "date": "2024-07-02 18:03:52.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2024-07-02 18:03:52.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 443,
+    "update_user_id": 443
+  },
+  {
+    "id": 323,
+    "name": "Доступ в Интернет. Предзаказ.",
+    "description": "Доступ в Интернет. Предзаказ.",
+    "category": {
+      "id": 289,
+      "name": "Доступ в Интернет.",
+      "unitMeasure": {
+        "id": 71,
+        "name": "Мбит/с"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 464,
+    "max_count": 1000,
+    "min_count": 1,
+    "cost_price_active": 7.44,
+    "cost_price_passive": 7.44,
+    "type_use": 1,
+    "create_time": {
+      "date": "2024-07-03 14:16:08.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2024-07-03 14:16:08.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 443,
+    "update_user_id": 443
+  },
+  {
+    "id": 267,
+    "name": "Почтовый ящик Exchange (10 Гб Mailbox, резервное копирование 7 дней, антиспам, антивирус)",
+    "description": null,
+    "category": {
+      "id": 261,
+      "name": "Корпоративная почта Exchange SaaS",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 3,
+        "name": "SaaS"
+      }
+    },
+    "link_id": 318,
+    "max_count": 10240,
+    "min_count": 5121,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 22:28:25.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-05-12 18:45:45.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 270,
+    "name": "Почтовый ящик Exchange (20 Гб Mailbox, резервное копирование 7 дней, антиспам, антивирус)",
+    "description": null,
+    "category": {
+      "id": 261,
+      "name": "Корпоративная почта Exchange SaaS",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 3,
+        "name": "SaaS"
+      }
+    },
+    "link_id": 319,
+    "max_count": 20480,
+    "min_count": 10241,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 22:29:22.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-05-12 18:53:09.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 306,
+    "name": "Почтовый ящик Exchange (30 Гб Mailbox, резервное копирование 7 дней, антиспам, антивирус)",
+    "description": null,
+    "category": {
+      "id": 261,
+      "name": "Корпоративная почта Exchange SaaS",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 3,
+        "name": "SaaS"
+      }
+    },
+    "link_id": 423,
+    "max_count": 30720,
+    "min_count": 20481,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-05-12 18:53:42.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-05-12 18:53:42.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 308,
+    "name": "Почтовый ящик Exchange (40 Гб Mailbox, резервное копирование 7 дней, антиспам, антивирус)",
+    "description": null,
+    "category": {
+      "id": 261,
+      "name": "Корпоративная почта Exchange SaaS",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 3,
+        "name": "SaaS"
+      }
+    },
+    "link_id": 424,
+    "max_count": 40960,
+    "min_count": 30721,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-05-12 18:58:16.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-05-12 18:58:16.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 307,
+    "name": "Почтовый ящик Exchange (50 Гб Mailbox, резервное копирование 7 дней, антиспам, антивирус)",
+    "description": null,
+    "category": {
+      "id": 261,
+      "name": "Корпоративная почта Exchange SaaS",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 3,
+        "name": "SaaS"
+      }
+    },
+    "link_id": 425,
+    "max_count": 51200,
+    "min_count": 40961,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 1,
+    "create_time": {
+      "date": "2021-05-12 18:56:00.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-05-12 18:56:00.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 268,
+    "name": "Почтовый ящик Exchange (100 Гб Mailbox, резервное копирование 7 дней, антиспам, антивирус)",
+    "description": null,
+    "category": {
+      "id": 261,
+      "name": "Корпоративная почта Exchange SaaS",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 3,
+        "name": "SaaS"
+      }
+    },
+    "link_id": 320,
+    "max_count": 1024000,
+    "min_count": 51201,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 22:28:44.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2021-05-12 18:54:09.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 439
+  },
+  {
+    "id": 276,
+    "name": "Подключение к порту Ethernet 10 Гбит/с",
+    "description": null,
+    "category": {
+      "id": 264,
+      "name": "Сеть и передача данных",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 364,
+    "max_count": 256,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 22:32:08.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-02-19 09:27:37.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 443
+  },
+  {
+    "id": 324,
+    "name": "Exchange Hosted 1GB Mailbox (резервное копирование 7 дней, антиспам, антивирус)",
+    "description": null,
+    "category": {
+      "id": 261,
+      "name": "Корпоративная почта Exchange SaaS",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 3,
+        "name": "SaaS"
+      }
+    },
+    "link_id": 474,
+    "max_count": 1024,
+    "min_count": 0,
+    "cost_price_active": 270,
+    "cost_price_passive": 270,
+    "type_use": 2,
+    "create_time": {
+      "date": "2025-02-19 09:40:37.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-02-19 09:40:37.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 443,
+    "update_user_id": 443
+  },
+  {
+    "id": 325,
+    "name": "Exchange Hosted 2GB Mailbox (резервное копирование 7 дней, антиспам, антивирус)",
+    "description": null,
+    "category": {
+      "id": 261,
+      "name": "Корпоративная почта Exchange SaaS",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 3,
+        "name": "SaaS"
+      }
+    },
+    "link_id": 475,
+    "max_count": 2048,
+    "min_count": 1024,
+    "cost_price_active": 290,
+    "cost_price_passive": 290,
+    "type_use": 2,
+    "create_time": {
+      "date": "2025-02-19 09:40:56.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-02-19 09:40:56.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 443,
+    "update_user_id": 443
+  },
+  {
+    "id": 326,
+    "name": "Exchange Hosted 3GB Mailbox (резервное копирование 7 дней, антиспам, антивирус)",
+    "description": null,
+    "category": {
+      "id": 261,
+      "name": "Корпоративная почта Exchange SaaS",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 3,
+        "name": "SaaS"
+      }
+    },
+    "link_id": 476,
+    "max_count": 3072,
+    "min_count": 2048,
+    "cost_price_active": 300,
+    "cost_price_passive": 300,
+    "type_use": 2,
+    "create_time": {
+      "date": "2025-02-19 09:41:23.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-02-19 09:41:23.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 443,
+    "update_user_id": 443
+  },
+  {
+    "id": 327,
+    "name": "Exchange Hosted 5 GB Mailbox (резервное копирование 7 дней, антиспам, антивирус)",
+    "description": null,
+    "category": {
+      "id": 261,
+      "name": "Корпоративная почта Exchange SaaS",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 3,
+        "name": "SaaS"
+      }
+    },
+    "link_id": 477,
+    "max_count": 5120,
+    "min_count": 3072,
+    "cost_price_active": 320,
+    "cost_price_passive": 320,
+    "type_use": 2,
+    "create_time": {
+      "date": "2025-02-19 09:41:46.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-02-19 09:41:46.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 443,
+    "update_user_id": 443
+  },
+  {
+    "id": 328,
+    "name": "Exchange Hosted 10GB Mailbox (резервное копирование 7 дней, антиспам, антивирус)",
+    "description": null,
+    "category": {
+      "id": 261,
+      "name": "Корпоративная почта Exchange SaaS",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 3,
+        "name": "SaaS"
+      }
+    },
+    "link_id": 478,
+    "max_count": 10240,
+    "min_count": 5120,
+    "cost_price_active": 350,
+    "cost_price_passive": 350,
+    "type_use": 2,
+    "create_time": {
+      "date": "2025-02-19 09:42:05.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-02-19 09:42:05.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 443,
+    "update_user_id": 443
+  },
+  {
+    "id": 329,
+    "name": "Exchange Hosted 20GB Mailbox (резервное копирование 7 дней, антиспам, антивирус)",
+    "description": null,
+    "category": {
+      "id": 261,
+      "name": "Корпоративная почта Exchange SaaS",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 3,
+        "name": "SaaS"
+      }
+    },
+    "link_id": 479,
+    "max_count": 20480,
+    "min_count": 10240,
+    "cost_price_active": 400,
+    "cost_price_passive": 400,
+    "type_use": 2,
+    "create_time": {
+      "date": "2025-02-19 09:42:37.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-02-19 09:42:37.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 443,
+    "update_user_id": 443
+  },
+  {
+    "id": 330,
+    "name": "Exchange Hosted 30GB Mailbox (резервное копирование 7 дней, антиспам, антивирус)",
+    "description": null,
+    "category": {
+      "id": 261,
+      "name": "Корпоративная почта Exchange SaaS",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 3,
+        "name": "SaaS"
+      }
+    },
+    "link_id": 480,
+    "max_count": 30720,
+    "min_count": 20480,
+    "cost_price_active": 450,
+    "cost_price_passive": 450,
+    "type_use": 2,
+    "create_time": {
+      "date": "2025-02-19 09:42:54.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-02-19 09:44:05.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 443,
+    "update_user_id": 443
+  },
+  {
+    "id": 331,
+    "name": "Exchange Hosted 50GB Mailbox (резервное копирование 7 дней, антиспам, антивирус)",
+    "description": null,
+    "category": {
+      "id": 261,
+      "name": "Корпоративная почта Exchange SaaS",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 3,
+        "name": "SaaS"
+      }
+    },
+    "link_id": 482,
+    "max_count": 51200,
+    "min_count": 40960,
+    "cost_price_active": 550,
+    "cost_price_passive": 550,
+    "type_use": 2,
+    "create_time": {
+      "date": "2025-02-19 09:45:02.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-02-19 09:45:02.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 443,
+    "update_user_id": 443
+  },
+  {
+    "id": 332,
+    "name": "Exchange Hosted 40GB Mailbox (резервное копирование 7 дней, антиспам, антивирус)",
+    "description": null,
+    "category": {
+      "id": 261,
+      "name": "Корпоративная почта Exchange SaaS",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 3,
+        "name": "SaaS"
+      }
+    },
+    "link_id": 481,
+    "max_count": 40960,
+    "min_count": 30720,
+    "cost_price_active": 500,
+    "cost_price_passive": 500,
+    "type_use": 2,
+    "create_time": {
+      "date": "2025-02-19 09:45:26.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-02-19 09:45:26.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 443,
+    "update_user_id": 443
+  },
+  {
+    "id": 333,
+    "name": "Exchange Hosted 100GB Mailbox (резервное копирование 7 дней, антиспам, антивирус)",
+    "description": null,
+    "category": {
+      "id": 261,
+      "name": "Корпоративная почта Exchange SaaS",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 3,
+        "name": "SaaS"
+      }
+    },
+    "link_id": 483,
+    "max_count": 102400,
+    "min_count": 51200,
+    "cost_price_active": 950,
+    "cost_price_passive": 950,
+    "type_use": 2,
+    "create_time": {
+      "date": "2025-02-19 09:46:09.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-02-19 09:46:09.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 443,
+    "update_user_id": 443
+  },
+  {
+    "id": 334,
+    "name": "Exchange Hosted 200GB Mailbox (резервное копирование 7 дней, антиспам, антивирус)",
+    "description": null,
+    "category": {
+      "id": 261,
+      "name": "Корпоративная почта Exchange SaaS",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 3,
+        "name": "SaaS"
+      }
+    },
+    "link_id": 484,
+    "max_count": 2048000,
+    "min_count": 102400,
+    "cost_price_active": 1100,
+    "cost_price_passive": 1100,
+    "type_use": 2,
+    "create_time": {
+      "date": "2025-02-19 09:46:24.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-02-19 09:46:24.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 443,
+    "update_user_id": 443
+  },
+  {
+    "id": 215,
+    "name": "Подсеть /30 (4 IP)",
+    "description": null,
+    "category": {
+      "id": 254,
+      "name": "IP-адрес",
+      "unitMeasure": {
+        "id": 61,
+        "name": "Шт"
+      },
+      "typeRef": {
+        "id": 1,
+        "name": "IaaS"
+      }
+    },
+    "link_id": 313,
+    "max_count": 256,
+    "min_count": 1,
+    "cost_price_active": 1,
+    "cost_price_passive": 1,
+    "type_use": 2,
+    "create_time": {
+      "date": "2021-04-02 20:59:16.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "update_time": {
+      "date": "2025-04-09 11:00:47.000000",
+      "timezone_type": 3,
+      "timezone": "Europe/Moscow"
+    },
+    "create_user_id": 439,
+    "update_user_id": 443
+  }
+]

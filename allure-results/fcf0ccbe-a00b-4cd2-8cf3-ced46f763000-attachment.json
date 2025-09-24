@@ -1,0 +1,23 @@
+{
+  "success": true,
+  "status_code": 200,
+  "response_text": "{\"id\":839}",
+  "payload": {
+    "org_id": 420,
+    "unit_measure_id": 61,
+    "resource_atom_id": 299,
+    "payment_type": "service",
+    "billing_type_id": 6,
+    "record_start_date": "2025-09-28",
+    "record_end_date": "2025-09-29",
+    "quantity": 3,
+    "price": 608,
+    "time": 3
+  },
+  "headers": {
+    "accept": "application/json",
+    "content-type": "application/json",
+    "tockenid": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJpYXQiOjE3NTg2NjIzNjMsImV4cCI6MTc1ODY2NTk2MywidXNlcm5hbWUiOjUxMX0.w3hOEE9CDVGtmtcTfSvs-cXuLhRcDJwUYOrQt9FgZFgskpzDJtzOptqd3hzLAp1hm8dseSkHN-Ubxg-eFEyQP-1C2ZWSyvO52LXZN_PSK6KryTO8Ei0aPH-jcaq5WdoCuYPUxfTdl7nWbYLeWyEYg3u6OCUKgymG3W4DioOARwRNe2y7aWuq_N-BaZb9UjsdEH8BJS0Ibdww9Y_yFyVPQIT9vrR7vBXk41w0NbvAEKQ8PWyIKHOO0mEN16pBLlUabizwVgd5tQ2NsnVCvAd5uL4HgFan9vJKyiuasVlSa8MqnitYiaBr6-xpsTnDj8gHa6Z_3CYlxM_P4EDWthpVZg"
+  },
+  "url": "https://dev1api.cloudpanel.ru/api/v1/pre_billing/manual/items"
+}

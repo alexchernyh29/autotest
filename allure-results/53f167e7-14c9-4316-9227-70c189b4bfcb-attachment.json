@@ -1,0 +1,92 @@
+[
+  {
+    "name": "Почтовый ящик Exchange (40 Гб Mailbox, резервное копирование 7 дней, антиспам, антивирус)",
+    "price": 4981,
+    "unit_measure_id": 61,
+    "resource_atom_id": 308,
+    "payment_type": "total",
+    "billing_type_id": 1,
+    "unit_name": "Шт"
+  },
+  {
+    "name": "Дисковое пространство для резервных копий ВМ (backup)",
+    "price": 2259,
+    "unit_measure_id": 4,
+    "resource_atom_id": 319,
+    "payment_type": "service",
+    "billing_type_id": 2,
+    "unit_name": "Гбайт"
+  },
+  {
+    "name": "Подключение к защищенной сети ViPNet с использованием КШ ViPNet Coordinator HW50",
+    "price": 3856,
+    "unit_measure_id": 61,
+    "resource_atom_id": 303,
+    "payment_type": "total",
+    "billing_type_id": 1,
+    "unit_name": "Шт"
+  },
+  {
+    "name": "Почтовый ящик Exchange (30 Гб Mailbox, резервное копирование 7 дней, антиспам, антивирус)",
+    "price": 2654,
+    "unit_measure_id": 61,
+    "resource_atom_id": 306,
+    "payment_type": "total",
+    "billing_type_id": 2,
+    "unit_name": "Шт"
+  },
+  {
+    "name": "Доступ в Интернет. Превышение",
+    "price": 4711,
+    "unit_measure_id": 71,
+    "resource_atom_id": 322,
+    "payment_type": "service",
+    "billing_type_id": 1,
+    "unit_name": "Мбит/с"
+  },
+  {
+    "name": "SSL-сертификат (проверка по домену, поддомены, 1 год)",
+    "price": 3911,
+    "unit_measure_id": 61,
+    "resource_atom_id": 280,
+    "payment_type": "service",
+    "billing_type_id": 2,
+    "unit_name": "Шт"
+  },
+  {
+    "name": "Виртуальный межсетевой экран Edge Gateway",
+    "price": 608,
+    "unit_measure_id": 61,
+    "resource_atom_id": 299,
+    "payment_type": "service",
+    "billing_type_id": 6,
+    "unit_name": "Шт"
+  },
+  {
+    "name": "Право использования ОС Windows Server - WinSvrSTDCore ALNG LicSAPk MVL 2Lic CoreLic на процессор",
+    "price": 2979,
+    "unit_measure_id": 61,
+    "resource_atom_id": 244,
+    "payment_type": "total",
+    "billing_type_id": 6,
+    "unit_name": "Шт"
+  },
+  {
+    "name": "Exchange Hosted 50GB Mailbox (резервное копирование 7 дней, антиспам, антивирус)",
+    "price": 3826,
+    "unit_measure_id": 61,
+    "resource_atom_id": 331,
+    "payment_type": "service",
+    "billing_type_id": 6,
+    "unit_name": "Шт"
+  },
+  {
+    "name": "Лицензия на «1C-Битрикс24» (Корпоративный портал, 25 пользователей)",
+    "price": 2654,
+    "unit_measure_id": 61,
+    "resource_atom_id": 218,
+    "payment_type": "total",
+    "billing_type_id": 1,
+    "unit_name": "Шт"
+  }
+]
